@@ -71,8 +71,15 @@ if [[ ! -f "$DEPLOY_KEY" ]]; then
 fi
 
 echo "==> 8. Creating site directory layout"
+# `install -d` only applies ownership to the final directory; intermediate
+# parents are created as root:root. We need the full chain owned by `deploy`
+# so the deploy-receive.sh atomic-swap can write `.current.tmp.$$` into
+# `/var/www/sites/<domain>/<env>/`. Create each level explicitly.
+install -d -o deploy -g deploy -m 755 /var/www/sites
 for d in "${DOMAINS[@]}"; do
+    install -d -o deploy -g deploy -m 755 "/var/www/sites/$d"
     for env in prod preview; do
+        install -d -o deploy -g deploy -m 755 "/var/www/sites/$d/$env"
         install -d -o deploy -g deploy -m 755 "/var/www/sites/$d/$env/releases"
         # Initial placeholder release so nginx has something to serve
         if [[ ! -L "/var/www/sites/$d/$env/current" ]]; then

@@ -75,7 +75,7 @@ jobs:
                   -e "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts" \
                   "sites/$site/" \
                   "$VPS_USER@$VPS_HOST:/var/www/sites/$site/preview/releases/$TIMESTAMP/"
-              ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts \
+              ssh -n -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts \
                   "$VPS_USER@$VPS_HOST" \
                   "/usr/local/bin/deploy-receive.sh $site preview $TIMESTAMP"
               echo "    ✓ https://preview.$site"
