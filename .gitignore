@@ -1,0 +1,29 @@
+# Secrets — never commit
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+*.p12
+*.pfx
+secrets/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and temp
+*.log
+tmp/
+.cache/
+
+# Local Claude session memory (not for the public repo)
+.remember/

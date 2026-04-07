@@ -1,0 +1,96 @@
+# .github/workflows/deploy-preview.yml
+name: Deploy preview
+
+on:
+  push:
+    branches:
+      - preview
+
+concurrency:
+  group: preview-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed sites
+        id: changed
+        run: |
+          set -euo pipefail
+          # On the very first commit, HEAD~1 may not exist — fall back to all sites.
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+              CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'sites/*' \
+                  | awk -F/ '{print $2}' | sort -u | grep -v '^$' || true)
+          else
+              CHANGED=""
+          fi
+          if [[ -z "$CHANGED" ]]; then
+              CHANGED=$(find sites -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
+          fi
+          echo "Changed sites:"
+          echo "$CHANGED"
+          # Multiline output via heredoc
+          {
+              echo "sites<<EOF"
+              echo "$CHANGED"
+              echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Set up SSH
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "${{ secrets.VPS_SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Deploy each changed site
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          CHANGED_SITES: ${{ steps.changed.outputs.sites }}
+        run: |
+          set -euo pipefail
+          # Allowlist: workflow-level defense in depth. Only these sites can be
+          # deployed; anything else (typo, malicious commit) is skipped with a
+          # warning, never reaching the SSH layer.
+          ALLOWED_SITES="olzhas-coach.kz parusa.kz"
+          TIMESTAMP=$(date -u +%Y-%m-%d_%H%M%S)
+          while IFS= read -r site; do
+              [[ -z "$site" ]] && continue
+              if ! echo "$ALLOWED_SITES" | grep -qw -- "$site"; then
+                  echo "::warning::Unknown site '$site' — skipping (not in allowlist)"
+                  continue
+              fi
+              echo "==> Deploying $site to preview ($TIMESTAMP)"
+              rsync -az --delete \
+                  -e "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts" \
+                  "sites/$site/" \
+                  "$VPS_USER@$VPS_HOST:/var/www/sites/$site/preview/releases/$TIMESTAMP/"
+              ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts \
+                  "$VPS_USER@$VPS_HOST" \
+                  "/usr/local/bin/deploy-receive.sh $site preview $TIMESTAMP"
+              echo "    ✓ https://preview.$site"
+          done <<< "$CHANGED_SITES"
+
+      - name: Summary
+        if: always()
+        env:
+          CHANGED_SITES: ${{ steps.changed.outputs.sites }}
+        run: |
+          {
+              echo "## Preview deploy"
+              echo ""
+              while IFS= read -r site; do
+                  [[ -z "$site" ]] && continue
+                  echo "- https://preview.$site"
+              done <<< "$CHANGED_SITES"
+          } >> "$GITHUB_STEP_SUMMARY"
