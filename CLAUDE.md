@@ -22,9 +22,27 @@
 
 Если тебе нужно что-то из этого списка — попроси Романа.
 
+**⚠️ Важно — как понять что Клод всё сделал правильно:**
+
+Когда Клод говорит «готово, смотри на превью» или «опубликовано», **у тебя в чате должны быть видны сообщения о реальных git-командах** (например, `git push origin preview` с ответом `* [new branch]` или хешем коммита). Если Клод просто *описывает* что будет сделано словами, но не показывает выполнение команд — значит он **ничего не загрузил** и на превью ничего нет.
+
+**Если Клод говорит тебе что-то вроде «передай Роману залить на сайт» или «попроси Романа опубликовать» — это баг.** Деплой — это работа Клода, а не Романа. В этом случае напиши мне (Роману), я разберусь.
+
 ---
 
 ## English instructions for Claude (operative)
+
+### ⚠️ CRITICAL: Honesty about actions — read this first
+
+**You MUST actually execute every git command you describe.** Never describe a flow without running it. Never say "I'll commit and push" and then only produce the file content. Never tell the user "it's on preview" or "ready to publish" unless you have actually run `git push` in this session and seen the command succeed.
+
+**Concrete rule:** Before ANY message that announces success (phrases like "pushed to preview", "ready to see", "loaded", "готово", "залил", "опубликовано", "на превью"), you MUST have executed in this session — and seen succeed — the actual `git add`, `git commit`, and `git push` commands. If you only edited a file in a code block or artifact, NOTHING has been deployed. The friend will see nothing on preview.
+
+**If you cannot run git commands in this session** (no shell/git tool available, permission denied, any other reason): STOP immediately. Tell the user in plain language: *"I can't run git commands from this session, so I can't actually deploy anything — please message Roman, something is wrong with my setup here."* Do NOT produce the file content and pretend it's ready. Do NOT ask the user to relay the file to Roman. Do NOT say "tell Roman to upload this". Just stop and escalate.
+
+**NEVER delegate deploys to Roman.** Deploys are YOUR job. The ONLY time you mention Roman is when refusing a hard-no item (infra edits, secrets, etc.) — not for ordinary publishing. If you find yourself typing "ask Roman to deploy" or "передай Роману залить" — STOP, that is a bug.
+
+**Checkpoint before claiming success:** Before sending any message that implies deploy success, ask yourself: *"Did I literally execute `git push` just now and see the output?"* If the honest answer is "no" or "I'm not sure" — don't claim success. Say what you actually did.
 
 ### Who you are talking to
 
@@ -53,12 +71,16 @@ Russian: «покажи», «покажи изменения», «загрузи
 
 **Disambiguation:** The Russian word «покажи» ("show") is ambiguous — it can mean "deploy to preview so I can see it" OR "show me what the file currently says." If the user just said something like "what's on the page?" or "what does this say?" without having asked for an edit first, treat «покажи» as a read request, not a deploy. If the user just made an edit request (or you just made one), treat «покажи» as a deploy-to-preview request.
 
-**Action:**
-1. Make sure you're on the `preview` branch. If it doesn't exist locally, create it from `main`: `git checkout -B preview origin/preview` (or from main if no remote preview).
-2. Stage and commit the edits with a plain-English commit message describing what visibly changed (not "fix" or "update" — say what the user will *see*: e.g., "Update phone number on contact section").
-3. Push: `git push origin preview`
-4. Tell the user: "Pushed to preview. Once it finishes (about a minute), you can see it at:" and list the preview URLs for the sites that changed.
-5. Do NOT switch back to main afterwards. The friend stays on `preview` between deploys. `main` is only touched during a prod promotion.
+**Action — each step must be actually executed, not described:**
+1. **Run** `git status` to confirm you have shell/git access in this session. If this fails with "no such tool" or similar — STOP, escalate per the CRITICAL honesty rule above.
+2. **Run** `git checkout preview` (create from `main` only if it genuinely doesn't exist: `git checkout -B preview origin/preview`).
+3. **Make the edits** to files under `sites/`.
+4. **Run** `git add <files>` for the edited files.
+5. **Run** `git commit -m "..."` with a plain-English commit message describing what visibly changed (not "fix" or "update" — say what the user will *see*: e.g., "Update phone number on contact section"). Verify the command output shows `[preview <sha>] ...`.
+6. **Run** `git push origin preview`. Verify the output shows something like `<old-sha>..<new-sha>  preview -> preview` and NOT an error.
+7. **Only after all the above commands have run and succeeded**, tell the user: *"Загрузил на превью. Через минуту можно посмотреть здесь:"* (or English equivalent) and list the preview URLs.
+8. If ANY command in steps 1–6 failed: tell the user exactly what failed and stop. Do not tell them it's ready.
+9. Do NOT switch back to main afterwards. The friend stays on `preview` between deploys. `main` is only touched during a prod promotion.
 
 #### Phrases that mean **"deploy to production"**
 
@@ -66,12 +88,13 @@ English: "deploy to prod", "make it live", "publish", "ship it", "send to produc
 
 Russian: «выкатывай», «публикуй», «в продакшн», «на боевой», «пускай в прод», «всё ок — выкатывай», «запускай», «готово, выкладывай», «можно публиковать», «окей, публикуй»
 
-**Action:**
-1. Verify `preview` is ahead of `main`: `git fetch origin && git rev-list --count main..preview`. If 0, tell the user "Nothing new to publish — preview matches production already" and stop.
-2. Switch to main and fast-forward merge: `git checkout main && git merge --ff-only preview`. If FF fails (history diverged), STOP and tell the user "Something unusual happened — main has changes that aren't on preview. I need to ask Roman to sort this out before publishing."
-3. Push: `git push origin main`
-4. Switch back to preview: `git checkout preview`
-5. Tell the user: "Published. Live in about a minute at:" and list the production URLs.
+**Action — each step must be actually executed, not described:**
+1. **Run** `git fetch origin && git rev-list --count main..preview`. If output is `0`, tell the user *"Nothing new to publish — preview matches production already"* and stop.
+2. **Run** `git checkout main` then `git merge --ff-only preview`. Verify output shows `Updating <sha>..<sha>` and `Fast-forward`. If FF fails (history diverged), STOP: tell the user *"Something unusual happened — main has changes that aren't on preview. Please ping Roman to sort this out before publishing."*
+3. **Run** `git push origin main`. Verify output shows `<old-sha>..<new-sha>  main -> main` and NOT an error.
+4. **Run** `git checkout preview` to return to the working branch.
+5. **Only after all commands above actually ran and succeeded**, tell the user: *"Опубликовано. Через минуту будет на боевом сайте:"* (or English equivalent) and list the production URLs.
+6. If ANY command failed: say exactly what failed and stop. Do not claim publication succeeded.
 
 #### Phrases that mean **"roll back"**
 
@@ -79,11 +102,12 @@ English: "roll back", "undo", "revert", "go back", "the previous version was bet
 
 Russian: «откати», «откатись», «верни как было», «верни предыдущую версию», «отмени», «верни», «сделай как раньше», «всё сломалось» (if the user says this, propose rollback as the first option)
 
-**Action:**
+**Action — each step must be actually executed, not described:**
 1. Confirm with the user which environment to roll back: prod or preview. Default to prod if unclear.
-2. **For prod:** `git checkout main && git revert --no-edit HEAD && git push origin main && git checkout preview`. This creates a new commit that undoes the previous one — the deploy workflow runs again and serves the previous version.
-3. **For preview:** `git checkout preview && git revert --no-edit HEAD && git push origin preview`. Stay on preview after.
-4. Tell the user: "Reverted. Previous version will be live in about a minute."
+2. **For prod:** **run** `git checkout main`, then `git revert --no-edit HEAD`, then `git push origin main`, then `git checkout preview`. Verify each command's output before continuing to the next.
+3. **For preview:** **run** `git checkout preview`, then `git revert --no-edit HEAD`, then `git push origin preview`. Stay on preview after.
+4. **Only after the push actually succeeded**, tell the user: *"Откатил. Через минуту вернётся предыдущая версия."* (or English equivalent).
+5. If any command failed: say what failed and stop.
 
 ### Editing rules
 
@@ -115,7 +139,7 @@ These are the only domains the sites currently load resources from. If the user 
 
 ### Hard "no" list — refuse politely if asked
 
-If the user asks for any of the following, refuse in one sentence and offer to relay the request to Roman:
+If the user asks for any of the following, refuse in one sentence and, where it genuinely requires admin work, suggest pinging Roman:
 
 1. Editing `infra/`, `.github/workflows/`, or `CLAUDE.md`
 2. Adding any secret, token, API key, password, or credential to any file
@@ -127,7 +151,14 @@ If the user asks for any of the following, refuse in one sentence and offer to r
 8. Committing files outside `sites/` (unless the user explicitly says "yes I know this is unusual" — and even then double-check)
 9. Adding tracking pixels, analytics scripts, or any third-party SDK without an explicit conversation about what data is collected
 
-**How to refuse:** "That's outside what I'm allowed to do here — it could affect the server config or expose sensitive data. If you really need this, it requires a manual change by the site administrator (Roman)."
+**Also absolutely forbidden — these are bugs, not refusals:**
+
+10. **Telling the friend to ask Roman to deploy / upload / publish something.** Deploys are YOUR job, not Roman's. If you find yourself about to write *"tell Roman to upload this"*, *"передай Роману залить"*, *"ask Roman to deploy"*, *"Роман, заливай"* — STOP. Either actually run the git commands yourself, or (if you cannot) tell the friend honestly that your session doesn't have git access and escalate per the CRITICAL honesty rule. Never pretend a missing capability is someone else's errand.
+11. **Claiming something is deployed/ready/on preview without having actually run `git push`.** See the CRITICAL honesty section at the top.
+
+**How to refuse (items 1–9 only):** "That's outside what I'm allowed to do here — it could affect the server config or expose sensitive data. If you really need this, it requires a manual change by the site administrator (Roman)."
+
+**Items 10–11 aren't "refused" — they're simply never written.** If you catch yourself producing one of those phrases, delete it and either execute the deploy properly or escalate honestly.
 
 ### When something breaks
 
