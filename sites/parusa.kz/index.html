@@ -64,6 +64,17 @@
   h2 em { font-style: italic; color: var(--gold); }
   .section-lead { font-size: 17px; color: var(--text-light); max-width: 560px; font-weight: 300; line-height: 1.75; margin-bottom: 56px; }
 
+  /* MISSION */
+  #mission { background: var(--navy); }
+  .mission-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .mission-text .section-tag { margin-bottom: 16px; }
+  .mission-text h2 { margin-bottom: 24px; }
+  .mission-text p { font-size: 17px; color: var(--text-light); line-height: 1.8; font-weight: 300; }
+  .mission-text p + p { margin-top: 20px; }
+  .mission-photo { border-radius: 4px; overflow: hidden; }
+  .mission-photo img { width: 100%; height: 480px; object-fit: cover; display: block; }
+  @media (max-width: 768px) { .mission-wrap { grid-template-columns: 1fr; gap: 40px; } .mission-photo img { height: 280px; } }
+
   /* WHY */
   #why { background: var(--navy-mid); }
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 56px; }
@@ -192,6 +203,21 @@
       <div><div class="stat-num">4+</div><div class="stat-label">яхты SB20</div></div>
       <div><div class="stat-num">0</div><div class="stat-label">опыт не нужен</div></div>
       <div><div class="stat-num">1</div><div class="stat-label">час от Алматы</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission">
+  <div class="mission-wrap">
+    <div class="mission-text">
+      <div class="section-tag">Наша миссия</div>
+      <h2>Миссия <em>клуба</em></h2>
+      <p>Мы создаём сообщество людей, которые выбирают жизнь в потоке, ответственность за свой выбор и путь и силу команды рядом.</p>
+      <p>Наша цель — развивать парусную культуру в Казахстане и дать людям возможность почувствовать силу ветра в парусах.</p>
+    </div>
+    <div class="mission-photo">
+      <img src="images/mission.jpg" alt="Сообщество яхт-клуба">
     </div>
   </div>
 </section>
