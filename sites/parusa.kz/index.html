@@ -110,11 +110,13 @@
 
   /* MEMBERSHIP */
   #membership { background: var(--navy); }
-  .membership-intro { max-width: 720px; margin-bottom: 56px; }
-  .membership-intro p { font-size: 16px; color: var(--text-light); line-height: 1.8; font-weight: 300; margin-bottom: 12px; }
-  .membership-body { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-  .membership-features { list-style: none; }
-  .membership-features li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; color: var(--text-light); display: flex; align-items: center; gap: 14px; }
+  .membership-body { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 0; }
+  .membership-left .section-tag { margin-bottom: 16px; }
+  .membership-left h2 { margin-bottom: 20px; }
+  .membership-left .lead { font-size: 17px; color: var(--text-light); font-weight: 300; line-height: 1.75; margin-bottom: 20px; }
+  .membership-left p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 10px; }
+  .membership-features { list-style: none; margin-top: 28px; }
+  .membership-features li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; color: var(--text-light); display: flex; align-items: center; gap: 14px; }
   .membership-features li::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
   .membership-form-wrap { background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(201,169,110,0.02)); border: 1px solid rgba(201,169,110,0.25); border-radius: 4px; padding: 40px 36px; }
   .membership-form-wrap h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
@@ -127,7 +129,7 @@
   .club-form textarea { resize: none; height: 80px; }
   .club-form .btn-primary { border: none; cursor: pointer; width: 100%; text-align: center; font-family: 'DM Sans', sans-serif; margin-top: 4px; }
   .form-success { display: none; text-align: center; padding: 24px; color: var(--gold); font-size: 15px; }
-  @media (max-width: 768px) { .membership-body { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .membership-body { grid-template-columns: 1fr; gap: 40px; } }
 
   /* TESTIMONIALS */
   #testimonials { background: var(--navy-mid); }
@@ -346,20 +348,20 @@
 
 <!-- MEMBERSHIP -->
 <section id="membership">
-  <div class="section-tag">Членство в клубе</div>
-  <h2>Стань частью <em>яхт-клуба</em></h2>
-  <div class="membership-intro">
-    <p class="section-lead">Сильное окружение людей, выбирающих рост и движение.</p>
-    <p>Мы собираем сообщество людей, для которых важны движение, развитие и сильное окружение. В клубе — предприниматели, лидеры, активные люди, которые ценят время, опыт и качество среды.</p>
-    <p>Парус объединяет тех, кто умеет брать ответственность, работать в команде и получать удовольствие от процесса. Клуб живёт не только в сезон — мы встречаемся, общаемся и развиваемся круглый год.</p>
-  </div>
   <div class="membership-body">
-    <ul class="membership-features">
-      <li>Участие в клубных регатах и встречах</li>
-      <li>Доступ к внутреннему сообществу</li>
-      <li>Приоритетная запись на программы</li>
-      <li>Формат, который развивается вместе с участниками</li>
-    </ul>
+    <div class="membership-left">
+      <div class="section-tag">Членство в клубе</div>
+      <h2>Стань частью <em>яхт-клуба</em></h2>
+      <p class="lead">Сильное окружение людей, выбирающих рост и движение.</p>
+      <p>Мы собираем сообщество людей, для которых важны движение, развитие и сильное окружение. В клубе — предприниматели, лидеры, активные люди, которые ценят время, опыт и качество среды.</p>
+      <p>Парус объединяет тех, кто умеет брать ответственность, работать в команде и получать удовольствие от процесса. Клуб живёт не только в сезон — мы встречаемся, общаемся и развиваемся круглый год.</p>
+      <ul class="membership-features">
+        <li>Участие в клубных регатах и встречах</li>
+        <li>Доступ к внутреннему сообществу</li>
+        <li>Приоритетная запись на программы</li>
+        <li>Формат, который развивается вместе с участниками</li>
+      </ul>
+    </div>
     <div class="membership-form-wrap">
       <h3>Интересно участие?</h3>
       <p>Оставь заявку — расскажем про формат и подберём вариант под тебя.</p>
@@ -373,6 +375,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
