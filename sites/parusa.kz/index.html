@@ -364,20 +364,9 @@
       <h3>Интересно участие?</h3>
       <p>Оставь заявку — расскажем про формат и подберём вариант под тебя.</p>
       <form class="club-form" id="clubForm">
-        <input type="text" name="name" placeholder="Имя" required>
-        <input type="tel" name="phone" placeholder="Телефон" required>
-        <select name="interest" required>
-          <option value="" disabled selected>Что интересует?</option>
-          <option value="Регаты">Регаты</option>
-          <option value="Обучение">Обучение</option>
-          <option value="Клуб предпринимателей">Клуб предпринимателей</option>
-        </select>
-        <select name="experience" required>
-          <option value="" disabled selected>Опыт в парусном спорте</option>
-          <option value="Нет опыта">Нет опыта</option>
-          <option value="Есть опыт">Есть опыт</option>
-        </select>
-        <textarea name="comment" placeholder="Комментарий (необязательно)"></textarea>
+        <input type="text" name="entry.7804584" placeholder="Имя и фамилия" required>
+        <input type="tel" name="entry.1259473026" placeholder="Телефон (WhatsApp)" required>
+        <textarea name="entry.968851019" placeholder="Расскажите о себе и вашем опыте в яхтинге"></textarea>
         <button type="submit" class="btn-primary">Оставить заявку</button>
       </form>
       <div class="form-success" id="formSuccess">Заявка отправлена! Свяжемся с тобой в ближайшее время.</div>
@@ -491,7 +480,7 @@
   });
 
   // Club form → Google Forms
-  const GOOGLE_FORM_URL = 'GOOGLE_FORM_ACTION_URL'; // ← сюда вставим ссылку
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEy3miFCT5lGRvMcFd2dKGQH8TaSMl6rHK9XJz-C61QwABWw/formResponse';
   document.getElementById('clubForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const data = new FormData(this);
