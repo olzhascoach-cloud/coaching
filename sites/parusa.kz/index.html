@@ -176,6 +176,9 @@
   .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
   .footer-links a:hover { color: var(--gold); }
   .footer-contact a { color: var(--gold); text-decoration: none; font-size: 14px; }
+  .footer-icon-link img { width: 36px; height: 36px; object-fit: contain; display: block; transition: opacity 0.2s; }
+  .footer-icon-link img:hover { opacity: 0.8; }
+  .footer-icons { display: flex; gap: 16px; align-items: center; }
   .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 12px; color: var(--text-muted); }
 
   /* MOBILE */
@@ -487,10 +490,10 @@
       <a href="#membership">Членство</a>
       <a href="#faq">FAQ</a>
     </div>
-    <div style="display:flex; gap:16px; flex-wrap:wrap;">
-      <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-contact">WhatsApp</a>
-      <a href="https://instagram.com/parus.kapchagay" class="footer-contact">@parus.kapchagay</a>
-      <a href="https://parusa.kz" class="footer-contact">parusa.kz</a>
+    <div class="footer-icons">
+      <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-wa.png" alt="WhatsApp"></a>
+      <a href="https://instagram.com/parus.kapchagay" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-ig.jpg" alt="Instagram"></a>
+      <a href="tel:+77015334340" class="footer-icon-link"><img src="images/icon-phone.png" alt="Телефон"></a>
     </div>
   </div>
   <div class="footer-bottom">© 2025 Капчагайский яхт-клуб · Капчагай, Казахстан</div>
