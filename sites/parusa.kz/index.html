@@ -156,7 +156,11 @@
 
   /* FAQ */
   #faq { background: var(--navy); }
-  .faq-list { max-width: 720px; margin-top: 56px; }
+  .faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 56px; }
+  .faq-list { }
+  .faq-photo { border-radius: 4px; overflow: hidden; position: sticky; top: 100px; }
+  .faq-photo img { width: 100%; height: 560px; object-fit: cover; display: block; border-radius: 4px; }
+  @media (max-width: 768px) { .faq-wrap { grid-template-columns: 1fr; } .faq-photo { display: none; } }
   .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 24px 0; cursor: pointer; }
   .faq-q { font-size: 17px; color: var(--white); font-weight: 400; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .toggle { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
@@ -441,26 +445,31 @@
 <section id="faq">
   <div class="section-tag">Частые вопросы</div>
   <h2><em>FAQ</em></h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">Нужен ли опыт, чтобы прийти на регату? <div class="toggle">+</div></div>
-      <div class="faq-a">Нет. Мы принимаем людей без какого-либо опыта. Перед выходом на воду проводится краткий инструктаж, а рядом всегда есть опытный инструктор.</div>
+  <div class="faq-wrap">
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Нужен ли опыт, чтобы прийти на регату? <div class="toggle">+</div></div>
+        <div class="faq-a">Нет. Мы принимаем людей без какого-либо опыта. Перед выходом на воду проводится краткий инструктаж, а рядом всегда есть опытный инструктор.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Как добраться до Капчагая? <div class="toggle">+</div></div>
+        <div class="faq-a">Около 1 часа на машине от Алматы по трассе А-2. Точный адрес и схему проезда высылаем при записи в WhatsApp.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Что нужно взять с собой? <div class="toggle">+</div></div>
+        <div class="faq-a">Спортивную одежду, солнцезащитный крем, хорошее настроение. Спасательные жилеты и всё необходимое снаряжение предоставляем мы.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Можно ли прийти с детьми? <div class="toggle">+</div></div>
+        <div class="faq-a">Да, клуб открыт для семей. Дети участвуют вместе с родителями. Есть форматы специально для семейного отдыха.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Как организовать корпоратив? <div class="toggle">+</div></div>
+        <div class="faq-a">Напишите нам в WhatsApp с указанием количества участников и желаемой даты. Мы составим программу и смету под ваш запрос.</div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Как добраться до Капчагая? <div class="toggle">+</div></div>
-      <div class="faq-a">Около 1 часа на машине от Алматы по трассе А-2. Точный адрес и схему проезда высылаем при записи в WhatsApp.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Что нужно взять с собой? <div class="toggle">+</div></div>
-      <div class="faq-a">Спортивную одежду, солнцезащитный крем, хорошее настроение. Спасательные жилеты и всё необходимое снаряжение предоставляем мы.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Можно ли прийти с детьми? <div class="toggle">+</div></div>
-      <div class="faq-a">Да, клуб открыт для семей. Дети участвуют вместе с родителями. Есть форматы специально для семейного отдыха.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Как организовать корпоратив? <div class="toggle">+</div></div>
-      <div class="faq-a">Напишите нам в WhatsApp с указанием количества участников и желаемой даты. Мы составим программу и смету под ваш запрос.</div>
+    <div class="faq-photo">
+      <img src="images/faq-photo.jpg" alt="Яхтинг">
     </div>
   </div>
 </section>
