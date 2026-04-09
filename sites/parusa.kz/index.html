@@ -104,7 +104,9 @@
   .product-link:hover { opacity: 0.7; }
 
   /* DAY */
-  #day { background: var(--navy-mid); }
+  #day { background: var(--navy-mid); position: relative; }
+  #day::before { content: ''; position: absolute; inset: 0; background: url('images/day-bg.jpg') center center / cover no-repeat; opacity: 0.15; z-index: 0; }
+  #day > * { position: relative; z-index: 1; }
   .timeline { display: flex; margin-top: 56px; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
   .timeline-step { flex: 1; padding: 32px 24px; border-right: 1px solid rgba(255,255,255,0.06); }
   .timeline-step:last-child { border-right: none; }
