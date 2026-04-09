@@ -147,9 +147,11 @@
   .testimonial-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
   /* CTA */
-  #cta { background: linear-gradient(135deg, var(--ocean), var(--navy)); text-align: center; position: relative; overflow: hidden; }
-  #cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,169,110,0.1) 0%, transparent 65%); }
+  #cta { text-align: center; position: relative; overflow: hidden; }
+  #cta::before { content: ''; position: absolute; inset: 0; background: url('images/cta-bg.jpg') center center / cover no-repeat; z-index: 0; }
+  #cta::after { content: ''; position: absolute; inset: 0; background: rgba(10,22,40,0.75); z-index: 1; }
   #cta .section-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+  #cta .section-inner * { position: relative; z-index: 2; }
   #cta .hero-btns { justify-content: center; }
 
   /* FAQ */
