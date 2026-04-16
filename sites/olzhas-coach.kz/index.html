@@ -198,10 +198,10 @@
   }
   .hero-photo-placeholder {
     position: relative; z-index: 2;
-    width: 340px; height: 460px;
+    width: clamp(260px, 80%, 400px);
+    aspect-ratio: 3 / 4;
     background: linear-gradient(180deg, var(--dark-3) 0%, var(--dark-2) 100%);
     border-radius: 4px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
     border: 1px solid rgba(201,168,76,0.2);
     overflow: hidden;
   }
@@ -800,8 +800,11 @@
     .nav-links { display: none; }
     section { padding: 70px 30px; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 120px 30px 50px; }
-    .hero-right { display: none; }
+    .hero-left { padding: 120px 30px 40px; }
+    .hero-right { display: flex; padding: 0 30px 60px; }
+    .hero-portrait-wrap { padding-top: 0; align-items: center; justify-content: center; }
+    .hero-portrait-bg { display: none; }
+    .hero-photo-placeholder { width: clamp(220px, 70%, 340px); }
     .problems-grid { grid-template-columns: 1fr 1fr; }
     .results-layout { grid-template-columns: 1fr; gap: 40px; }
     .packages-grid { grid-template-columns: 1fr; }
