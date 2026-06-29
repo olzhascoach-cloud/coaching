@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Курс матроса — 28 июня | Parusa Yacht Club</title>
+<meta name="description" content="Онлайн-теория + день практики на яхте SB20. 28 июня, Капчагай. С нуля до сертификата «Матрос-юнга» за один интенсив. от 50 000 ₸/чел.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parusa Yacht Club">
+<meta property="og:title" content="Курс матроса — 28 июня · Parusa Yacht Club">
+<meta property="og:description" content="Онлайн-теория + день практики на яхте SB20 в Капчагае. С нуля до сертификата «Матрос-юнга». Малые группы, инструктор-мастер спорта. 28 июня, 1 час от Алматы.">
+<meta property="og:image" content="https://parusa.kz/images/hero-matros.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://parusa.kz/matros.html">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628; --navy-mid: #152744; --ocean: #1a4a7a;
+    --gold: #c9a96e; --gold-light: #e8d5a8; --cream: #f7f3ec;
+    --white: #ffffff; --text-muted: rgba(247,243,236,0.6); --text-light: rgba(247,243,236,0.85);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); overflow-x: hidden; line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px; display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(10,22,40,0.97), transparent);
+    backdrop-filter: blur(4px);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo span { color: var(--cream); font-size: 13px; display: block; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; font-weight: 300; opacity: 0.7; }
+  .logo img { height: 36px; width: auto; filter: brightness(0) invert(1); flex-shrink: 0; }
+  nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+  nav ul li a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 10px 24px; border-radius: 2px; font-weight: 500 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 200; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile {
+    display: none; position: fixed; inset: 0; z-index: 150;
+    background: rgba(10,22,40,0.98);
+    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { color: var(--cream); text-decoration: none; font-size: 20px; font-weight: 400; letter-spacing: 0.06em; transition: color 0.2s; }
+  .nav-mobile a:hover { color: var(--gold); }
+  .nav-mobile .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 14px 36px; border-radius: 2px; font-weight: 500; margin-top: 8px; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;
+    padding: 140px 48px 100px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.65) 55%, rgba(10,22,40,0.35) 100%),
+                url('images/hero-matros.jpg') center 40% / cover no-repeat;
+  }
+  .hero-badge-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+  .back-link { font-size: 13px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .sep { color: var(--text-muted); opacity: 0.4; }
+  .waves { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; overflow: hidden; }
+  .wave { position: absolute; bottom: 0; width: 200%; height: 100%; background: rgba(21,39,68,0.4); border-radius: 50% 50% 0 0 / 20% 20% 0 0; }
+  .wave-1 { animation: wave 8s ease-in-out infinite; }
+  .wave-2 { background: rgba(10,22,40,0.5); animation: wave 12s ease-in-out infinite reverse; height: 75%; }
+  @keyframes wave { 0%, 100% { transform: translateX(-25%) scaleY(1); } 50% { transform: translateX(-10%) scaleY(1.1); } }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .hero-tag { display: inline-block; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 6px 16px; border-radius: 2px; margin-bottom: 24px; font-weight: 500; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 6vw, 74px); font-weight: 600; line-height: 1.05; color: var(--white); margin-bottom: 24px; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 17px; color: var(--text-light); max-width: 520px; margin-bottom: 16px; font-weight: 300; line-height: 1.7; }
+  .hero-sub-detail { font-size: 15px; color: var(--text-muted); max-width: 480px; margin-bottom: 40px; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline { border: 1px solid rgba(247,243,236,0.35); color: var(--cream); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 400; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-pills { display: flex; gap: 12px; margin-top: 40px; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 8px 18px; font-size: 13px; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
+  .pill svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.8; flex-shrink: 0; }
+
+  /* DATE BANNER */
+  .date-banner { background: linear-gradient(135deg, rgba(201,169,110,0.15), rgba(201,169,110,0.05)); border: 1px solid rgba(201,169,110,0.4); border-radius: 4px; padding: 20px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .date-banner-date { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .date-banner-date span { display: block; font-size: 18px; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-weight: 300; margin-top: 4px; }
+  .date-banner-info { flex: 1; }
+  .date-banner-info strong { display: block; font-size: 16px; color: var(--white); margin-bottom: 4px; }
+  .date-banner-info p { font-size: 14px; color: var(--text-muted); }
+
+  /* SECTIONS */
+  section { padding: 96px 48px; }
+  .section-tag { display: inline-block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.5vw, 54px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+  .section-lead { font-size: 17px; color: var(--text-light); max-width: 600px; font-weight: 300; line-height: 1.75; margin-bottom: 48px; }
+
+  /* WHAT */
+  #what { background: var(--navy); }
+  .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .what-text p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
+  .what-text p strong { color: var(--gold); font-weight: 500; }
+  .what-cert { background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(201,169,110,0.03)); border: 1px solid rgba(201,169,110,0.3); border-radius: 4px; padding: 36px; margin-top: 32px; }
+  .what-cert .cert-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .what-cert h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--white); margin-bottom: 10px; font-weight: 600; }
+  .what-cert p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .what-photo { border-radius: 4px; overflow: hidden; position: relative; }
+  .what-photo img { width: 100%; height: 500px; object-fit: cover; display: block; }
+  .what-photo-badge { position: absolute; bottom: 24px; left: 24px; background: rgba(10,22,40,0.9); border: 1px solid rgba(201,169,110,0.3); border-radius: 4px; padding: 16px 20px; }
+  .what-photo-badge strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); font-weight: 600; }
+  .what-photo-badge span { font-size: 12px; color: var(--text-muted); }
+  @media (max-width: 768px) { .what-grid { grid-template-columns: 1fr; gap: 40px; } .what-photo img { height: 280px; } }
+
+  /* PROGRAM */
+  #program { background: var(--navy-mid); position: relative; }
+  #program::before { content: ''; position: absolute; inset: 0; background: url('images/why-bg.jpg') center / cover no-repeat; opacity: 0.12; }
+  #program > * { position: relative; z-index: 1; }
+  .timeline-v { margin-top: 48px; max-width: 780px; }
+  .tl-item { display: flex; gap: 32px; margin-bottom: 0; }
+  .tl-left { display: flex; flex-direction: column; align-items: center; min-width: 80px; }
+  .tl-time { font-size: 12px; letter-spacing: 0.08em; color: var(--gold); font-weight: 500; white-space: nowrap; }
+  .tl-line-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .tl-dot { width: 10px; height: 10px; background: var(--gold); border-radius: 50%; margin: 6px 0 0; flex-shrink: 0; }
+  .tl-line { width: 1px; background: rgba(201,169,110,0.2); flex: 1; min-height: 40px; }
+  .tl-item:last-child .tl-line { display: none; }
+  .tl-content { padding-bottom: 32px; flex: 1; padding-top: 2px; }
+  .tl-content strong { display: block; font-size: 16px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+  .tl-content p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .tl-highlight { background: rgba(201,169,110,0.07); border: 1px solid rgba(201,169,110,0.2); border-radius: 4px; padding: 16px 20px; }
+  .tl-highlight strong { color: var(--gold); }
+
+  /* SKILLS */
+  #skills { background: var(--navy); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 48px; }
+  .skill-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); padding: 36px 28px; transition: background 0.3s; }
+  .skill-card:hover { background: rgba(201,169,110,0.04); }
+  .skill-icon { width: 44px; height: 44px; margin-bottom: 18px; border: 1px solid rgba(201,169,110,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .skill-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .skill-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .skill-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+  /* WHO */
+  #who { background: var(--navy-mid); }
+  .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
+  .who-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 32px 28px; background: rgba(255,255,255,0.02); position: relative; }
+  .who-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .who-card:hover::before { transform: scaleX(1); }
+  .who-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+  .who-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* PRICE */
+  #price { background: var(--navy); }
+  .price-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; align-items: start; }
+  .price-card { border: 1px solid rgba(201,169,110,0.35); border-radius: 4px; padding: 44px 40px; background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(201,169,110,0.02)); }
+  .price-card .price-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .price-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 20px; }
+  .price-amount { font-size: 48px; font-weight: 300; color: var(--gold); font-family: 'Cormorant Garamond', serif; line-height: 1; margin-bottom: 6px; }
+  .price-amount span { font-size: 20px; }
+  .price-note { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+  .price-includes { list-style: none; }
+  .price-includes li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 12px; }
+  .price-includes li::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .price-info { padding: 36px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; }
+  .price-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--white); font-weight: 600; margin-bottom: 20px; }
+  .info-item { display: flex; gap: 12px; margin-bottom: 16px; }
+  .info-item svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; flex-shrink: 0; margin-top: 2px; }
+  .info-item p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .info-item p strong { display: block; color: var(--text-light); font-weight: 500; margin-bottom: 2px; font-size: 14px; }
+  @media (max-width: 768px) { .price-wrap { grid-template-columns: 1fr; } }
+
+  /* REGISTER */
+  #register { background: var(--navy-mid); position: relative; }
+  #register::before { content: ''; position: absolute; inset: 0; background: url('images/cta-bg.jpg') center / cover no-repeat; opacity: 0.12; }
+  #register > * { position: relative; z-index: 1; }
+  .register-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .register-text h2 { margin-bottom: 20px; }
+  .register-text p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
+  .register-text .steps { margin-top: 32px; }
+  .reg-step { display: flex; gap: 20px; margin-bottom: 20px; }
+  .reg-step-num { width: 32px; height: 32px; border: 1px solid rgba(201,169,110,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--gold); font-weight: 500; flex-shrink: 0; }
+  .reg-step-text strong { display: block; font-size: 15px; color: var(--white); font-weight: 500; margin-bottom: 3px; }
+  .reg-step-text span { font-size: 13px; color: var(--text-muted); }
+  .register-form-wrap { background: rgba(10,22,40,0.7); border: 1px solid rgba(201,169,110,0.25); border-radius: 4px; padding: 40px 36px; }
+  .register-form-wrap h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .register-form-wrap > p { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
+  .reg-form { display: flex; flex-direction: column; gap: 14px; }
+  .reg-form input, .reg-form select, .reg-form textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; padding: 12px 16px; font-size: 14px; color: var(--cream); font-family: 'DM Sans', sans-serif; width: 100%; outline: none; transition: border-color 0.2s; }
+  .reg-form input::placeholder, .reg-form textarea::placeholder { color: rgba(247,243,236,0.35); }
+  .reg-form input:focus, .reg-form select:focus, .reg-form textarea:focus { border-color: rgba(201,169,110,0.5); }
+  .reg-form select option { background: #0a1628; color: var(--cream); }
+  .reg-form textarea { resize: none; height: 80px; }
+  .reg-form .btn-primary { border: none; cursor: pointer; width: 100%; text-align: center; font-family: 'DM Sans', sans-serif; margin-top: 4px; font-size: 15px; padding: 15px 32px; }
+  .form-success { display: none; text-align: center; padding: 32px; color: var(--gold); font-size: 16px; line-height: 1.8; }
+
+  /* FAQ */
+  #faq { background: var(--navy); }
+  .faq-list { max-width: 740px; margin-top: 48px; }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; cursor: pointer; }
+  .faq-q { font-size: 17px; color: var(--white); font-weight: 400; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .toggle { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-a { font-size: 14px; color: var(--text-muted); line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding-top 0.3s; }
+  .faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+  .faq-item.open .toggle { transform: rotate(45deg); }
+
+  /* FOOTER */
+  footer { background: rgba(0,0,0,0.5); padding: 48px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-icon-link img { width: 36px; height: 36px; object-fit: contain; display: block; transition: opacity 0.2s; }
+  .footer-icon-link img:hover { opacity: 0.8; }
+  .footer-icons { display: flex; gap: 16px; align-items: center; }
+  .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 12px; color: var(--text-muted); }
+
+  /* STICKY CTA */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+    background: rgba(10,22,40,0.97); border-top: 1px solid rgba(201,169,110,0.2);
+    padding: 14px 48px; display: flex; align-items: center; justify-content: space-between;
+    transform: translateY(100%); transition: transform 0.4s ease; backdrop-filter: blur(8px);
+  }
+  .sticky-cta.visible { transform: translateY(0); }
+  .sticky-cta-text { font-size: 15px; color: var(--text-light); }
+  .sticky-cta-text strong { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    section, #hero { padding: 72px 24px; }
+    footer { padding: 32px 24px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .hero-pills { gap: 8px; }
+    h1 { font-size: clamp(38px, 8vw, 56px); }
+    .register-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .sticky-cta { padding: 12px 24px; flex-direction: column; gap: 10px; text-align: center; }
+    .sticky-cta .btn-primary { width: 100%; text-align: center; }
+    .date-banner { flex-direction: column; gap: 12px; }
+    .tl-item { gap: 16px; }
+    .tl-left { min-width: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Parusa Yacht Club<span>parusa.kz</span></div></a>
+  <ul>
+    <li><a href="/#about">О клубе</a></li>
+    <li><a href="/#products">Программы</a></li>
+    <li><a href="/#products">Услуги</a></li>
+    <li><a href="#price">Стоимость</a></li>
+    <li><a href="#exam">Экзамен</a></li>
+    <li><a href="#register" class="nav-cta">Записаться</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="navMobile">
+  <a href="/" onclick="closeMobileMenu()">Главная</a>
+  <a href="/#products" onclick="closeMobileMenu()">Программы</a>
+  <a href="/#products" onclick="closeMobileMenu()">Услуги</a>
+  <a href="#price" onclick="closeMobileMenu()">Стоимость</a>
+  <a href="#register" class="nav-cta" onclick="closeMobileMenu()">Записаться</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="waves">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge-row">
+      <a href="/" class="back-link">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        parusa.kz
+      </a>
+      <span class="sep">/</span>
+      <span style="font-size:13px; color: var(--gold);">Курс матроса</span>
+    </div>
+    <div class="hero-tag">Онлайн-теория + Интенсив · 28 июня · Капчагай</div>
+    <h1>Курс<br><em>матроса</em></h1>
+    <p class="hero-sub">Двухэтапный курс: онлайн-теория с видеоуроками и экзаменом — затем один насыщенный день практики на яхте SB20 в Капчагае.</p>
+    <p class="hero-sub-detail">Опыт не нужен. Смотрите уроки в удобное время, сдайте онлайн-экзамен — и приезжайте на воду готовыми.</p>
+    <div class="hero-btns">
+      <a href="#register" class="btn-primary">Записаться на 28 июня</a>
+      <a href="#program" class="btn-outline">Программа →</a>
+    </div>
+    <div class="hero-pills">
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        28 июня
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        10:30 — 17:30
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Сертификат клуба
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Малые группы
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE STRUCTURE -->
+<section id="what">
+  <div class="section-tag">Как устроен курс</div>
+  <h2>Два этапа —<br><em>один путь</em> к сертификату</h2>
+  <p class="section-lead">Сначала — онлайн-теория в личном кабинете и экзамен. Потом — один день практики на воде в Капчагае. Оба этапа входят в стоимость курса.</p>
+
+  <div class="two-part-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; align-items: start;">
+
+    <!-- PART 1 -->
+    <div style="border: 1px solid rgba(201,169,110,0.45); border-radius: 4px; padding: 40px; background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(201,169,110,0.02)); position: relative;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); border-radius: 4px 4px 0 0;"></div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
+        <div style="min-width: 48px; height: 48px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--navy);">1</div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500;">До интенсива</div>
+          <div style="font-size: 18px; color: var(--white); font-weight: 500; margin-top: 2px;">Онлайн</div>
+        </div>
+      </div>
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 14px; line-height: 1.2;">Видеоуроки<br>и онлайн-экзамен</h3>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 24px;">Теория яхтинга записана в виде видеоуроков — смотрите в личном кабинете в любое удобное время. По завершении — онлайн-экзамен.</p>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Устройство яхты, такелаж, безопасность
+        </li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Манёвры, курсы ветра, морская терминология
+        </li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Смотрите в любое время, в своём темпе
+        </li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Онлайн-экзамен по итогам теории
+        </li>
+      </ul>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="https://cabinet.olzhas-coach.kz/login" target="_blank" rel="noopener" class="btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; font-size: 14px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Войти в личный кабинет
+        </a>
+        <a href="https://parusa.kz/exam-matros.html" target="_blank" rel="noopener" class="btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px; font-size: 14px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Пройти онлайн-экзамен
+        </a>
+        <p style="font-size: 12px; color: var(--text-muted); text-align: center;">Доступ открывается после записи на курс</p>
+      </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 40px; background: rgba(255,255,255,0.025); position: relative;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, rgba(201,169,110,0.6), rgba(201,169,110,0.15)); border-radius: 4px 4px 0 0;"></div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
+        <div style="min-width: 48px; height: 48px; border: 2px solid rgba(201,169,110,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--gold);">2</div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500;">28 июня · Капчагай</div>
+          <div style="font-size: 18px; color: var(--white); font-weight: 500; margin-top: 2px;">Интенсив на воде</div>
+        </div>
+      </div>
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 14px; line-height: 1.2;">День практики<br>на яхте SB20</h3>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 24px;">Один день в яхт-клубе — два выхода на воду, инструктор рядом, дружественная регата. Вечером — торжественное вручение сертификата «Матрос-юнга».</p>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          10:00–17:30 · Капчагай, 1 час от Алматы
+        </li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Два выхода на SB20 + дружественная регата
+        </li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Инструктаж, узлы, работа в экипаже
+        </li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Обед включён · Сертификат «Матрос-юнга»
+        </li>
+      </ul>
+      <a href="#program" class="btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; font-size: 14px;">
+        Подробная программа дня →
+      </a>
+    </div>
+
+  </div>
+  <style>
+    @media (max-width: 768px) { #what .two-part-grid { grid-template-columns: 1fr !important; } }
+  </style>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="section-tag">Часть 2 · Программа дня 28 июня</div>
+  <h2>День на воде —<br><em>28 июня</em> · Капчагай</h2>
+  <p class="section-lead">Теория уже пройдена онлайн. Сегодня — только практика: два выхода на яхте, регата и вручение сертификата «Матрос-юнга».</p>
+
+  <div class="timeline-v">
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">10:00</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content">
+        <strong>Прибытие</strong>
+        <p>Встреча на территории яхт-клуба, знакомство с инструктором и командой.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">10:15</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content">
+        <strong>Инструктаж</strong>
+        <p>Разбор программы дня, погоды, плана и правил безопасности. Узлы и снасти — практическая работа руками.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">10:30</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content tl-highlight">
+        <strong>Первая водная программа</strong>
+        <p>Выход на яхте SB20. Постановка парусов, повороты оверштаг и фордевинд, распределение ролей в экипаже, огибание верхнего знака. Экзамен по узлам — 3 узла.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">12:30</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content">
+        <strong>Возвращение на базу</strong>
+        <p>Швартовка, уборка снаряжения. Короткий разбор первого выхода.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">13:00</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content">
+        <strong>Общий обед</strong>
+        <p>Чай, печенье, напитки. Время восстановить силы и пообщаться с командой.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">14:00</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content tl-highlight">
+        <strong>Вторая водная программа</strong>
+        <p>Повороты оверштаг и фордевинд, смена ролей в экипаже, самостоятельная работа. Заполнение чек-листа аттестации.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">15:30</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content tl-highlight">
+        <strong>Дружественная регата</strong>
+        <p>Гонка среди курсантов. Применяем всё, чему научились — тактика, старт, повороты, командная работа.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">16:30</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content">
+        <strong>Возвращение на базу · Итоговый экзамен</strong>
+        <p>Разбор чек-листов аттестации. Проверяем то, чему научились сегодня — не страшно, всё будет хорошо.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">17:00</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+      </div>
+      <div class="tl-content tl-highlight">
+        <strong>Вручение сертификатов «Матрос-юнга»</strong>
+        <p>Торжественное вручение официального сертификата яхт-клуба Parusa. Общее фото, эмоции, заслуженная гордость.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">17:30</div>
+        <div class="tl-line-wrap">
+          <div class="tl-dot"></div>
+        </div>
+      </div>
+      <div class="tl-content">
+        <strong>Возвращение домой</strong>
+        <p>До встречи на воде!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">Чему научитесь</div>
+  <h2>Навыки после<br><em>курса</em></h2>
+  <p class="section-lead">После одного дня вы будете понимать, что происходит на яхте, и уверенно чувствовать себя в роли матроса.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h3>Устройство яхты</h3>
+      <p>Знаете все части лодки, паруса и такелаж. Понимаете, как яхта движется и реагирует на ветер.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Работа с парусами</h3>
+      <p>Умеете управлять парусами: регулировать, выполнять базовые манёвры. Смена галсов, повороты оверштаг и фордевинд.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Командная работа</h3>
+      <p>Знаете свою роль в экипаже и умеете слаженно действовать вместе с командой.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Безопасность</h3>
+      <p>Знаете правила поведения на борту, умеете использовать спасательное снаряжение и действовать в нештатных ситуациях.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Морские узлы</h3>
+      <p>Умеете вязать основные морские узлы и знаете назначение снастей на яхте.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+      </div>
+      <h3>Морская терминология</h3>
+      <p>Понимаете язык яхтинга и свободно общаетесь с капитаном и экипажем.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="section-tag">Для кого</div>
+  <h2>Курс подойдёт<br>если вы <em>хотите</em></h2>
+  <div class="who-grid">
+    <div class="who-card">
+      <h3>Начать с нуля</h3>
+      <p>Никогда не были на яхте и хотите попробовать. Курс создан именно для тех, кто делает первый шаг в парусный спорт.</p>
+    </div>
+    <div class="who-card">
+      <h3>Понять яхтинг</h3>
+      <p>Уже катались, но хотите разобраться в технике глубже. Получить структуру и уверенность, а не просто кататься пассажиром.</p>
+    </div>
+    <div class="who-card">
+      <h3>Стать капитаном</h3>
+      <p>Курс матроса — обязательный первый шаг перед Капитанским курсом. Без него записаться на капитанский нельзя.</p>
+    </div>
+    <div class="who-card">
+      <h3>Войти в клуб</h3>
+      <p>Сертификат открывает доступ к клубным регатам, приоритетной записи и всему сообществу яхт-клуба Parusa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section id="price">
+  <div class="section-tag">Стоимость</div>
+  <h2><em>Всё включено</em><br>— никаких скрытых платежей</h2>
+  <div class="price-wrap">
+    <div class="price-card">
+      <div class="price-label">Курс матроса · Онлайн + Интенсив</div>
+      <h3>Онлайн + 28 июня · Капчагай</h3>
+      <div class="price-amount">100 000 <span>₸</span></div>
+      <div class="price-note">Оба этапа включены. Точная стоимость уточняется при записи</div>
+      <ul class="price-includes">
+        <li>Доступ к видеоурокам и онлайн-экзамену</li>
+        <li>День практики на воде (10:00–17:30)</li>
+        <li>Инструктор и спасательное снаряжение</li>
+        <li>Яхта SB20 и все учебные материалы</li>
+        <li>Обед (чай, напитки)</li>
+        <li>Сертификат «Матрос-юнга» + фото</li>
+      </ul>
+    </div>
+    <div class="price-info">
+      <h3>Как записаться</h3>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <p><strong>Оставьте заявку ниже</strong>Свяжемся в WhatsApp, подтвердим место и ответим на вопросы</p>
+      </div>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <p><strong>28 июня — ближайший интенсив</strong>Группа небольшая, места ограничены. Записывайтесь заранее.</p>
+      </div>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <p><strong>Размер группы</strong>Малые группы — каждый получает внимание инструктора</p>
+      </div>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <p><strong>Как добраться</strong>1 час от Алматы. Точный адрес и схема — при подтверждении записи</p>
+      </div>
+      <div style="margin-top: 28px;">
+        <a href="#register" class="btn-primary" style="display: block; text-align: center; padding: 15px 32px;">Записаться на 28 июня →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section id="instructor" style="padding: 80px 48px; background: var(--navy-mid);">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="section-tag" style="margin-bottom: 12px;">Ваш инструктор</div>
+    <h2 style="font-size: clamp(28px,4vw,44px); margin-bottom: 40px;">Кто вас <em>научит</em></h2>
+    <div style="display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: start;">
+      <!-- Photo -->
+      <div style="position: relative;">
+        <div style="border-radius: 6px; overflow: hidden; border: 1px solid rgba(201,169,110,0.2); aspect-ratio: 3/4;">
+          <img src="images/ruslan-instructor.jpg" alt="Руслан Алексеенко — инструктор яхт-клуба Парус"
+               style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
+        </div>
+        <div style="position: absolute; bottom: -1px; left: 0; right: 0; background: linear-gradient(to top, rgba(21,39,68,0.95), transparent); padding: 32px 20px 20px; border-radius: 0 0 6px 6px;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--cream);">Руслан Алексеенко</div>
+          <div style="font-size: 13px; color: var(--gold); margin-top: 4px; letter-spacing: 0.04em;">Шкипер-инструктор яхт-клуба «Паруса»</div>
+        </div>
+      </div>
+      <!-- Info -->
+      <div style="padding-top: 4px;">
+        <!-- Badges -->
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;">
+          <span style="padding: 6px 14px; background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.3); border-radius: 2px; font-size: 12px; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;">Мастер спорта РК</span>
+          <span style="padding: 6px 14px; background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.3); border-radius: 2px; font-size: 12px; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;">Национальная сборная Казахстана</span>
+          <span style="padding: 6px 14px; background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.3); border-radius: 2px; font-size: 12px; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;">SB20</span>
+        </div>
+        <!-- Stats row -->
+        <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(201,169,110,0.1); border-radius: 4px; overflow: hidden; margin-bottom: 32px;">
+          <div style="background: rgba(10,22,40,0.6); padding: 20px 16px; text-align: center;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--gold);">15+</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">лет в парусе</div>
+          </div>
+          <div style="background: rgba(10,22,40,0.6); padding: 20px 16px; text-align: center;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--gold);">∞</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">чемпион Казахстана</div>
+          </div>
+          <div style="background: rgba(10,22,40,0.6); padding: 20px 16px; text-align: center;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--gold);">№1</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">специалист по SB20</div>
+          </div>
+        </div>
+        <!-- About -->
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 7px; flex-shrink: 0;"></div>
+            <p style="font-size: 15px; color: var(--text-light); line-height: 1.6;"><strong style="color: var(--cream);">Опыт:</strong> в парусе с 10 лет. Прошёл путь от новичка до члена Национальной сборной Казахстана.</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 7px; flex-shrink: 0;"></div>
+            <p style="font-size: 15px; color: var(--text-light); line-height: 1.6;"><strong style="color: var(--cream);">Специализация:</strong> обучение на спортивных килевых яхтах класса SB20. Взрослые и дети, любой уровень — от новичка до рулевого.</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 7px; flex-shrink: 0;"></div>
+            <p style="font-size: 15px; color: var(--text-light); line-height: 1.6;"><strong style="color: var(--cream);">Достижения:</strong> многократный чемпион Казахстана, призёр международных соревнований. Подготавливает экипажи для любительских и профессиональных регат.</p>
+          </div>
+        </div>
+        <!-- Quote -->
+        <blockquote style="border-left: 2px solid var(--gold); padding-left: 20px; margin: 0;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--cream); line-height: 1.6;">"Яхта SB20 — это идеальный баланс скорости, командной работы и безопасности. Я научу вас понимать ветер, управлять парусами и работать в команде как единое целое. Жду вас на борту — погнали побеждать!"</p>
+          <footer style="margin-top: 10px; font-size: 13px; color: var(--text-muted);">— Руслан Алексеенко, шкипер-инструктор</footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+  <style>
+    @media (max-width: 768px) {
+      #instructor > div > div:last-child { grid-template-columns: 1fr !important; gap: 32px !important; }
+      #instructor > div > div:last-child > div:first-child { max-width: 280px; margin: 0 auto; }
+      #instructor { padding: 60px 24px !important; }
+    }
+  </style>
+</section>
+
+<!-- PART 1 DETAIL -->
+<section id="exam" style="background: var(--navy);">
+  <div class="section-tag">Часть 1 · Онлайн-обучение</div>
+  <h2>Теория —<br><em>до приезда</em> в яхт-клуб</h2>
+  <p class="section-lead">После записи на курс вы получите доступ к личному кабинету с видеоуроками. Изучайте материал в своём темпе, затем пройдите онлайн-экзамен.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+
+    <!-- What's inside -->
+    <div>
+      <div style="margin-bottom: 12px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500;">Что входит в онлайн-часть</div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <div style="display:flex; align-items:flex-start; gap:16px; padding: 18px 20px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06);">
+          <div style="width:32px; height:32px; border:1px solid rgba(201,169,110,0.35); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; color:var(--gold); font-weight:500;">1</div>
+          <div>
+            <strong style="display:block; font-size:15px; color:var(--white); font-weight:500; margin-bottom:4px;">Видеоуроки по теории</strong>
+            <span style="font-size:13px; color:var(--text-muted);">Устройство яхты, паруса, такелаж, курсы ветра, манёвры и безопасность на борту.</span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px; padding: 18px 20px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06);">
+          <div style="width:32px; height:32px; border:1px solid rgba(201,169,110,0.35); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; color:var(--gold); font-weight:500;">2</div>
+          <div>
+            <strong style="display:block; font-size:15px; color:var(--white); font-weight:500; margin-bottom:4px;">Морская терминология</strong>
+            <span style="font-size:13px; color:var(--text-muted);">Язык яхтинга, названия частей лодки, снастей и команды. Будете понимать инструктора с первых слов.</span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px; padding: 18px 20px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06);">
+          <div style="width:32px; height:32px; border:1px solid rgba(201,169,110,0.35); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; color:var(--gold); font-weight:500;">3</div>
+          <div>
+            <strong style="display:block; font-size:15px; color:var(--white); font-weight:500; margin-bottom:4px;">Онлайн-экзамен</strong>
+            <span style="font-size:13px; color:var(--text-muted);">Тест на знание теории — проходите в удобное время до интенсива. Это подготовка к водной части.</span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px; padding: 18px 20px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06);">
+          <div style="width:32px; height:32px; border:1px solid rgba(201,169,110,0.35); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; color:var(--gold); font-weight:500;">4</div>
+          <div>
+            <strong style="display:block; font-size:15px; color:var(--white); font-weight:500; margin-bottom:4px;">Материалы и чек-листы</strong>
+            <span style="font-size:13px; color:var(--text-muted);">Учебные материалы, чек-лист аттестации и обратная связь от инструктора — всё в личном кабинете.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform card -->
+    <div style="background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(201,169,110,0.03)); border: 1px solid rgba(201,169,110,0.35); border-radius: 4px; padding: 44px 40px;">
+      <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; font-weight:500;">Обучающая платформа</div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:var(--white); margin-bottom:16px; line-height:1.2;">Ваш личный<br>кабинет курсанта</h3>
+      <p style="font-size:14px; color:var(--text-muted); line-height:1.75; margin-bottom:28px;">Видеоуроки, теория, результаты экзамена — всё в одном месте. Доступ открывается сразу после подтверждения записи.</p>
+      <ul style="list-style:none; margin-bottom:32px; display:flex; flex-direction:column; gap:10px;">
+        <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Видеоуроки по теории яхтинга
+        </li>
+        <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Онлайн-экзамен и материалы
+        </li>
+        <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Чек-лист аттестации матроса
+        </li>
+        <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-light);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Доступ к программе следующего уровня
+        </li>
+      </ul>
+      <a href="https://cabinet.olzhas-coach.kz/login" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; width:100%; justify-content:center; padding:16px 32px; font-size:15px; margin-bottom:12px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Войти в личный кабинет
+      </a>
+      <a href="https://parusa.kz/exam-matros.html" target="_blank" rel="noopener" class="btn-outline" style="display:inline-flex; align-items:center; gap:10px; width:100%; justify-content:center; padding:14px 32px; font-size:14px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Пройти онлайн-экзамен
+      </a>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:14px; text-align:center; line-height:1.6;">Логин и пароль высылаем при подтверждении записи</p>
+    </div>
+
+  </div>
+  <style>
+    @media (max-width: 768px) { #exam > div:last-of-type { grid-template-columns: 1fr !important; } }
+  </style>
+</section>
+
+<!-- REGISTER -->
+<section id="register">
+  <div class="register-wrap">
+    <div class="register-text">
+      <div class="section-tag">Запись на интенсив</div>
+      <h2>28 июня —<br>ваш <em>старт</em></h2>
+      <p>Оставьте заявку и мы свяжемся с вами в WhatsApp. Подтвердим место, ответим на все вопросы и вышлем адрес.</p>
+      <p>Опыт не нужен. Возьмите спортивную одежду и хорошее настроение — остальное есть у нас.</p>
+      <div class="steps">
+        <div class="reg-step">
+          <div class="reg-step-num">1</div>
+          <div class="reg-step-text">
+            <strong>Оставьте заявку</strong>
+            <span>Заполните форму — 30 секунд</span>
+          </div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-num">2</div>
+          <div class="reg-step-text">
+            <strong>Получите подтверждение</strong>
+            <span>Свяжемся в WhatsApp, зарезервируем место</span>
+          </div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-num">3</div>
+          <div class="reg-step-text">
+            <strong>28 июня — приезжайте</strong>
+            <span>Встретим в 10:30, к вечеру вы — сертифицированный матрос</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="register-form-wrap">
+      <h3>Записаться на 28 июня</h3>
+      <p>Интенсив «Курс матроса» · 10:30–17:30 · Капчагай</p>
+      <div style="margin: 32px 0 24px;">
+        <a href="https://wa.me/message/OC5WYE4UZWX2N1?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21+%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BD%D0%B0+%D0%9A%D1%83%D1%80%D1%81+%D0%BC%D0%B0%D1%82%D1%80%D0%BE%D1%81%D0%B0+30+%D0%BC%D0%B0%D1%8F." target="_blank" rel="noopener" class="btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 32px; font-size: 16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Написать в WhatsApp
+        </a>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; text-align: center;">Нажмите кнопку — откроется WhatsApp с готовым сообщением.<br>Ответим и подтвердим место в течение нескольких часов.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-tag">Частые вопросы</div>
+  <h2><em>FAQ</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Когда проходит онлайн-часть? <div class="toggle">+</div></div>
+      <div class="faq-a">После подтверждения записи мы открываем доступ к личному кабинету с видеоуроками. Смотрите в любое удобное время — до 28 июня. Онлайн-экзамен тоже проходит в своём темпе, без ограничений по времени. Это ваша подготовка к водному интенсиву.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Нужен ли опыт для записи на курс? <div class="toggle">+</div></div>
+      <div class="faq-a">Нет, опыт не нужен совсем. Курс матроса создан для тех, кто никогда не был на яхте. Всему научим с нуля — от названий частей лодки до самостоятельного управления на воде.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Это правда за один день? <div class="toggle">+</div></div>
+      <div class="faq-a">Да. Интенсивный формат позволяет пройти всё за один день: с 10:00 до 17:30. Теория, практика на воде, экзамен и вручение сертификата — всё в один день. Сжато, насыщенно и эффективно.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что входит в стоимость? <div class="toggle">+</div></div>
+      <div class="faq-a">Полный день теории и практики, инструктор, яхта SB20, спасательные жилеты и снаряжение, учебные материалы, экзамен, сертификат «Матрос-юнга» и фото с курса.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что взять с собой? <div class="toggle">+</div></div>
+      <div class="faq-a">Спортивную одежду (которую не жалко намочить), солнцезащитный крем, удобную обувь на нескользящей подошве. Воду и лёгкие перекусы можно взять дополнительно. Всё снаряжение предоставляем мы.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли прийти одному? <div class="toggle">+</div></div>
+      <div class="faq-a">Конечно. Большинство участников приходят поодиночке. Группа соберётся из разных людей — к вечеру вы будете отличной командой.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что будет, если не сдать экзамен? <div class="toggle">+</div></div>
+      <div class="faq-a">Экзамен проверяет то, чему вы научились за день. Инструктор поможет подготовиться и поддержит. При необходимости договоримся об индивидуальном разборе.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что даёт сертификат? <div class="toggle">+</div></div>
+      <div class="faq-a">Сертификат «Матрос-юнга» подтверждает прохождение курса. Это обязательное условие для участия в клубных регатах и записи на Капитанский курс.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Как добраться до яхт-клуба? <div class="toggle">+</div></div>
+      <div class="faq-a">Яхт-клуб Parusa находится в Капчагае (Конаев) — около 1 часа от Алматы по трассе А-2. Точный адрес и схему проезда высылаем при подтверждении записи.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Parusa Yacht Club</div>
+      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 6px;">parusa.kz</p>
+      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 4px;">2026</p>
+    </div>
+    <div class="footer-links">
+      <a href="/">Главная</a>
+      <a href="/#products">Программы</a>
+      <a href="/#membership">Членство</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener">Адрес</a>
+    </div>
+    <div class="footer-icons">
+      <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-wa.avif" alt="WhatsApp"></a>
+      <a href="https://instagram.com/parus.kapchagay" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-ig.jpg" alt="Instagram"></a>
+      <a href="tel:+77015334340" class="footer-icon-link"><img src="images/icon-phone.png" alt="Телефон"></a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Parusa Yacht Club · Капчагай, Казахстан</div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>Курс матроса · 28 июня</strong> — осталось несколько мест</div>
+  <a href="#register" class="btn-primary">Записаться →</a>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const stickyCta = document.getElementById('stickyCta');
+  const hero = document.getElementById('hero');
+  const register = document.getElementById('register');
+  window.addEventListener('scroll', () => {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const registerTop = register.getBoundingClientRect().top;
+    if (heroBottom < 0 && registerTop > window.innerHeight) {
+      stickyCta.classList.add('visible');
+    } else {
+      stickyCta.classList.remove('visible');
+    }
+  });
+
+
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+    document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    navMobile.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>

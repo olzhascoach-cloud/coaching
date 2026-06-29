@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Капчагайский яхт-клуб — parusa.kz</title>
+<title>Parusa Yacht Club — Капчагай · parusa.kz</title>
+<meta name="description" content="Яхт-клуб в Капчагае — 1 час от Алматы. Курсы матроса и капитана, парусные прогулки, регаты, тимбилдинг и фотосессии. Яхты SB20.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parusa Yacht Club">
+<meta property="og:title" content="Parusa Yacht Club — Капчагай">
+<meta property="og:description" content="Яхт-клуб в Капчагае — 1 час от Алматы. Курсы матроса и капитана, парусные прогулки, регаты, тимбилдинг на воде. Спортивные яхты SB20. Записывайтесь на parusa.kz">
+<meta property="og:image" content="https://parusa.kz/images/hero-main.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://parusa.kz/">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -22,7 +31,8 @@
     padding: 20px 48px; display: flex; align-items: center; justify-content: space-between;
     background: linear-gradient(to bottom, rgba(10,22,40,0.95), transparent);
   }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); display: flex; align-items: center; gap: 10px; }
+  .logo img { height: 40px; width: auto; object-fit: contain; filter: brightness(0) invert(1); flex-shrink: 0; }
   .logo span { color: var(--cream); font-size: 13px; display: block; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; font-weight: 300; opacity: 0.7; }
   nav ul { list-style: none; display: flex; gap: 32px; }
   nav ul li a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
@@ -34,7 +44,7 @@
   .hero-bg {
     position: absolute; inset: 0;
     background: linear-gradient(to right, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.5) 60%, rgba(10,22,40,0.3) 100%),
-                url('images/hero.jpg') center center / cover no-repeat;
+                url('images/hero-main.jpg') center center / cover no-repeat;
   }
   .waves { position: absolute; bottom: 0; left: 0; right: 0; height: 200px; overflow: hidden; }
   .wave { position: absolute; bottom: 0; width: 200%; height: 100%; background: rgba(21,39,68,0.4); border-radius: 50% 50% 0 0 / 20% 20% 0 0; }
@@ -66,6 +76,20 @@
   h2 em { font-style: italic; color: var(--gold); }
   .section-lead { font-size: 17px; color: var(--text-light); max-width: 560px; font-weight: 300; line-height: 1.75; margin-bottom: 56px; }
 
+  /* PROMO BANNER */
+  .promo-banner { background: linear-gradient(90deg, rgba(201,169,110,0.12) 0%, rgba(201,169,110,0.06) 50%, rgba(201,169,110,0.12) 100%); border-top: 1px solid rgba(201,169,110,0.35); border-bottom: 1px solid rgba(201,169,110,0.35); padding: 20px 48px; }
+  .promo-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .promo-pulse { width: 10px; height: 10px; background: var(--gold); border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 0 0 rgba(201,169,110,0.6); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(201,169,110,0.6); } 70% { box-shadow: 0 0 0 10px rgba(201,169,110,0); } 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0); } }
+  .promo-text { flex: 1; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .promo-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; white-space: nowrap; }
+  .promo-text strong { font-size: 16px; color: var(--white); font-weight: 500; white-space: nowrap; }
+  .promo-sub { font-size: 14px; color: var(--text-muted); }
+  .promo-sub em { color: rgba(201,169,110,0.9); font-style: normal; font-weight: 500; }
+  .promo-btn { background: var(--gold); color: var(--navy); padding: 10px 24px; border-radius: 2px; font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; flex-shrink: 0; }
+  .promo-btn:hover { opacity: 0.85; }
+  @media (max-width: 768px) { .promo-banner { padding: 16px 24px; } .promo-text { gap: 8px; } .promo-text strong { font-size: 14px; } .promo-btn { width: 100%; text-align: center; } }
+
   /* MISSION */
   #mission { background: var(--navy); }
   .mission-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
@@ -92,16 +116,18 @@
   /* PRODUCTS */
   #products { background: var(--navy); }
   .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
-  .product-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 20px 24px; background: rgba(255,255,255,0.02); position: relative; overflow: hidden; transition: border-color 0.3s; }
+  .product-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 20px 24px; background: rgba(255,255,255,0.02); position: relative; overflow: hidden; transition: border-color 0.3s, background 0.3s; display: block; text-decoration: none; color: inherit; cursor: pointer; }
   .product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
-  .product-card:hover { border-color: rgba(201,169,110,0.3); }
+  .product-card:hover { border-color: rgba(201,169,110,0.5); background: rgba(201,169,110,0.07); }
   .product-card:hover::before { transform: scaleX(1); }
   .product-num { display: none; }
   .product-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
   .product-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
   .product-tag-small { display: inline-block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 4px 12px; border-radius: 2px; }
-  .product-link { display: inline-block; margin-top: 16px; font-size: 13px; color: var(--gold); text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
-  .product-link:hover { opacity: 0.7; }
+  .product-price { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold); font-weight: 600; margin: 10px 0 6px; }
+  .product-price small { font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 300; color: var(--text-muted); }
+  .product-link { display: inline-block; margin-top: 12px; font-size: 13px; color: var(--gold); font-weight: 500; transition: opacity 0.2s; }
+  .product-card:hover .product-link { opacity: 0.8; }
 
   /* DAY */
   #day { background: var(--navy-mid); position: relative; }
@@ -139,12 +165,25 @@
 
   /* TESTIMONIALS */
   #testimonials { background: var(--navy-mid); }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
-  .testimonial { padding: 32px 28px; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; background: rgba(255,255,255,0.025); }
-  .testimonial-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 2px solid rgba(201,169,110,0.4); }
-  .testimonial p { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--text-light); line-height: 1.75; font-style: italic; margin-bottom: 24px; }
-  .testimonial-author { font-size: 13px; color: var(--gold); font-weight: 500; }
-  .testimonial-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .carousel-wrap { position: relative; display: flex; align-items: center; gap: 16px; margin-top: 56px; }
+  .carousel-track { flex: 1; overflow: hidden; position: relative; min-height: 260px; }
+  .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; display: flex; align-items: center; }
+  .carousel-slide.active { opacity: 1; pointer-events: auto; position: relative; }
+  .carousel-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 44px 48px; width: 100%; position: relative; }
+  .carousel-card::before { content: '"'; position: absolute; top: 20px; left: 32px; font-family: 'Cormorant Garamond', serif; font-size: 80px; color: rgba(201,169,110,0.15); line-height: 1; }
+  .carousel-program { display: inline-block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 4px 14px; border-radius: 2px; margin-bottom: 20px; }
+  .carousel-quote { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--text-light); line-height: 1.7; font-style: italic; margin-bottom: 32px; }
+  .carousel-author { display: flex; align-items: center; gap: 16px; }
+  .carousel-author img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(201,169,110,0.4); flex-shrink: 0; }
+  .carousel-author strong { display: block; font-size: 15px; color: var(--white); font-weight: 500; margin-bottom: 3px; }
+  .carousel-author span { font-size: 13px; color: var(--text-muted); }
+  .carousel-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
+  .carousel-btn:hover { background: rgba(201,169,110,0.1); border-color: rgba(201,169,110,0.4); }
+  .carousel-btn svg { width: 20px; height: 20px; stroke: var(--gold); }
+  .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+  .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; transition: background 0.3s, transform 0.3s; padding: 0; }
+  .carousel-dot.active { background: var(--gold); transform: scale(1.3); }
+  @media (max-width: 768px) { .carousel-card { padding: 32px 24px; } .carousel-quote { font-size: 18px; } .carousel-btn { display: none; } }
 
   /* CTA */
   #cta { text-align: center; position: relative; overflow: hidden; }
@@ -159,7 +198,10 @@
   .faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 56px; }
   .faq-list { }
   .faq-photo { border-radius: 4px; overflow: hidden; position: sticky; top: 100px; }
-  .faq-photo img { width: 100%; height: 560px; object-fit: cover; display: block; border-radius: 4px; }
+  .faq-photo { position: sticky; top: 100px; border-radius: 4px; overflow: hidden; }
+  .faq-photo-inner { position: relative; border-radius: 4px; overflow: hidden; }
+  .faq-photo-inner img { width: 100%; height: 560px; object-fit: cover; display: block; }
+  .faq-photo-inner::after { content: ''; position: absolute; inset: 0; background: rgba(10,22,40,0.55); border-radius: 4px; }
   @media (max-width: 768px) { .faq-wrap { grid-template-columns: 1fr; } .faq-photo { display: none; } }
   .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; cursor: pointer; }
   .faq-q { font-size: 17px; color: var(--white); font-weight: 400; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
@@ -171,7 +213,8 @@
   /* FOOTER */
   footer { background: rgba(0,0,0,0.5); padding: 48px; border-top: 1px solid rgba(255,255,255,0.07); }
   .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
   .footer-links { display: flex; gap: 24px; }
   .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
   .footer-links a:hover { color: var(--gold); }
@@ -202,15 +245,18 @@
 
   /* ABOUT (О нас) */
   #about { background: var(--navy-mid); }
-  .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+  #about h2 { margin-bottom: 0; }
+  .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 8px; }
   .about-text h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 600; color: var(--white); margin-bottom: 24px; line-height: 1.2; }
   .about-text p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
   .about-text p strong { color: var(--gold); font-weight: 500; }
-  .about-founder { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.15); border-radius: 4px; padding: 32px; }
-  .founder-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-  .founder-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
-  .founder-title { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-  @media (max-width: 768px) { .about-wrap { grid-template-columns: 1fr; gap: 40px; } }
+  .about-photo { border-radius: 4px; overflow: hidden; }
+  .about-photo img { width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block; border-radius: 4px; }
+  .about-founder { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.15); border-radius: 4px; padding: 24px 28px; margin-top: 16px; }
+  .founder-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .founder-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+  .founder-title { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  @media (max-width: 768px) { .about-wrap { grid-template-columns: 1fr; gap: 40px; } .about-photo img { height: 280px; } }
 
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
@@ -224,6 +270,10 @@
     .footer-inner { flex-direction: column; align-items: flex-start; }
     .hero-stats { gap: 32px; flex-wrap: wrap; }
     .boat-illustration { display: none; }
+    #contacts > div > div:last-child { grid-template-columns: 1fr !important; }
+    #instagram > div > div:last-child { grid-template-columns: 1fr !important; }
+    #instagram { padding: 60px 24px !important; }
+    #contacts { padding: 60px 24px !important; }
   }
 </style>
 </head>
@@ -231,14 +281,14 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Капчагайский яхт-клуб<span>parusa.kz</span></div>
+  <div class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Parusa Yacht Club<span>parusa.kz</span></div></div>
   <ul>
     <li><a href="#about">О нас</a></li>
     <li><a href="#why">Почему Парус</a></li>
     <li><a href="#products">Программы</a></li>
-    <li><a href="#membership">Членство</a></li>
+
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="https://maps.app.goo.gl/EQCgM4BXSCgK5zxG6" target="_blank" rel="noopener">Адрес</a></li>
+    <li><a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener">Адрес</a></li>
     <li><a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta">Записаться</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Меню">
@@ -251,9 +301,8 @@
   <a href="#about" onclick="closeMobileMenu()">О нас</a>
   <a href="#why" onclick="closeMobileMenu()">Почему Парус</a>
   <a href="#products" onclick="closeMobileMenu()">Программы</a>
-  <a href="#membership" onclick="closeMobileMenu()">Членство</a>
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
-  <a href="https://maps.app.goo.gl/EQCgM4BXSCgK5zxG6" target="_blank" rel="noopener" onclick="closeMobileMenu()">Адрес</a>
+  <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener" onclick="closeMobileMenu()">Адрес</a>
   <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta" target="_blank" rel="noopener">Записаться</a>
 </div>
 
@@ -270,7 +319,7 @@
     <p class="hero-sub">Регаты, обучение и сообщество<br>для тех, кто хочет больше, чем просто отдых.</p>
     <div class="hero-btns">
       <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="btn-primary">Записаться</a>
-      <a href="#membership" class="btn-outline">Вступить в клуб</a>
+      <a href="#products" class="btn-outline">Программы</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -289,21 +338,41 @@
   </div>
 </section>
 
+<!-- PROMO BANNER -->
+<div class="promo-banner">
+  <div class="promo-banner-inner">
+    <div class="promo-pulse"></div>
+    <div class="promo-text">
+      <span class="promo-label">Ближайший интенсив</span>
+      <strong>Курс матроса парусной яхты — 21 июня</strong>
+      <span class="promo-sub">Теория + практика на воде + сертификат клуба. <em>Мест осталось мало.</em></span>
+    </div>
+    <a href="/matros.html" target="_blank" rel="noopener" class="promo-btn">Подробнее →</a>
+  </div>
+</div>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="section-tag">О нас</div>
   <h2>Parusa <em>Yacht Club</em></h2>
   <div class="about-wrap">
     <div class="about-text">
-      <p>Это место, где начинается свобода.</p>
-      <p>Мы — первый и единственный яхт-клуб в Казахстане, формирующий культуру современного парусного спорта и открывающий доступ к яхтингу для всех, кто готов выйти за рамки привычного.</p>
-      <p>Основанный в 2026 году, клуб объединяет людей, для которых важны движение, природа и настоящие эмоции.</p>
-      <p><strong>Parusa — это не просто яхт-клуб. Это стиль жизни. ⛵️</strong></p>
+      <p>Место, где люди заново вспоминают, что такое свобода.</p>
+      <p>Мы создаем в Казахстане новую культуру парусного спорта — живую, современную и открытую для тех, кто хочет чувствовать больше, чем просто отдых на берегу.</p>
+      <p>Parusa — это ветер в парусах, команда рядом, азарт регат, закаты на воде и ощущение настоящей жизни без шума города и суеты.</p>
+      <p>Основанный в 2026 году, клуб объединил людей, которых тянет к движению, развитию, приключениям и сильным эмоциям. Здесь новички становятся частью экипажа, а море — частью жизни.</p>
+      <p>Мы верим, что яхтинг — это не про роскошь.<br>Это про состояние.<br>Про свободу.<br>Про людей рядом.<br>Про моменты, которые остаются с тобой навсегда.</p>
+      <p><strong>Parusa Yacht Club — это больше, чем яхт-клуб.<br>Это стиль жизни под парусами.</strong></p>
     </div>
-    <div class="about-founder">
-      <div class="founder-label">Основатель клуба</div>
-      <div class="founder-name">Олжас Кундакбаев</div>
-      <div class="founder-title">Предприниматель, бизнес-коуч ICF, парусник. Создал Parusa Yacht Club, чтобы каждый мог почувствовать свободу на воде и найти своё сообщество.</div>
+    <div>
+      <div class="about-photo">
+        <img src="images/about-photo.jpg" alt="Олжас Кундакбаев — основатель Parusa Yacht Club">
+      </div>
+      <div class="about-founder">
+        <div class="founder-label">Основатель клуба</div>
+        <div class="founder-name">Олжас Кундакбаев</div>
+        <div class="founder-title">Предприниматель, командный коуч ICF и яхтсмен с 2009 года в парусном спорте. Участник 40+ международных регат, автор книг по бизнесу и развитию личности.<br><br>Создал Parusa Yacht Club как пространство, где люди через парусный спорт учатся лидерству, командной работе и находят своё сообщество близких по духу людей.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -361,140 +430,265 @@
   </div>
   <div style="margin-top: 48px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
     <p style="font-size: 15px; color: var(--text-muted);">📍 Яхт-клуб Parusa.kz · Капчагай (Конаев), Казахстан</p>
-    <a href="https://maps.app.goo.gl/EQCgM4BXSCgK5zxG6" target="_blank" rel="noopener" class="btn-outline" style="padding: 10px 24px; font-size: 14px;">Как проехать →</a>
+    <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener" class="btn-outline" style="padding: 10px 24px; font-size: 14px;">Как проехать →</a>
   </div>
 </section>
 
 <!-- PRODUCTS -->
 <section id="products">
   <div class="section-tag">Наши программы</div>
-  <h2><em>Выбери</em> свой формат</h2>
-  <p class="section-lead">От первого выхода с инструктором до капитанского курса и корпоративных регат — любой уровень и формат.</p>
+  <h2><em>Наши</em> программы</h2>
+  <p class="section-lead">От первой парусной прогулки до капитанского курса и корпоративных регат — любой уровень и формат.</p>
   <div class="products-grid">
-    <div class="product-card">
+    <a href="/progulka.html" target="_blank" rel="noopener" class="product-card">
       <div class="product-num">01</div>
-      <h3>Клубные регаты</h3>
-      <p>Регулярные гонки среди членов клуба. Командная динамика, дух соперничества, живые эмоции на воде.</p>
-      <a href="https://docs.google.com/document/d/1WbJ7yy73lBGdTKLY47IlLkoQWI0k6aSKUTmboruaR00/edit?usp=sharing" target="_blank" rel="noopener" class="product-link">Подробнее →</a>
-    </div>
-    <div class="product-card">
+      <h3>Парусная прогулка</h3>
+      <p>Познакомиться с парусным спортом, дать возможность пройти под парусами на спортивной яхте.</p>
+      <div class="product-price">от 15 000 <small>₸/чел/час</small></div>
+      <span class="product-link">Подробнее →</span>
+    </a>
+    <a href="/matros.html" target="_blank" rel="noopener" class="product-card">
       <div class="product-num">02</div>
-      <h3>Базовый курс</h3>
-      <p>С нуля до уверенного матроса. Теория + практика на воде. Идеально для первого знакомства с яхтингом.</p>
-      <p style="color: var(--gold); font-weight: 600; margin-top: 8px;">📅 Ближайший курс: 28 июня</p>
-      <a href="https://docs.google.com/document/d/1FagbtuHIkXOz0jnpvsVuLBD8Qs78iCioqK3aYZZMSxo/edit?usp=sharing" target="_blank" rel="noopener" class="product-link">Подробнее →</a>
-    </div>
-    <div class="product-card">
+      <h3>Курс матроса</h3>
+      <p>С нуля до уверенного матроса. Онлайн-теория + практика на воде. Идеально для первого знакомства с яхтингом.</p>
+      <div class="product-price">от 50 000 <small>₸/чел/этап</small></div>
+      <span class="product-link">Подробнее →</span>
+    </a>
+    <a href="/timbilding.html" target="_blank" rel="noopener" class="product-card">
       <div class="product-num">03</div>
-      <h3>Капитанский курс</h3>
-      <p>Полный курс управления яхтой. Для тех, кто хочет самостоятельно выходить в воду и вести команду.</p>
-      <a href="https://docs.google.com/document/d/1oNWtXJkBlgeD8ddHgrmZvQbFTmXCMDNR8PVbT1rikpI/edit?usp=sharing" target="_blank" rel="noopener" class="product-link">Подробнее →</a>
-    </div>
-    <div class="product-card">
+      <h3>Тимбилдинг под парусами</h3>
+      <p>Командное мероприятие на воде. Совместная работа с парусами, доверие и взаимодействие — лучший формат для сплочения коллектива.</p>
+      <div class="product-price">от 40 000 <small>₸/чел</small></div>
+      <span class="product-link">Подробнее →</span>
+    </a>
+    <a href="/regata-club.html" target="_blank" rel="noopener" class="product-card">
       <div class="product-num">04</div>
-      <h3>Корпоративная регата</h3>
-      <p>Тимбилдинг, которого никто не ждёт и который все запомнят. Уникальный формат для вашей команды.</p>
-      <a href="https://docs.google.com/document/d/1rCik5mQhAJ-AhNda4PFcAWwXQ20KL8RFrmjA8ZQDRAE/edit?usp=sharing" target="_blank" rel="noopener" class="product-link">Подробнее →</a>
-    </div>
-    <div class="product-card">
+      <h3>Клубная регата</h3>
+      <p>Регулярные гонки среди членов клуба. Командная динамика, дух соперничества, живые эмоции на воде.</p>
+      <div class="product-price">от 50 000 <small>₸/чел</small></div>
+      <span class="product-link">Подробнее →</span>
+    </a>
+    <a href="/training-day.html" target="_blank" rel="noopener" class="product-card">
       <div class="product-num">05</div>
-      <h3>Выход с инструктором</h3>
-      <p>Индивидуальный или малой группой. Идеально для первого опыта или отработки конкретных навыков.</p>
-      <a href="https://docs.google.com/document/d/1QLbGHIonWN6OhO183W7Uom1l8KT91UzsF4_I8Y-4S4c/edit?usp=sharing" target="_blank" rel="noopener" class="product-link">Подробнее →</a>
-    </div>
-    <div class="product-card">
+      <h3>Тренировочный Кемп</h3>
+      <p>Подготовка экипажа к регате на воде. Старты, огибание знаков, генакер — с инструктором-мастером спорта на борту.</p>
+      <div class="product-price">от 25 000 <small>₸/чел/час</small></div>
+      <span class="product-link">Подробнее →</span>
+    </a>
+    <a href="/kapitan.html" target="_blank" rel="noopener" class="product-card">
       <div class="product-num">06</div>
-      <h3>Семья под парусами</h3>
-      <p>Парусная прогулка + семейный коучинг. Укрепляете связь с детьми на воде и разбираете семейные отношения вместе с тренером.</p>
-      <a href="https://docs.google.com/document/d/1wPdkD-gmsqmsTIwP8qnauJTrDwJ6oonSezJMdWtIqkM/edit?usp=sharing" target="_blank" rel="noopener" class="product-link">Подробнее →</a>
-    </div>
+      <h3>Курс Рулевой / Капитан</h3>
+      <p>Полный курс управления яхтой. Онлайн-теория + практика за рулём. Для тех, кто хочет самостоятельно вести команду.</p>
+      <div class="product-price">от 75 000 <small>₸/чел/этап</small></div>
+      <span class="product-link">Подробнее →</span>
+    </a>
+    <a href="/fotosessiya.html" target="_blank" rel="noopener" class="product-card">
+      <div class="product-num">07</div>
+      <h3>Фотосессия под парусами</h3>
+      <p>Профессиональная съёмка на борту яхты. Паруса, ветер и вода создают неповторимые кадры для любого повода.</p>
+      <div class="product-price">от 50 000 <small>₸/час</small></div>
+      <span class="product-link">Подробнее →</span>
+    </a>
+    <a href="/boat-business.html" target="_blank" rel="noopener" class="product-card">
+      <div class="product-num">08</div>
+      <h3>Лодка как модель бизнеса</h3>
+      <p>Стратегическая сессия для бизнес-команд. Командный коучинг ICF + практика на яхтах SB20. Сертификат клуба каждому участнику.</p>
+      <div class="product-price">По запросу</div>
+      <span class="product-link">Подробнее →</span>
+    </a>
   </div>
 </section>
 
-<!-- DAY SCENARIO -->
-<section id="day">
-  <div class="section-tag">Как это выглядит</div>
-  <h2>Один день под парусом<br>в <em>яхт-клубе</em></h2>
-  <p class="section-lead">Каждая программа уникальна, но есть то, что объединяет все встречи клуба.</p>
-  <p class="section-lead" style="margin-top: -32px;">Вы приезжаете не просто покататься. Вы входите в атмосферу яхт-клуба, где день складывается из движения, общения и живых эмоций.</p>
-  <div class="timeline">
-    <div class="timeline-step">
-      <span class="time-badge">01</span>
-      <h4>Сбор и знакомство</h4>
-      <p>Встреча в яхт-клубе, лёгкое общение. Знакомство с командой клуба и атмосферой. Настрой на день.</p>
-    </div>
-    <div class="timeline-step">
-      <span class="time-badge">02</span>
-      <h4>Инструктаж и выход</h4>
-      <p>Короткий брифинг по плану на день. Выход на воду, первые ощущения. Поддержка инструктора для новичков.</p>
-    </div>
-    <div class="timeline-step">
-      <span class="time-badge">03</span>
-      <h4>Парус и движение</h4>
-      <p>Практика, взаимодействие, регата или свободное плавание. Работа в команде, ветер, концентрация. Живой процесс, в который погружаешься.</p>
-    </div>
-    <div class="timeline-step">
-      <span class="time-badge">04</span>
-      <h4>Завершение</h4>
-      <p>Возвращение на берег. Общее фото, обмен эмоциями. Общение, отдых и тёплая атмосфера клуба.</p>
-    </div>
-  </div>
-</section>
-
-<!-- MEMBERSHIP -->
-<section id="membership">
-  <div class="membership-body">
-    <div class="membership-left">
-      <div class="section-tag">Членство в клубе</div>
-      <h2>Стань частью <em>яхт-клуба</em></h2>
-      <p class="lead">Сильное окружение людей, выбирающих рост и движение.</p>
-      <p>Мы собираем сообщество людей, для которых важны движение, развитие и сильное окружение. В клубе — предприниматели, лидеры, активные люди, которые ценят время, опыт и качество среды.</p>
-      <p>Парус объединяет тех, кто умеет брать ответственность, работать в команде и получать удовольствие от процесса. Клуб живёт не только в сезон — мы встречаемся, общаемся и развиваемся круглый год.</p>
-      <ul class="membership-features">
-        <li>Участие в клубных регатах и встречах</li>
-        <li>Доступ к внутреннему сообществу</li>
-        <li>Приоритетная запись на программы</li>
-        <li>Формат, который развивается вместе с участниками</li>
-      </ul>
-    </div>
-    <div class="membership-form-wrap">
-      <h3>Интересно участие?</h3>
-      <p>Оставь заявку — расскажем про формат и подберём вариант под тебя.</p>
-      <form class="club-form" id="clubForm">
-        <input type="text" name="entry.7804584" placeholder="Имя и фамилия" required>
-        <input type="tel" name="entry.1259473026" placeholder="Телефон (WhatsApp)" required>
-        <textarea name="entry.968851019" placeholder="Расскажите о себе и вашем опыте в яхтинге"></textarea>
-        <button type="submit" class="btn-primary">Оставить заявку</button>
-      </form>
-      <div class="form-success" id="formSuccess">Заявка отправлена! Свяжемся с тобой в ближайшее время.</div>
-    </div>
-  </div>
-</section>
 
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-tag">Участники о клубе</div>
   <h2>Люди, которые<br>уже <em>на борту</em></h2>
-  <div class="testimonials-grid">
-    <div class="testimonial">
-      <img class="testimonial-avatar" src="images/review-1.jpg" alt="Арман К.">
-      <p>Думал, что яхтинг — это не для меня. После первой регаты понял, что это именно то, чего мне не хватало. Сильные люди, живые эмоции, настоящая команда.</p>
-      <div class="testimonial-author">Арман К.</div>
-      <div class="testimonial-role">Предприниматель, Алматы</div>
+
+  <div class="carousel-wrap">
+    <button class="carousel-btn carousel-prev" aria-label="Назад">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+
+    <div class="carousel-track">
+      <div class="carousel-slide active">
+        <div class="carousel-card">
+          <div class="carousel-program">Парусная прогулка</div>
+          <p class="carousel-quote">«Никогда не думала, что буду стоять у руля яхты. Два часа — и я уже не хочу уходить. Ощущение свободы, которое сложно описать словами.»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=47" alt="Алия Нурмаганбетова">
+            <div>
+              <strong>Алия Нурмаганбетова</strong>
+              <span>Дизайнер, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-card">
+          <div class="carousel-program">Курс матроса</div>
+          <p class="carousel-quote">«Пришёл без опыта — ушёл с сертификатом и желанием записаться на капитанский. Инструктор объяснял всё так, что даже теория шла легко. Отличный формат!»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=12" alt="Бекзат Сейткали">
+            <div>
+              <strong>Бекзат Сейткали</strong>
+              <span>IT-предприниматель, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-card">
+          <div class="carousel-program">Тимбилдинг на яхте</div>
+          <p class="carousel-quote">«Провели тимбилдинг командой 18 человек. Эффект лучше, чем от любого тренинга в зале. Люди, которые месяцами не могли найти общий язык — на яхте договорились за час.»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=33" alt="Жанна Мусина">
+            <div>
+              <strong>Жанна Мусина</strong>
+              <span>HR-директор, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-card">
+          <div class="carousel-program">Корпоративная регата</div>
+          <p class="carousel-quote">«Организовали регату для партнёров компании. Впечатления — на несколько месяцев вперёд. Все говорили об этом на следующих встречах. Уже планируем повторить.»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=52" alt="Бауыржан Касымов">
+            <div>
+              <strong>Бауыржан Касымов</strong>
+              <span>CEO, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-card">
+          <div class="carousel-program">Клубные регаты</div>
+          <p class="carousel-quote">«Участвую в клубных регатах с начала сезона. Каждый раз разные условия, разные соперники. Это засасывает — теперь планирую выходные вокруг расписания гонок.»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=15" alt="Арман Нурланов">
+            <div>
+              <strong>Арман Нурланов</strong>
+              <span>Финансист, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-card">
+          <div class="carousel-program">Семья под парусами</div>
+          <p class="carousel-quote">«Приехали с сыном 10 лет. Он был у руля — и это был самый счастливый день в его жизни, по его же словам. Разговор с коучем тоже оказался неожиданно глубоким.»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=64" alt="Сабина Джаксыбекова">
+            <div>
+              <strong>Сабина Джаксыбекова</strong>
+              <span>Предприниматель, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-card">
+          <div class="carousel-program">Капитанский курс</div>
+          <p class="carousel-quote">«После курса матроса сразу записался на капитанский. Сложнее, интенсивнее — но именно то, что нужно. Теперь понимаю яхту изнутри. Совсем другое ощущение.»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=71" alt="Ержан Бекенов">
+            <div>
+              <strong>Ержан Бекенов</strong>
+              <span>Юрист, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-card">
+          <div class="carousel-program">Фотосессия под парусами</div>
+          <p class="carousel-quote">«Снимали контент для бренда. Получили кадры, которые невозможно сделать на суше — ветер, паруса, настоящая скорость. Клиенты в восторге, всё разлетелось в соцсетях.»</p>
+          <div class="carousel-author">
+            <img src="https://i.pravatar.cc/80?img=83" alt="Асель Токтарова">
+            <div>
+              <strong>Асель Токтарова</strong>
+              <span>Маркетолог, Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="testimonial">
-      <img class="testimonial-avatar" src="images/review-2.jpg" alt="Дмитрий Р.">
-      <p>Приехали всей семьёй. Дети в восторге, жена тоже. Это лучший формат выходного дня, который мы нашли за последние годы.</p>
-      <div class="testimonial-author">Дмитрий Р.</div>
-      <div class="testimonial-role">Партнёр в IT-компании</div>
+
+    <button class="carousel-btn carousel-next" aria-label="Вперёд">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <div class="carousel-dots">
+    <button class="carousel-dot active" data-index="0"></button>
+    <button class="carousel-dot" data-index="1"></button>
+    <button class="carousel-dot" data-index="2"></button>
+    <button class="carousel-dot" data-index="3"></button>
+    <button class="carousel-dot" data-index="4"></button>
+    <button class="carousel-dot" data-index="5"></button>
+    <button class="carousel-dot" data-index="6"></button>
+    <button class="carousel-dot" data-index="7"></button>
+  </div>
+</section>
+
+<!-- INSTAGRAM FEED -->
+<section id="instagram" style="padding: 80px 48px; background: var(--navy-mid);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;">
+      <div>
+        <div class="section-tag" style="margin-bottom: 12px;">Наша жизнь в Instagram</div>
+        <h2 style="font-size: clamp(28px,4vw,44px);"><em>@parus.kapchagay</em></h2>
+      </div>
+      <a href="https://instagram.com/parus.kapchagay" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid rgba(201,169,110,0.4);border-radius:4px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.2s;"
+         onmouseover="this.style.background='rgba(201,169,110,0.1)'" onmouseout="this.style.background='transparent'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Смотреть все посты
+      </a>
     </div>
-    <div class="testimonial">
-      <img class="testimonial-avatar" src="images/review-3.jpg" alt="Айнур М.">
-      <p>Взяли корпоратив для команды 20 человек. Уровень сплочённости после этого дня — несравним ни с одним тимбилдингом в офисе.</p>
-      <div class="testimonial-author">Айнур М.</div>
-      <div class="testimonial-role">HR-директор, финтех</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <!-- Post 1 -->
+      <a href="https://www.instagram.com/p/DY4wISwxkK-/" target="_blank" rel="noopener"
+         style="display:block;position:relative;aspect-ratio:1;overflow:hidden;border-radius:4px;border:1px solid rgba(201,169,110,0.15);text-decoration:none;background:var(--navy);">
+        <img src="images/ig-post-1.jpg" alt="Тинейджер под парусами" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:16px;"
+             onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+          <span style="color:#fff;font-size:13px;font-weight:400;">Этим летом тинейджеры могут провести время не в телефоне, а на воде ⛵</span>
+        </div>
+        <div style="position:absolute;top:10px;right:10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="1.5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="white" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"/></svg>
+        </div>
+      </a>
+      <!-- Post 2 -->
+      <a href="https://www.instagram.com/p/DY2Eo_0MWvS/" target="_blank" rel="noopener"
+         style="display:block;position:relative;aspect-ratio:1;overflow:hidden;border-radius:4px;border:1px solid rgba(201,169,110,0.15);text-decoration:none;background:var(--navy);">
+        <img src="images/ig-post-2.jpg" alt="Семейный отдых" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:16px;"
+             onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+          <span style="color:#fff;font-size:13px;font-weight:400;">Семейный отдых может быть совсем другим 🌊⛵️</span>
+        </div>
+        <div style="position:absolute;top:10px;right:10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="1.5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="white" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"/></svg>
+        </div>
+      </a>
+      <!-- Post 3 -->
+      <a href="https://www.instagram.com/p/DY1hLhRss2w/" target="_blank" rel="noopener"
+         style="display:block;position:relative;aspect-ratio:1;overflow:hidden;border-radius:4px;border:1px solid rgba(201,169,110,0.15);text-decoration:none;background:var(--navy);">
+        <img src="images/ig-post-3.jpg" alt="Интервью Parusa.kz" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:16px;"
+             onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+          <span style="color:#fff;font-size:13px;font-weight:400;">Интервью Parusa.kz 🎙️</span>
+        </div>
+        <div style="position:absolute;top:10px;right:10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="1.5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="white" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"/></svg>
+        </div>
+      </a>
     </div>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-muted);">Подписывайтесь на Instagram, чтобы следить за жизнью клуба и ближайшими событиями</p>
   </div>
 </section>
 
@@ -518,8 +712,28 @@
   <div class="faq-wrap">
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-q">Нужен ли опыт, чтобы прийти на регату? <div class="toggle">+</div></div>
-        <div class="faq-a">Нет. Мы принимаем людей без какого-либо опыта. Перед выходом на воду проводится краткий инструктаж, а рядом всегда есть опытный инструктор.</div>
+        <div class="faq-q">Нужен ли опыт для парусной прогулки? <div class="toggle">+</div></div>
+        <div class="faq-a">Нет. Опыт не нужен. Перед выходом инструктор проводит краткий инструктаж: устройство лодки, правила поведения на борту и техника безопасности. Продолжительность прогулки — 2 часа, группа от 4 человек.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Что такое курс матроса и сколько он длится? <div class="toggle">+</div></div>
+        <div class="faq-a">Курс рассчитан на 2 дня: теория + практика на воде + питание. Цель — подготовить участника к роли матроса на спортивной яхте SB20. По итогам сдаётся экзамен и выдаётся сертификат клуба «Матрос-юнга».</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Можно ли записаться на капитанский курс без подготовки? <div class="toggle">+</div></div>
+        <div class="faq-a">Нет. Капитанский курс доступен только после прохождения курса матроса и получения сертификата клуба. По итогам выдаётся сертификат рулевого яхт-клуба.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Как организовать тимбилдинг на яхте? <div class="toggle">+</div></div>
+        <div class="faq-a">Программа рассчитана на 16–32 участника. Включает сессию командного коучинга, парусный мастер-класс и дружескую регату. Напишите нам в WhatsApp с указанием количества участников и желаемой даты.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Что входит в фотосессию под парусами? <div class="toggle">+</div></div>
+        <div class="faq-a">2 часа на воде, яхта SB20, профессиональный инструктор, катер сопровождения и фотограф. Форматы: индивидуальная, love story, семейная съёмка, контент для Instagram и брендов.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Можно ли прийти с детьми? <div class="toggle">+</div></div>
+        <div class="faq-a">Да. Есть специальная программа «Семья под парусами» — парусная прогулка на яхте + семейный коучинг. Продолжительность 5–6 часов. Родители и дети работают вместе как единая команда.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Как добраться до Капчагая? <div class="toggle">+</div></div>
@@ -527,39 +741,75 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">Что нужно взять с собой? <div class="toggle">+</div></div>
-        <div class="faq-a">Спортивную одежду, солнцезащитный крем, хорошее настроение. Спасательные жилеты и всё необходимое снаряжение предоставляем мы.</div>
+        <div class="faq-a">Спортивную одежду и солнцезащитный крем. Спасательные жилеты и всё необходимое снаряжение предоставляем мы.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Можно ли прийти с детьми? <div class="toggle">+</div></div>
-        <div class="faq-a">Да, клуб открыт для семей. Дети участвуют вместе с родителями. Есть форматы специально для семейного отдыха.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Как организовать корпоратив? <div class="toggle">+</div></div>
-        <div class="faq-a">Напишите нам в WhatsApp с указанием количества участников и желаемой даты. Мы составим программу и смету под ваш запрос.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Можно ли арендовать лодку без инструктора? <div class="toggle">+</div></div>
-        <div class="faq-a">Да, после подтверждения уровня.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Можно ли быть шкипером со своей командой? <div class="toggle">+</div></div>
-        <div class="faq-a">Да.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Есть ли тренировки? <div class="toggle">+</div></div>
-        <div class="faq-a">Да, регулярные.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Сколько лодок? <div class="toggle">+</div></div>
-        <div class="faq-a">4 SB20 (монокласс).</div>
+        <div class="faq-q">Сколько лодок в клубе? <div class="toggle">+</div></div>
+        <div class="faq-a">4 яхты SB20 — спортивный монокласс. На них проводятся все программы клуба: прогулки, курсы, регаты и тимбилдинги.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Можно ли прийти одному? <div class="toggle">+</div></div>
-        <div class="faq-a">Да, подберём экипаж.</div>
+        <div class="faq-a">Да, подберём экипаж. На парусной прогулке группа формируется от 4 человек — можно прийти одному и мы найдём вам компанию.</div>
       </div>
     </div>
     <div class="faq-photo">
-      <img src="images/faq-photo.jpg" alt="Яхтинг">
+      <div class="faq-photo-inner">
+        <img src="images/kapitan-hero.jpg" alt="Яхтинг">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP & CONTACTS -->
+<section id="contacts" style="padding: 80px 48px; background: var(--navy);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-tag" style="margin-bottom: 12px;">Как нас найти</div>
+    <h2 style="font-size: clamp(28px,4vw,44px); margin-bottom: 40px;">Адрес <em>и контакты</em></h2>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+      <!-- Map -->
+      <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,169,110,0.2); height:360px;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2926.5!2d77.1131551!3d43.8957681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3882f56fea58aef5%3A0x99cd5d675b646365!2sParusa%20Yacht%20Club!5e0!3m2!1sru!2skz!4v1"
+          width="100%" height="100%" style="border:0; display:block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Parusa Yacht Club на карте"></iframe>
+      </div>
+      <!-- Info -->
+      <div style="display:flex; flex-direction:column; gap:28px; padding-top:8px;">
+        <div>
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500;">Адрес</div>
+          <p style="font-size:16px;color:var(--cream);line-height:1.5;">Казахстан, г. Конаев (Капчагай)<br>Яхт-клуб Parusa — на берегу Капчагайского водохранилища</p>
+          <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener"
+             style="display:inline-block;margin-top:12px;font-size:13px;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);padding-bottom:2px;">
+            Открыть в Google Maps →
+          </a>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500;">Телефон для записи</div>
+          <a href="tel:+77015334340" style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);text-decoration:none;font-weight:600;letter-spacing:0.02em;transition:color 0.2s;"
+             onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--cream)'">
+            +7 701 533 43 40
+          </a>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">Звонки и WhatsApp</p>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500;">Режим работы</div>
+          <p style="font-size:15px;color:var(--text-light);">Сезон: апрель — октябрь<br>Пн–Вс · 09:30–17:30</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;">
+          <a href="https://wa.me/77015334340" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);border-radius:4px;color:#25d366;text-decoration:none;font-size:14px;font-weight:500;transition:all 0.2s;"
+             onmouseover="this.style.background='rgba(37,211,102,0.2)'" onmouseout="this.style.background='rgba(37,211,102,0.12)'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.523 5.847L.057 23.57a.5.5 0 0 0 .614.614l5.723-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.507-5.197-1.393l-.373-.219-3.401.872.887-3.401-.238-.381A9.952 9.952 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+          <a href="https://instagram.com/parus.kapchagay" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.3);border-radius:4px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.2s;"
+             onmouseover="this.style.background='rgba(201,169,110,0.15)'" onmouseout="this.style.background='rgba(201,169,110,0.08)'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -568,16 +818,15 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">Капчагайский яхт-клуб</div>
+      <div class="footer-logo"><img src="images/logo-parusa.png" alt="Parusa">Parusa Yacht Club</div>
       <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 6px;">parusa.kz</p>
       <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 4px;">2026</p>
     </div>
     <div class="footer-links">
       <a href="#why">О клубе</a>
       <a href="#products">Программы</a>
-      <a href="#membership">Членство</a>
       <a href="#faq">FAQ</a>
-      <a href="https://maps.app.goo.gl/EQCgM4BXSCgK5zxG6" target="_blank" rel="noopener">Адрес яхт-клуба</a>
+      <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener">Адрес яхт-клуба</a>
     </div>
     <div class="footer-icons">
       <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-wa.avif" alt="WhatsApp"></a>
@@ -585,7 +834,7 @@
       <a href="tel:+77015334340" class="footer-icon-link"><img src="images/icon-phone.png" alt="Телефон"></a>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 Капчагайский яхт-клуб · Капчагай, Казахстан</div>
+  <div class="footer-bottom">© 2025 Parusa Yacht Club · Капчагай, Казахстан</div>
 </footer>
 
 <script>
@@ -627,6 +876,31 @@
     navMobile.classList.remove('open');
     document.body.style.overflow = '';
   }
+
+  // Carousel
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  let current = 0;
+  let timer;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  document.querySelector('.carousel-prev').addEventListener('click', () => goTo(current - 1));
+  document.querySelector('.carousel-next').addEventListener('click', () => goTo(current + 1));
+  dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
+  resetTimer();
 </script>
 </body>
 </html>

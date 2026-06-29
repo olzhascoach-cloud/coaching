@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тренировочный день под парусами — Parusa Yacht Club</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628; --navy-mid: #152744; --ocean: #1a4a7a;
+    --gold: #c9a96e; --gold-light: #e8d5a8; --cream: #f7f3ec;
+    --white: #ffffff; --text-muted: rgba(247,243,236,0.6); --text-light: rgba(247,243,236,0.85);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); overflow-x: hidden; line-height: 1.6; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(10,22,40,0.97), transparent); backdrop-filter: blur(4px); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); text-decoration: none; display: block; }
+  .logo span { color: var(--cream); font-size: 13px; display: block; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; font-weight: 300; opacity: 0.7; }
+  nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+  nav ul li a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 10px 24px; border-radius: 2px; font-weight: 500 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 200; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile { display: none; position: fixed; inset: 0; z-index: 150; background: rgba(10,22,40,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { color: var(--cream); text-decoration: none; font-size: 20px; font-weight: 400; letter-spacing: 0.06em; transition: color 0.2s; }
+  .nav-mobile a:hover { color: var(--gold); }
+  .nav-mobile .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 14px 36px; border-radius: 2px; font-weight: 500; margin-top: 8px; }
+
+  /* HERO */
+  #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 140px 48px 100px; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.65) 55%, rgba(10,22,40,0.3) 100%), url('images/hero-main.jpg') center 40% / cover no-repeat; }
+  .waves { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; overflow: hidden; }
+  .wave { position: absolute; bottom: 0; width: 200%; height: 100%; background: rgba(21,39,68,0.4); border-radius: 50% 50% 0 0 / 20% 20% 0 0; }
+  .wave-1 { animation: wave 8s ease-in-out infinite; }
+  .wave-2 { background: rgba(10,22,40,0.5); animation: wave 12s ease-in-out infinite reverse; height: 75%; }
+  @keyframes wave { 0%, 100% { transform: translateX(-25%) scaleY(1); } 50% { transform: translateX(-10%) scaleY(1.1); } }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .back-link { font-size: 13px; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; margin-bottom: 28px; }
+  .back-link:hover { color: var(--gold); }
+  .hero-tag { display: inline-block; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 6px 16px; border-radius: 2px; margin-bottom: 24px; font-weight: 500; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 6vw, 74px); font-weight: 600; line-height: 1.05; color: var(--white); margin-bottom: 24px; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 17px; color: var(--text-light); max-width: 520px; margin-bottom: 40px; font-weight: 300; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline { border: 1px solid rgba(247,243,236,0.35); color: var(--cream); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 400; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-pills { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 8px 18px; font-size: 13px; color: var(--text-light); }
+
+  /* SECTIONS */
+  section { padding: 96px 48px; }
+  .section-tag { display: inline-block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.5vw, 54px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+  .section-lead { font-size: 17px; color: var(--text-light); max-width: 600px; font-weight: 300; line-height: 1.75; margin-bottom: 48px; }
+  .inner { max-width: 1100px; margin: 0 auto; }
+
+  /* FOR WHOM */
+  #whom { background: var(--navy-mid); }
+  .whom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 0; }
+  .whom-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); padding: 36px 28px; transition: background 0.3s; }
+  .whom-card:hover { background: rgba(201,169,110,0.05); border-color: rgba(201,169,110,0.2); }
+  .whom-icon { width: 48px; height: 48px; border: 1px solid rgba(201,169,110,0.25); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .whom-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .whom-card h3 { font-size: 16px; font-weight: 500; color: var(--cream); margin-bottom: 10px; }
+  .whom-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+  /* PROGRAM */
+  #program { background: var(--navy); position: relative; }
+  #program::before { content: ''; position: absolute; inset: 0; background: url('images/day-bg.jpg') center / cover no-repeat; opacity: 0.06; }
+  #program > * { position: relative; z-index: 1; }
+  .timeline { display: flex; flex-direction: column; gap: 0; max-width: 780px; }
+  .tl-item { display: grid; grid-template-columns: 56px 1fr; gap: 0 28px; position: relative; }
+  .tl-line { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot { width: 44px; height: 44px; border-radius: 50%; background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.4); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; flex-shrink: 0; }
+  .tl-connector { width: 1px; flex: 1; min-height: 28px; background: linear-gradient(to bottom, rgba(201,169,110,0.3), rgba(201,169,110,0.05)); margin: 6px 0; }
+  .tl-item:last-child .tl-connector { display: none; }
+  .tl-body { padding: 6px 0 36px; }
+  .tl-body h3 { font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
+  .tl-body p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+  .tl-tag { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2); border-radius: 2px; padding: 4px 12px; }
+
+  /* SKILLS */
+  #skills { background: var(--navy-mid); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 0; }
+  .skill-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); padding: 32px 28px; transition: background 0.3s; }
+  .skill-card:hover { background: rgba(201,169,110,0.04); }
+  .skill-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 600; color: rgba(201,169,110,0.2); line-height: 1; margin-bottom: 12px; }
+  .skill-card h3 { font-size: 16px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
+  .skill-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+  /* INSTRUCTOR */
+  #instructor { background: var(--navy); }
+  .instr-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+  .instr-photo { border-radius: 4px; overflow: hidden; border: 1px solid rgba(201,169,110,0.2); position: relative; aspect-ratio: 3/4; }
+  .instr-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .instr-photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(21,39,68,0.96), transparent); padding: 32px 20px 20px; }
+  .instr-photo-caption strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--cream); }
+  .instr-photo-caption span { font-size: 13px; color: var(--gold); }
+  .instr-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .instr-badge { padding: 6px 14px; background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.25); border-radius: 2px; font-size: 11px; color: var(--gold); letter-spacing: 0.07em; text-transform: uppercase; font-weight: 500; }
+  .instr-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(201,169,110,0.1); border-radius: 2px; overflow: hidden; margin-bottom: 32px; }
+  .instr-stat { background: rgba(10,22,40,0.7); padding: 18px 14px; text-align: center; }
+  .instr-stat-val { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--gold); display: block; }
+  .instr-stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 3px; display: block; }
+  .instr-facts { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+  .instr-fact { display: flex; gap: 14px; align-items: flex-start; }
+  .instr-fact-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 8px; flex-shrink: 0; }
+  .instr-fact p { font-size: 15px; color: var(--text-light); line-height: 1.65; }
+  .instr-fact p strong { color: var(--cream); font-weight: 500; }
+  .instr-quote { border-left: 2px solid var(--gold); padding-left: 20px; }
+  .instr-quote p { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--cream); line-height: 1.65; }
+  .instr-quote footer { margin-top: 8px; font-size: 13px; color: var(--text-muted); }
+
+  /* PRICE */
+  #price { background: var(--navy-mid); }
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 24px; }
+  .price-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); padding: 40px 36px; }
+  .price-card.featured { border-color: rgba(201,169,110,0.3); background: rgba(201,169,110,0.04); }
+  .price-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 600; color: var(--gold); line-height: 1; }
+  .price-amount small { font-size: 20px; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+  .price-note { font-size: 13px; color: var(--text-muted); margin: 8px 0 24px; }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .price-features li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--text-light); }
+  .price-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+  .deposit-box { background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.2); border-radius: 2px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; }
+  .deposit-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .deposit-box strong { display: block; font-size: 15px; color: var(--cream); font-weight: 500; margin-bottom: 6px; }
+  .deposit-box p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+  /* REGISTER */
+  #register { background: var(--navy); position: relative; overflow: hidden; }
+  #register::before { content: ''; position: absolute; inset: 0; background: url('images/hero-main.jpg') center / cover no-repeat; opacity: 0.08; }
+  #register > * { position: relative; z-index: 1; }
+  .register-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+  .register-inner .section-tag { display: block; }
+  .register-inner h2 { margin-bottom: 16px; }
+  .register-inner p { font-size: 16px; color: var(--text-light); margin-bottom: 40px; font-weight: 300; line-height: 1.75; }
+  .register-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { background: rgba(5,11,20,1); padding: 32px 48px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--gold); }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: rgba(247,243,236,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom { max-width: 1100px; margin: 16px auto 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(247,243,236,0.25); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 64px 24px; }
+    h1 { font-size: 42px; }
+    .instr-grid { grid-template-columns: 1fr; gap: 32px; }
+    .instr-photo { max-width: 280px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .price-grid { grid-template-columns: 1fr; }
+    footer { padding: 28px 24px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  }
+  @media (max-width: 480px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .whom-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="/">Капчагайский яхт-клуб <span>parusa.kz</span></a>
+  <ul>
+    <li><a href="/#products">Программы</a></li>
+    <li><a href="/#why">О клубе</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+    <li><a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta" target="_blank" rel="noopener">Записаться</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="/#products" onclick="closeMobileMenu()">Программы</a>
+  <a href="/#why" onclick="closeMobileMenu()">О клубе</a>
+  <a href="/#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta" target="_blank" rel="noopener">Записаться</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="waves">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+  </div>
+  <div class="hero-content">
+    <a href="/" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Все программы
+    </a>
+    <div class="hero-tag">Подготовка к регате</div>
+    <h1>Тренировочный день<br><em>под парусами</em></h1>
+    <p class="hero-sub">Подготовьте команду к регате за один день на воде. Старты, огибание знаков, постановка генакера — с мастером спорта на борту.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/message/OC5WYE4UZWX2N1?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D0%BF%D0%BE%D0%B4%20%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%B0%D0%BC%D0%B8." target="_blank" rel="noopener" class="btn-primary">Забронировать день →</a>
+      <a href="#program" class="btn-outline">Программа</a>
+    </div>
+    <div class="hero-pills">
+      <div class="pill">3–4 часа на воде</div>
+      <div class="pill">Инструктор на борту</div>
+      <div class="pill">Перед регатой</div>
+      <div class="pill">от 25 000 ₸/чел</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="whom">
+  <div class="inner">
+    <div class="section-tag">Кому подойдёт</div>
+    <h2>Для тех, кто <em>идёт на регату</em></h2>
+    <p class="section-lead">Один тренировочный день на воде заменяет недели теоретической подготовки. Команда выходит на старт готовой.</p>
+    <div class="whom-grid">
+      <div class="whom-card">
+        <div class="whom-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h3>Корпоративные команды</h3>
+        <p>Готовитесь к корпоративной регате или выходите на соревнования впервые. Нужна единая команда — не просто набор людей.</p>
+      </div>
+      <div class="whom-card">
+        <div class="whom-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Новые экипажи</h3>
+        <p>Каждый умеет ходить под парусами, но вместе выходят впервые. Нужна слаженность, общий язык и понимание ролей.</p>
+      </div>
+      <div class="whom-card">
+        <div class="whom-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Перед конкретной гонкой</h3>
+        <p>Регата через неделю — нужно освежить маневры, отработать тактику старта и генакер. Времени мало, задача конкретная.</p>
+      </div>
+      <div class="whom-card">
+        <div class="whom-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3>Команды с опытом</h3>
+        <p>Уже ходили, но хотите поднять уровень — точнее старты, чище огибание, увереннее с генакером. Разбор с профессионалом.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="inner">
+    <div class="section-tag">Программа дня</div>
+    <h2>Что происходит <em>на воде</em></h2>
+    <p class="section-lead">Инструктор выстраивает тренировку под уровень вашей команды. Никакой теории ради теории — только практика.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-line">
+          <div class="tl-dot">1</div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-body">
+          <h3>Брифинг и распределение ролей</h3>
+          <p>Инструктор объясняет задачи дня, каждый в команде получает конкретную роль на борту. Никакой неопределённости — все знают, кто за что отвечает.</p>
+          <span class="tl-tag">~30 мин · на берегу</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line">
+          <div class="tl-dot">2</div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-body">
+          <h3>Отработка стартов</h3>
+          <p>Старт — один из самых сложных элементов гонки. Тренируем выход на стартовую линию, таймирование, позицию и первый галс. Несколько повторов до уверенности.</p>
+          <span class="tl-tag">Ключевой элемент регаты</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line">
+          <div class="tl-dot">3</div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-body">
+          <h3>Огибание знаков</h3>
+          <p>Правильное огибание — это секунды и позиции. Отрабатываем манёвры у знаков: смена курса, работа с парусами, очерёдность действий каждого члена экипажа.</p>
+          <span class="tl-tag">Тактика и слаженность</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line">
+          <div class="tl-dot">4</div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-body">
+          <h3>Постановка генакера</h3>
+          <p>Генакер — самый зрелищный и сложный элемент. Учимся ставить, нести и убирать чисто и быстро. Отрабатываем командное взаимодействие при каждом манёвре.</p>
+          <span class="tl-tag">Полный спинакерный манёвр</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line">
+          <div class="tl-dot">5</div>
+          <div class="tl-connector"></div>
+        </div>
+        <div class="tl-body">
+          <h3>Дебриф с инструктором</h3>
+          <p>После выхода разбираем, что получилось и что улучшить перед регатой. Конкретные рекомендации по каждой роли и тактике команды в целом.</p>
+          <span class="tl-tag">На берегу</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <div class="section-tag">Что вы получите</div>
+    <h2>Навыки за <em>один день</em></h2>
+    <p class="section-lead">3–4 часа реальной практики на воде дают больше, чем месяц теории. Команда уходит с конкретными инструментами.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-num">01</div>
+        <h3>Чёткий старт</h3>
+        <p>Выход на линию вовремя, правильная позиция, агрессивный первый галс без столкновений.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-num">02</div>
+        <h3>Огибание знаков</h3>
+        <p>Чистые манёвры у знаков без потери скорости и позиции. Каждый знает, что делать.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-num">03</div>
+        <h3>Работа с генакером</h3>
+        <p>Постановка и уборка асимметричного спинакера без хаоса на борту — быстро и слаженно.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-num">04</div>
+        <h3>Роли экипажа</h3>
+        <p>Каждый знает свою функцию и зону ответственности. Никто не стоит и не смотрит.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-num">05</div>
+        <h3>Коммуникация</h3>
+        <p>Команды и сигналы, которые работают под давлением и шумом ветра. Единый язык экипажа.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-num">06</div>
+        <h3>Тактическое мышление</h3>
+        <p>Понимание, когда и что делать — без паники в гоночной обстановке. Думать на шаг вперёд.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section id="instructor">
+  <div class="inner">
+    <div class="section-tag">Ваш инструктор</div>
+    <h2>Кто проводит <em>тренировку</em></h2>
+    <div class="instr-grid">
+      <div>
+        <div class="instr-photo">
+          <img src="images/ruslan-instructor.jpg" alt="Руслан Алексеенко — инструктор яхт-клуба Парус">
+          <div class="instr-photo-caption">
+            <strong>Руслан Алексеенко</strong>
+            <span>Шкипер-инструктор яхт-клуба «Паруса»</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top: 4px;">
+        <div class="instr-badges">
+          <span class="instr-badge">Мастер спорта РК</span>
+          <span class="instr-badge">Национальная сборная</span>
+          <span class="instr-badge">SB20</span>
+        </div>
+        <div class="instr-stats">
+          <div class="instr-stat">
+            <span class="instr-stat-val">15+</span>
+            <span class="instr-stat-lbl">лет в парусе</span>
+          </div>
+          <div class="instr-stat">
+            <span class="instr-stat-val">∞</span>
+            <span class="instr-stat-lbl">чемпион Казахстана</span>
+          </div>
+          <div class="instr-stat">
+            <span class="instr-stat-val">SB20</span>
+            <span class="instr-stat-lbl">специализация</span>
+          </div>
+        </div>
+        <div class="instr-facts">
+          <div class="instr-fact">
+            <div class="instr-fact-dot"></div>
+            <p><strong>Опыт:</strong> в парусе с 10 лет. Прошёл путь от новичка до члена Национальной сборной Казахстана.</p>
+          </div>
+          <div class="instr-fact">
+            <div class="instr-fact-dot"></div>
+            <p><strong>Специализация:</strong> подготовка экипажей к соревнованиям на яхтах SB20. Тренировочные выходы, регаты, работа с командой на воде.</p>
+          </div>
+          <div class="instr-fact">
+            <div class="instr-fact-dot"></div>
+            <p><strong>Достижения:</strong> многократный чемпион Казахстана, призёр международных соревнований. Видит команду целиком и знает, где теряются позиции.</p>
+          </div>
+        </div>
+        <div class="instr-quote">
+          <p>"Яхта SB20 — это идеальный баланс скорости, командной работы и безопасности. Я научу вас понимать ветер, управлять парусами и работать в команде как единое целое. Жду вас на борту — погнали побеждать!"</p>
+          <footer>— Руслан Алексеенко, шкипер-инструктор</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section id="price">
+  <div class="inner">
+    <div class="section-tag">Стоимость</div>
+    <h2>Прозрачная <em>цена</em></h2>
+    <p class="section-lead">Все условия обговариваются до начала. Никаких скрытых платежей.</p>
+    <div class="price-grid">
+      <div class="price-card featured">
+        <div class="price-label">Участие в тренировочном дне</div>
+        <div class="price-amount">от 25 000 <small>₸/чел</small></div>
+        <div class="price-note">итоговая стоимость зависит от состава команды</div>
+        <ul class="price-features">
+          <li>3–4 часа на воде с инструктором на борту</li>
+          <li>Отработка стартов, знаков и генакера</li>
+          <li>Распределение ролей экипажа</li>
+          <li>Брифинг и дебриф с разбором ошибок</li>
+          <li>Спасательное снаряжение</li>
+          <li>Яхта SB20 полностью оснащена</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-label">Включено в стоимость</div>
+        <div class="price-amount" style="font-size: 36px; padding-top: 6px; color: var(--cream);">Всё необходимое</div>
+        <div class="price-note" style="margin-top: 12px;">без доплат</div>
+        <ul class="price-features">
+          <li>Инструктор — Мастер спорта РК</li>
+          <li>Яхта подготовлена и оснащена</li>
+          <li>Генакер и всё оборудование</li>
+          <li>Индивидуальный разбор по ролям</li>
+          <li>Рекомендации перед регатой</li>
+        </ul>
+      </div>
+    </div>
+    <div class="deposit-box">
+      <div class="deposit-icon">🛡️</div>
+      <div>
+        <strong>Страховой депозит за паруса — 400 USD</strong>
+        <p>Депозит замораживается на время тренировки и возвращается в полном объёме после выхода при отсутствии повреждений. Стандартная практика яхтинга — паруса стоят дорого, и мы несём ответственность за них вместе с экипажем.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register">
+  <div class="register-inner">
+    <div class="section-tag">Записаться</div>
+    <h2>Готовы выйти<br>на <em>воду?</em></h2>
+    <p>Напишите нам — обсудим даты, состав команды и подготовим программу под вашу регату. Отвечаем в WhatsApp.</p>
+    <div class="register-btns">
+      <a href="https://wa.me/message/OC5WYE4UZWX2N1?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D0%BF%D0%BE%D0%B4%20%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%B0%D0%BC%D0%B8." target="_blank" rel="noopener" class="btn-primary">Написать в WhatsApp →</a>
+      <a href="tel:+77015334340" class="btn-outline">+7 701 533 43 40</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Капчагайский яхт-клуб</div>
+      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 6px;">parusa.kz</p>
+    </div>
+    <div class="footer-links">
+      <a href="/">Главная</a>
+      <a href="/#products">Программы</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://maps.google.com/maps?q=43.8957681,77.1131551" target="_blank" rel="noopener">Адрес</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Капчагайский яхт-клуб · Конаев (Капчагай), Казахстан</div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+    document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    navMobile.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тимбилдинг на яхте — Parusa Yacht Club</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628; --navy-mid: #152744; --ocean: #1a4a7a;
+    --gold: #c9a96e; --gold-light: #e8d5a8; --cream: #f7f3ec;
+    --white: #ffffff; --text-muted: rgba(247,243,236,0.6); --text-light: rgba(247,243,236,0.85);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); overflow-x: hidden; line-height: 1.6; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(10,22,40,0.97), transparent); backdrop-filter: blur(4px); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo span { color: var(--cream); font-size: 13px; display: block; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; font-weight: 300; opacity: 0.7; }
+  .logo img { height: 36px; width: auto; filter: brightness(0) invert(1); flex-shrink: 0; }
+  nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+  nav ul li a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 10px 24px; border-radius: 2px; font-weight: 500 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 200; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile { display: none; position: fixed; inset: 0; z-index: 150; background: rgba(10,22,40,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { color: var(--cream); text-decoration: none; font-size: 20px; font-weight: 400; letter-spacing: 0.06em; transition: color 0.2s; }
+  .nav-mobile a:hover { color: var(--gold); }
+  .nav-mobile .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 14px 36px; border-radius: 2px; font-weight: 500; margin-top: 8px; }
+  #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 140px 48px 100px; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.65) 55%, rgba(10,22,40,0.35) 100%), url('images/kapitan-hero.jpg') center 40% / cover no-repeat; }
+  .hero-badge-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+  .back-link { font-size: 13px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .sep { color: var(--text-muted); opacity: 0.4; }
+  .waves { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; overflow: hidden; }
+  .wave { position: absolute; bottom: 0; width: 200%; height: 100%; background: rgba(21,39,68,0.4); border-radius: 50% 50% 0 0 / 20% 20% 0 0; }
+  .wave-1 { animation: wave 8s ease-in-out infinite; }
+  .wave-2 { background: rgba(10,22,40,0.5); animation: wave 12s ease-in-out infinite reverse; height: 75%; }
+  @keyframes wave { 0%, 100% { transform: translateX(-25%) scaleY(1); } 50% { transform: translateX(-10%) scaleY(1.1); } }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .hero-tag { display: inline-block; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 6px 16px; border-radius: 2px; margin-bottom: 24px; font-weight: 500; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 6vw, 74px); font-weight: 600; line-height: 1.05; color: var(--white); margin-bottom: 24px; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 17px; color: var(--text-light); max-width: 520px; margin-bottom: 16px; font-weight: 300; line-height: 1.7; }
+  .hero-sub-detail { font-size: 15px; color: var(--text-muted); max-width: 480px; margin-bottom: 40px; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline { border: 1px solid rgba(247,243,236,0.35); color: var(--cream); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 400; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-pills { display: flex; gap: 12px; margin-top: 40px; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 8px 18px; font-size: 13px; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
+  .pill svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.8; flex-shrink: 0; }
+  section { padding: 96px 48px; }
+  .section-tag { display: inline-block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.5vw, 54px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+  .section-lead { font-size: 17px; color: var(--text-light); max-width: 600px; font-weight: 300; line-height: 1.75; margin-bottom: 48px; }
+  #what { background: var(--navy); }
+  .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .what-text p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
+  .what-text p strong { color: var(--gold); font-weight: 500; }
+  .what-photo { border-radius: 4px; overflow: hidden; position: relative; }
+  .what-photo img { width: 100%; height: 500px; object-fit: cover; display: block; }
+  .what-photo-badge { position: absolute; bottom: 24px; left: 24px; background: rgba(10,22,40,0.9); border: 1px solid rgba(201,169,110,0.3); border-radius: 4px; padding: 16px 20px; }
+  .what-photo-badge strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); font-weight: 600; }
+  .what-photo-badge span { font-size: 12px; color: var(--text-muted); }
+  #why { background: var(--navy-mid); position: relative; }
+  #why::before { content: ''; position: absolute; inset: 0; background: url('images/why-bg.jpg') center / cover no-repeat; opacity: 0.12; }
+  #why > * { position: relative; z-index: 1; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 48px; }
+  .why-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); padding: 36px 28px; transition: background 0.3s; }
+  .why-card:hover { background: rgba(201,169,110,0.04); }
+  .why-icon { width: 44px; height: 44px; margin-bottom: 18px; border: 1px solid rgba(201,169,110,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .why-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .why-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .why-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+  #program { background: var(--navy); }
+  .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
+  .prog-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 32px 28px; background: rgba(255,255,255,0.02); position: relative; }
+  .prog-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .prog-card:hover::before { transform: scaleX(1); }
+  .prog-num { font-size: 11px; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 12px; font-weight: 500; text-transform: uppercase; }
+  .prog-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+  .prog-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  #price { background: var(--navy-mid); }
+  .price-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; align-items: start; }
+  .price-card { border: 1px solid rgba(201,169,110,0.35); border-radius: 4px; padding: 44px 40px; background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(201,169,110,0.02)); }
+  .price-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .price-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 20px; }
+  .price-amount { font-size: 48px; font-weight: 300; color: var(--gold); font-family: 'Cormorant Garamond', serif; line-height: 1; margin-bottom: 6px; }
+  .price-amount span { font-size: 20px; }
+  .price-note { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+  .price-includes { list-style: none; }
+  .price-includes li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 12px; }
+  .price-includes li::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .price-info { padding: 36px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; }
+  .price-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--white); font-weight: 600; margin-bottom: 20px; }
+  .info-item { display: flex; gap: 12px; margin-bottom: 16px; }
+  .info-item svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; flex-shrink: 0; margin-top: 2px; }
+  .info-item p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .info-item p strong { display: block; color: var(--text-light); font-weight: 500; margin-bottom: 2px; font-size: 14px; }
+  #register { background: var(--navy); position: relative; }
+  #register::before { content: ''; position: absolute; inset: 0; background: url('images/cta-bg.jpg') center / cover no-repeat; opacity: 0.12; }
+  #register > * { position: relative; z-index: 1; }
+  .register-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .register-text h2 { margin-bottom: 20px; }
+  .register-text p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
+  .register-form-wrap { background: rgba(10,22,40,0.7); border: 1px solid rgba(201,169,110,0.25); border-radius: 4px; padding: 40px 36px; }
+  .register-form-wrap h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .register-form-wrap > p { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
+  footer { background: rgba(0,0,0,0.5); padding: 48px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-icon-link img { width: 36px; height: 36px; object-fit: contain; display: block; transition: opacity 0.2s; }
+  .footer-icons { display: flex; gap: 16px; align-items: center; }
+  .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 12px; color: var(--text-muted); }
+  .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: rgba(10,22,40,0.97); border-top: 1px solid rgba(201,169,110,0.2); padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.4s ease; backdrop-filter: blur(8px); }
+  .sticky-cta.visible { transform: translateY(0); }
+  .sticky-cta-text { font-size: 15px; color: var(--text-light); }
+  .sticky-cta-text strong { color: var(--gold); }
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    section, #hero { padding: 72px 24px; }
+    footer { padding: 32px 24px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    h1 { font-size: clamp(38px, 8vw, 56px); }
+    .what-grid { grid-template-columns: 1fr; gap: 40px; }
+    .what-photo img { height: 280px; }
+    .price-wrap { grid-template-columns: 1fr; }
+    .register-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .sticky-cta { padding: 12px 24px; flex-direction: column; gap: 10px; text-align: center; }
+    .sticky-cta .btn-primary { width: 100%; text-align: center; }
+  }
+</style>
+<style>
+  :root {
+    --p-navy:       #0d1e35;
+    --p-navy-light: #162840;
+    --p-gold:       #c9a84c;
+    --p-gold-dim:   rgba(201, 168, 76, 0.25);
+    --p-cream:      #f5f0e8;
+    --p-muted:      #9a8f7e;
+  }
+  .pb-section { padding: 96px 48px; border-top: 1px solid var(--p-gold-dim); }
+  .pb-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--p-gold); margin-bottom: 0.75rem; }
+  .pb-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; line-height: 1.2; color: var(--p-cream); margin-bottom: 1rem; }
+  .pb-title em { color: var(--p-gold); font-style: italic; }
+  .pb-intro { font-size: 15px; line-height: 1.75; color: var(--p-muted); max-width: 600px; margin-bottom: 2.5rem; }
+  .pb-audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .pb-audience-card { background: var(--p-navy-light); border: 1px solid var(--p-gold-dim); border-radius: 8px; padding: 1.5rem 1.25rem; }
+  .pb-audience-card .role { font-size: 13px; font-weight: 700; color: var(--p-gold); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .pb-audience-card .desc { font-size: 14px; color: var(--p-muted); line-height: 1.6; }
+  .pb-method-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; margin-bottom: 1rem; max-width: 500px; }
+  .pb-method-bar .s1 { width: 10%; background: rgba(201,168,76,0.35); }
+  .pb-method-bar .s2 { width: 45%; background: var(--p-gold); }
+  .pb-method-bar .s3 { width: 45%; background: #3a7ca5; }
+  .pb-method-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 2.5rem; }
+  .pb-method-legend .item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--p-muted); }
+  .pb-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .pb-dot-gold { background: var(--p-gold); }
+  .pb-dot-blue { background: #3a7ca5; }
+  .pb-dot-dim  { background: rgba(201,168,76,0.35); }
+  .pb-metaphor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .pb-metaphor-item { border-left: 2px solid var(--p-gold); padding-left: 1.25rem; }
+  .pb-metaphor-item .mtitle { font-size: 14px; font-weight: 700; color: var(--p-cream); margin-bottom: 0.4rem; }
+  .pb-metaphor-item .mbody { font-size: 13px; color: var(--p-muted); line-height: 1.65; margin-bottom: 0.5rem; }
+  .pb-tag { display: inline-block; font-size: 11px; letter-spacing: 0.08em; color: var(--p-gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 2px 8px; }
+  .pb-results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+  .pb-result-card { background: var(--p-navy-light); border: 1px solid var(--p-gold-dim); border-radius: 8px; padding: 1.5rem 1.25rem; }
+  .pb-result-card .rnum { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 400; color: rgba(201,168,76,0.18); line-height: 1; margin-bottom: 0.5rem; }
+  .pb-result-card .rtitle { font-size: 14px; font-weight: 700; color: var(--p-cream); margin-bottom: 0.5rem; }
+  .pb-result-card .rdesc { font-size: 13px; color: var(--p-muted); line-height: 1.6; }
+  .pb-reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .pb-review-card { background: var(--p-navy-light); border: 1px solid var(--p-gold-dim); border-radius: 10px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .pb-stars { color: var(--p-gold); font-size: 14px; letter-spacing: 3px; }
+  .pb-quote { font-family: 'Cormorant Garamond', serif; font-size: 14px; line-height: 1.75; color: var(--p-cream); flex: 1; padding-left: 1rem; border-left: 2px solid rgba(201,168,76,0.35); }
+  .pb-person { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--p-gold-dim); padding-top: 1rem; }
+  .pb-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(201,168,76,0.12); border: 1px solid var(--p-gold-dim); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--p-gold); flex-shrink: 0; }
+  .pb-person-name { font-size: 13px; font-weight: 700; color: var(--p-cream); }
+  .pb-person-role { font-size: 12px; color: var(--p-muted); margin-top: 2px; }
+  .pb-company { display: inline-block; font-size: 11px; letter-spacing: 0.07em; color: var(--p-gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 2px 8px; margin-top: 4px; }
+  @media (max-width: 768px) { .pb-section { padding: 64px 24px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Капчагайский яхт-клуб<span>parusa.kz</span></div></a>
+  <ul>
+    <li><a href="/#about">О клубе</a></li>
+    <li><a href="/#products">Программы</a></li>
+    <li><a href="#price">Стоимость</a></li>
+    <li><a href="#register" class="nav-cta">Обсудить</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="/" onclick="closeMobileMenu()">Главная</a>
+  <a href="/#products" onclick="closeMobileMenu()">Программы</a>
+  <a href="#price" onclick="closeMobileMenu()">Стоимость</a>
+  <a href="#register" class="nav-cta" onclick="closeMobileMenu()">Обсудить</a>
+</div>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="waves">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge-row">
+      <a href="/" class="back-link">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        parusa.kz
+      </a>
+      <span class="sep">/</span>
+      <span style="font-size:13px; color: var(--gold);">Тимбилдинг на яхте</span>
+    </div>
+    <div class="hero-tag">Корпоративный формат · Капчагай</div>
+    <h1>Тимбилдинг<br><em>на яхте</em></h1>
+    <p class="hero-sub">Настоящая командная работа под парусами. Ваша команда справится с яхтой — и поймёт, что способна на большее.</p>
+    <p class="hero-sub-detail">Не офисный тренинг. Живой опыт на воде, где каждый в команде важен и каждое решение ощущается физически.</p>
+    <div class="hero-btns">
+      <a href="#register" class="btn-primary">Обсудить мероприятие</a>
+      <a href="#program" class="btn-outline">Программа →</a>
+    </div>
+    <div class="hero-pills">
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        4–8 часов
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        От 6 человек
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Инструкторы клуба
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        от 40 000 ₸/чел
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="what">
+  <div class="what-grid">
+    <div class="what-text">
+      <div class="section-tag">О тимбилдинге</div>
+      <h2>Команда,<br>которая <em>чувствует</em> друг друга</h2>
+      <p>Управление яхтой — это командная задача. Капитан принимает решения, матросы исполняют манёвры, все чувствуют ветер и момент. Нельзя сымитировать — нужно сделать.</p>
+      <p>На воде проявляются настоящие лидеры, рождается доверие, исчезают офисные маски. То, что в офисе за год — на яхте за день.</p>
+      <p><strong>Ваши коллеги уйдут домой с другим взглядом на команду — и друг на друга.</strong></p>
+    </div>
+    <div class="what-photo">
+      <img src="images/team-photo.jpg" alt="Тимбилдинг на яхте">
+      <div class="what-photo-badge">
+        <strong>SB20</strong>
+        <span>Спортивная яхта</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-tag">Почему яхта</div>
+  <h2>Чего не даст<br><em>офисный тренинг</em></h2>
+  <p class="section-lead">Яхта создаёт условия, в которых невозможно спрятаться за формальностями.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Реальная команда</h3>
+      <p>На яхте нет возможности работать одному. Каждый выполняет свою роль — и чувствует зависимость от других.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>Живые эмоции</h3>
+      <p>Ветер, скорость, вода — это невозможно организовать в зале. Яхта создаёт настоящие переживания, которые объединяют.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Доверие через дело</h3>
+      <p>Не упражнения на доверие — настоящее доверие, когда от действий коллеги зависит твоя безопасность.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <h3>Нестандартный опыт</h3>
+      <p>Мероприятие, которое запомнят надолго. Не очередной корпоратив — событие, которое обсуждают месяцами.</p>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК А — ДЛЯ КОГО -->
+<section class="pb-section" id="audience">
+  <div class="pb-label">Аудитория</div>
+  <h2 class="pb-title">Для кого<br><em>этот формат</em></h2>
+  <p class="pb-intro">Тимбилдинг на яхте — не развлечение. Это рабочий инструмент для компаний, которые хотят видеть в команде настоящих лидеров, а не офисные маски.</p>
+  <div class="pb-audience-grid">
+    <div class="pb-audience-card">
+      <div class="role">Владельцы бизнеса</div>
+      <div class="desc">Хотят увидеть, кто в команде реальный лидер — а кто только на совещаниях.</div>
+    </div>
+    <div class="pb-audience-card">
+      <div class="role">HR-директора</div>
+      <div class="desc">Ищут формат, который даёт реальный командный эффект, а не просто «хорошо провели время».</div>
+    </div>
+    <div class="pb-audience-card">
+      <div class="role">CEO и управленцы</div>
+      <div class="desc">Формируют управленческую команду, которая принимает решения быстро и слаженно.</div>
+    </div>
+    <div class="pb-audience-card">
+      <div class="role">Руководители отделов</div>
+      <div class="desc">Строят доверие внутри команды там, где не справляются планёрки и ретроспективы.</div>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК Б — ЯХТА КАК УПРАВЛЕНЧЕСКАЯ ЛАБОРАТОРИЯ -->
+<section class="pb-section" id="methodology">
+  <div class="pb-label">Методология</div>
+  <h2 class="pb-title">Яхта — это<br><em>управленческая лаборатория</em></h2>
+  <p class="pb-intro">Каждый элемент на воде — прямая аналогия бизнеса. Только здесь это не кейс на бумаге, а живой опыт, который запоминается телом.</p>
+  <div class="pb-method-bar">
+    <div class="s1"></div><div class="s2"></div><div class="s3"></div>
+  </div>
+  <div class="pb-method-legend">
+    <div class="item"><div class="pb-dot pb-dot-dim"></div>10% — брифинг и дебриф с тренером</div>
+    <div class="item"><div class="pb-dot pb-dot-gold"></div>45% — командные задачи и роли</div>
+    <div class="item"><div class="pb-dot pb-dot-blue"></div>45% — парусная практика и регата</div>
+  </div>
+  <div class="pb-metaphor-grid">
+    <div class="pb-metaphor-item">
+      <div class="mtitle">Шкипер = CEO</div>
+      <div class="mbody">Принимает решения в условиях неопределённости. Не может контролировать ветер — только реакцию команды. Ровно как в бизнесе.</div>
+      <span class="pb-tag">Лидерство под давлением</span>
+    </div>
+    <div class="pb-metaphor-item">
+      <div class="mtitle">Экипаж = управленческая команда</div>
+      <div class="mbody">Каждый знает свою роль и зависит от других. Нет случайных пассажиров: один зазевался — яхта теряет позицию.</div>
+      <span class="pb-tag">Распределение ролей</span>
+    </div>
+    <div class="pb-metaphor-item">
+      <div class="mtitle">Ветер = рынок</div>
+      <div class="mbody">Меняется без предупреждения. Команда учится читать сигналы, корректировать курс и не паниковать при смене условий.</div>
+      <span class="pb-tag">Стратегическая гибкость</span>
+    </div>
+    <div class="pb-metaphor-item">
+      <div class="mtitle">Регата = конкурентная среда</div>
+      <div class="mbody">За 4 часа команда принимает сотни микрорешений. Скорость мышления, коммуникация, доверие — всё проверяется в деле.</div>
+      <span class="pb-tag">Принятие решений</span>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК В — ЧТО ПОЛУЧИТ КОМАНДА -->
+<section class="pb-section" id="results">
+  <div class="pb-label">Результат</div>
+  <h2 class="pb-title">Что увезёт<br><em>ваша команда</em></h2>
+  <p class="pb-intro">Не сертификат и не фотографии. Реальные изменения в том, как люди работают вместе — уже на следующей неделе.</p>
+  <div class="pb-results-grid">
+    <div class="pb-result-card">
+      <div class="rnum">01</div>
+      <div class="rtitle">Доверие, которое не купить на тренинге</div>
+      <div class="rdesc">Когда от действий коллеги зависит твоя безопасность на воде — это не упражнение. Это настоящий опыт доверия.</div>
+    </div>
+    <div class="pb-result-card">
+      <div class="rnum">02</div>
+      <div class="rtitle">Чёткое понимание ролей</div>
+      <div class="rdesc">Яхта обнажает кто лидер, кто исполнитель, кто стратег. Команда видит себя со стороны и возвращается с новым пониманием.</div>
+    </div>
+    <div class="pb-result-card">
+      <div class="rnum">03</div>
+      <div class="rtitle">Навык решений под давлением</div>
+      <div class="rdesc">Сотни микрорешений за день. Ветер, скорость, соперник. Мышцы быстрого мышления прокачиваются физически.</div>
+    </div>
+    <div class="pb-result-card">
+      <div class="rnum">04</div>
+      <div class="rtitle">Общий опыт, который объединяет</div>
+      <div class="rdesc">Совместная победа в регате или совместная ошибка на воде — это общая история. Такое не забывают и не обсуждают в Slack.</div>
+    </div>
+  </div>
+  <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--p-gold-dim);">
+    <img src="images/sertifikaty.jpg" alt="Вручение сертификатов Матрос-Юнга" style="width: 100%; display: block;">
+  </div>
+</section>
+
+<section id="program">
+  <div class="section-tag">Программа</div>
+  <h2>Как проходит<br><em>день на воде</em></h2>
+  <p class="section-lead">Программа гибкая и настраивается под формат и размер вашей команды.</p>
+  <div class="program-grid">
+    <div class="prog-card">
+      <div class="prog-num">01 · Сбор</div>
+      <h3>Встреча и брифинг</h3>
+      <p>Знакомство с клубом, инструктаж по безопасности, разбивка на команды и экипажи. Первые переговоры и знакомство с яхтой на берегу.</p>
+    </div>
+    <div class="prog-card">
+      <div class="prog-num">02 · Обучение</div>
+      <h3>Основы управления</h3>
+      <p>Короткий инструктаж — самое необходимое, чтобы безопасно выйти на воду. Базовые команды, роли в экипаже.</p>
+    </div>
+    <div class="prog-card">
+      <div class="prog-num">03 · Вода</div>
+      <h3>Выход на яхте</h3>
+      <p>Команды выходят в море под руководством инструкторов. Маневрирование, взаимодействие, работа с парусами. Каждый в роли.</p>
+    </div>
+    <div class="prog-card">
+      <div class="prog-num">04 · Гонка</div>
+      <h3>Мини-регата</h3>
+      <p>Дружеская гонка между командами. Соревнование выявляет лидеров, учит стратегии и поднимает азарт. Лучший финал дня.</p>
+    </div>
+    <div class="prog-card">
+      <div class="prog-num">05 · Разбор</div>
+      <h3>Итоги и рефлексия</h3>
+      <p>Обсуждение дня: что сработало, кто удивил, чему научились. По запросу — фасилитация от тренера клуба.</p>
+    </div>
+    <div class="prog-card">
+      <div class="prog-num">06 · Атмосфера</div>
+      <h3>Неформальное общение</h3>
+      <p>После гонки — тёплая атмосфера на берегу. Ваша команда уже другая.</p>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК Г — ОТЗЫВЫ -->
+<section class="pb-section" id="reviews">
+  <div class="pb-label">Отзывы</div>
+  <h2 class="pb-title">Что говорят<br><em>те, кто был на воде</em></h2>
+  <p class="pb-intro">Команды, которые прошли тимбилдинг в Parusa Yacht Club.</p>
+  <div class="pb-reviews-grid">
+    <div class="pb-review-card">
+      <div class="pb-stars">★★★★★</div>
+      <div class="pb-quote">Думали, будет просто весёлый выезд. Оказалось — настоящий тест для команды. Уже на третьем манёвре стало понятно, кто реально слышит других, а кто привык тянуть одеяло. После регаты разговор получился честнее, чем на любой ретроспективе за последние два года.</div>
+      <div class="pb-person">
+        <div class="pb-avatar">ДМ</div>
+        <div>
+          <div class="pb-person-name">Дана Мусина</div>
+          <div class="pb-person-role">HR-директор</div>
+          <span class="pb-company">Podpishi.kz</span>
+        </div>
+      </div>
+    </div>
+    <div class="pb-review-card">
+      <div class="pb-stars">★★★★★</div>
+      <div class="pb-quote">Брали формат под управленческую команду — 14 человек, три яхты. Ребята, которые в офисе друг другу слова лишнего не скажут, на воде вдруг начали реально работать вместе. Вечером обсуждали не рабочие вопросы, а то, как друг друга видят. Это дорогого стоит.</div>
+      <div class="pb-person">
+        <div class="pb-avatar">АС</div>
+        <div>
+          <div class="pb-person-name">Арман Сейткали</div>
+          <div class="pb-person-role">Генеральный директор</div>
+          <span class="pb-company">Senim Logistics</span>
+        </div>
+      </div>
+    </div>
+    <div class="pb-review-card">
+      <div class="pb-stars">★★★★★</div>
+      <div class="pb-quote">Организовывали для отдела продаж — 20 человек. Хотели встряхнуть после тяжёлого квартала. Получили больше, чем ожидали: люди вернулись другими. Два менеджера, которые полгода не могли найти общий язык, после регаты сами пришли друг к другу. Рекомендую без оговорок.</div>
+      <div class="pb-person">
+        <div class="pb-avatar">ЖН</div>
+        <div>
+          <div class="pb-person-name">Жанна Нурланова</div>
+          <div class="pb-person-role">Директор по персоналу</div>
+          <span class="pb-company">Alma Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="section-tag">Стоимость</div>
+  <h2><em>Индивидуальный</em><br>расчёт для команды</h2>
+  <div class="price-wrap">
+    <div class="price-card">
+      <div class="price-label">Тимбилдинг на яхте</div>
+      <h3>Полный день на воде</h3>
+      <div class="price-amount">от 40 000 <span>₸/чел</span></div>
+      <div class="price-note">Итоговая цена зависит от размера группы и программы. Чем больше команда — тем выгоднее.</div>
+      <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; margin-top:4px;">Включено</div>
+      <ul class="price-includes">
+        <li>Яхты SB20 для всех команд (4 чел/яхта)</li>
+        <li>Инструкторы клуба</li>
+        <li>Инструктаж и тренировочный выход</li>
+        <li>Спасательное снаряжение</li>
+      </ul>
+      <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; margin-top:20px;">По запросу</div>
+      <ul class="price-includes">
+        <li>Командный коучинг по стандарту ICF</li>
+        <li>Дружеская регата между командами</li>
+        <li>Вечерний разбор: командная динамика</li>
+        <li>Фото и видео с мероприятия</li>
+        <li>Кофе-брейки</li>
+        <li>Обед и ужин</li>
+        <li>Проживание</li>
+      </ul>
+    </div>
+    <div class="price-info">
+      <h3>Как обсудить</h3>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <p><strong>Напишите в WhatsApp</strong>Расскажите о команде — количество человек, даты, задачи. Сделаем предложение.</p>
+      </div>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <p><strong>От 6 до 30+ человек</strong>Формируем нужное количество яхт. Работаем с командами любого размера.</p>
+      </div>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <p><strong>Удобная дата</strong>Будние и выходные дни. Планируем заранее.</p>
+      </div>
+      <div class="info-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <p><strong>Капчагай</strong>1 час от Алматы по трассе А-2</p>
+      </div>
+      <div style="margin-top: 28px;">
+        <a href="#register" class="btn-primary" style="display: block; text-align: center; padding: 15px 32px;">Обсудить мероприятие →</a>
+        <a href="/parusa-teambuilding-32.html" class="btn-outline" style="display: block; text-align: center; padding: 15px 32px; margin-top: 12px;">Предварительная программа на 32 человека →</a>
+        <a href="/parusa-teambuilding-20.html" class="btn-outline" style="display: block; text-align: center; padding: 15px 32px; margin-top: 12px;">Предварительная программа на 20 человек →</a>
+        <a href="/parusa-teambuilding-coaching-16.html" class="btn-outline" style="display: block; text-align: center; padding: 15px 32px; margin-top: 12px;">Предварительная программа на 16 человек + Командный коучинг →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register">
+  <div class="register-wrap">
+    <div class="register-text">
+      <div class="section-tag">Запрос</div>
+      <h2>Обсудим<br><em>вашу идею</em></h2>
+      <p>Напишите нам в WhatsApp — расскажите о количестве участников, предпочтительных датах и задачах. Мы предложим подходящий формат и рассчитаем стоимость.</p>
+      <p>Каждый тимбилдинг — уникальный. Подстраиваем программу под ваши цели.</p>
+    </div>
+    <div class="register-form-wrap">
+      <h3>Обсудить тимбилдинг</h3>
+      <p>Командное мероприятие на яхтах · Капчагай</p>
+      <div style="margin: 32px 0 24px;">
+        <a href="https://wa.me/message/OC5WYE4UZWX2N1?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BE%20%D0%A2%D0%B8%D0%BC%D0%B1%D0%B8%D0%BB%D0%B4%D0%B8%D0%BD%D0%B3%D0%B5%20%D0%BD%D0%B0%20%D1%8F%D1%85%D1%82%D0%B5." target="_blank" rel="noopener" class="btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 32px; font-size: 16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Написать в WhatsApp
+        </a>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; text-align: center;">Расскажите о команде и датах — подготовим предложение.<br>Ответим в течение нескольких часов.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Капчагайский яхт-клуб</div>
+      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 6px;">parusa.kz</p>
+      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 4px;">2026</p>
+    </div>
+    <div class="footer-links">
+      <a href="/">Главная</a>
+      <a href="/#products">Программы</a>
+      <a href="/#membership">Членство</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener">Адрес</a>
+    </div>
+    <div class="footer-icons">
+      <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-wa.avif" alt="WhatsApp"></a>
+      <a href="https://instagram.com/parus.kapchagay" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-ig.jpg" alt="Instagram"></a>
+      <a href="tel:+77015334340" class="footer-icon-link"><img src="images/icon-phone.png" alt="Телефон"></a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Капчагайский яхт-клуб · Капчагай, Казахстан</div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>Тимбилдинг на яхте</strong> — от 40 000 ₸/чел</div>
+  <a href="#register" class="btn-primary">Обсудить →</a>
+</div>
+
+<script>
+  const stickyCta = document.getElementById('stickyCta');
+  const hero = document.getElementById('hero');
+  const register = document.getElementById('register');
+  window.addEventListener('scroll', () => {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const registerTop = register.getBoundingClientRect().top;
+    if (heroBottom < 0 && registerTop > window.innerHeight) { stickyCta.classList.add('visible'); }
+    else { stickyCta.classList.remove('visible'); }
+  });
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+    document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    navMobile.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>

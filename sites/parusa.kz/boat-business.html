@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лодка как модель бизнеса — Стратегическая сессия · Parusa Yacht Club</title>
+<meta name="description" content="Стратегическая сессия для бизнеса на яхтах SB20. Командный коучинг ICF + выход на воду. Капчагай, Казахстан. Parusa Yacht Club.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628; --navy-mid: #152744; --ocean: #1a4a7a;
+    --gold: #c9a96e; --gold-light: #e8d5a8; --cream: #f7f3ec;
+    --white: #ffffff; --text-muted: rgba(247,243,236,0.6); --text-light: rgba(247,243,236,0.85);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); overflow-x: hidden; line-height: 1.6; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(10,22,40,0.97), transparent); backdrop-filter: blur(4px); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo span { color: var(--cream); font-size: 13px; display: block; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; font-weight: 300; opacity: 0.7; }
+  .logo img { height: 36px; width: auto; filter: brightness(0) invert(1); flex-shrink: 0; }
+  nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+  nav ul li a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 10px 24px; border-radius: 2px; font-weight: 500 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 200; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile { display: none; position: fixed; inset: 0; z-index: 150; background: rgba(10,22,40,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { color: var(--cream); text-decoration: none; font-size: 20px; font-weight: 400; letter-spacing: 0.06em; transition: color 0.2s; }
+  .nav-mobile a:hover { color: var(--gold); }
+  .nav-mobile .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 14px 36px; border-radius: 2px; font-weight: 500; margin-top: 8px; }
+  footer { background: rgba(5,11,20,1); padding: 32px 48px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--gold); }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: rgba(247,243,236,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom { max-width: 1100px; margin: 16px auto 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(247,243,236,0.25); }
+
+  /* HERO */
+  #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 140px 48px 100px; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.60) 55%, rgba(10,22,40,0.25) 100%), url('images/strategy-team.jpg') center 40% / cover no-repeat; }
+  .waves { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; overflow: hidden; }
+  .wave { position: absolute; bottom: 0; width: 200%; height: 100%; background: rgba(21,39,68,0.4); border-radius: 50% 50% 0 0 / 20% 20% 0 0; }
+  .wave-1 { animation: wave 8s ease-in-out infinite; }
+  .wave-2 { background: rgba(10,22,40,0.5); animation: wave 12s ease-in-out infinite reverse; height: 75%; }
+  @keyframes wave { 0%, 100% { transform: translateX(-25%) scaleY(1); } 50% { transform: translateX(-10%) scaleY(1.1); } }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .back-link { font-size: 13px; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; margin-bottom: 28px; }
+  .back-link:hover { color: var(--gold); }
+  .hero-tag { display: inline-block; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 6px 16px; border-radius: 2px; margin-bottom: 24px; font-weight: 500; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 6vw, 74px); font-weight: 600; line-height: 1.05; color: var(--white); margin-bottom: 24px; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 17px; color: var(--text-light); max-width: 520px; margin-bottom: 40px; font-weight: 300; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline { border: 1px solid rgba(247,243,236,0.35); color: var(--cream); padding: 14px 32px; border-radius: 2px; font-size: 15px; font-weight: 400; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-pills { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 8px 18px; font-size: 13px; color: var(--text-light); }
+
+  /* SECTIONS */
+  section { padding: 96px 48px; }
+  .section-tag { display: inline-block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.5vw, 54px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+  .section-lead { font-size: 17px; color: var(--text-light); max-width: 600px; font-weight: 300; line-height: 1.75; margin-bottom: 48px; }
+  .inner { max-width: 1100px; margin: 0 auto; }
+
+  /* STATS */
+  #stats { background: var(--navy-mid); padding: 0; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat-item { padding: 40px 32px; border-right: 1px solid rgba(255,255,255,0.06); text-align: center; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 400; color: var(--gold); line-height: 1; display: block; }
+  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.04em; }
+
+  /* CONCEPT */
+  #concept { background: var(--navy); }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+  .concept-card { background: var(--navy-mid); padding: 40px 36px; border: 1px solid rgba(255,255,255,0.06); transition: border-color 0.3s; }
+  .concept-card:hover { border-color: rgba(201,169,110,0.3); }
+  .concept-icon { font-size: 32px; margin-bottom: 20px; }
+  .concept-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--white); margin-bottom: 12px; }
+  .concept-card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+  .concept-tag { display: inline-block; margin-top: 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 4px 12px; border-radius: 2px; }
+
+  /* PREP */
+  #prep { background: var(--navy-mid); }
+  .prep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+  .prep-card { background: var(--navy); padding: 36px 32px; border: 1px solid rgba(255,255,255,0.06); }
+  .prep-step { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .prep-icon { font-size: 28px; margin-bottom: 16px; }
+  .prep-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--white); margin-bottom: 10px; }
+  .prep-card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+  .prep-badge { display: inline-block; margin-top: 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 4px 12px; border-radius: 2px; }
+
+  /* TIMELINE */
+  #program { background: var(--navy); }
+  .timeline { position: relative; padding-left: 2px; max-width: 800px; }
+  .tl-line { position: absolute; left: 22px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.5) 10%, rgba(201,169,110,0.5) 90%, transparent); }
+  .tl-item { display: grid; grid-template-columns: 44px 1fr; gap: 24px; padding-bottom: 32px; position: relative; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-left { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--gold); background: var(--navy); flex-shrink: 0; z-index: 1; }
+  .tl-time { font-size: 11px; font-weight: 500; color: var(--gold); margin-top: 6px; white-space: nowrap; }
+  .tl-card { background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.07); border-radius: 2px; padding: 22px 26px; }
+  .tl-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .tl-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--white); margin-bottom: 8px; }
+  .tl-card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+  .tl-highlight { margin-top: 12px; padding: 10px 16px; background: rgba(201,169,110,0.08); border-left: 2px solid var(--gold); font-size: 13px; color: var(--text-light); }
+
+  /* INCLUDED */
+  #included { background: var(--navy-mid); }
+  .included-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 48px; }
+  .inc-item { background: var(--navy); border: 1px solid rgba(255,255,255,0.07); padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.2s; }
+  .inc-item:hover { border-color: rgba(201,169,110,0.3); }
+  .inc-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .inc-title { font-size: 14px; color: var(--cream); margin-bottom: 3px; font-weight: 500; }
+  .inc-note { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  /* WHY */
+  #why { background: var(--navy); position: relative; overflow: hidden; }
+  .why-bg { position: absolute; inset: 0; background: url('images/strategy-team.jpg') center / cover no-repeat; opacity: 0.06; }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; position: relative; z-index: 1; }
+  .why-card { background: rgba(21,39,68,0.88); border: 1px solid rgba(255,255,255,0.07); padding: 40px 32px; }
+  .why-card:hover { border-color: rgba(201,169,110,0.3); }
+  .why-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 400; color: var(--gold); opacity: 0.18; line-height: 1; margin-bottom: 20px; display: block; }
+  .why-card h3 { font-size: 17px; font-weight: 500; color: var(--white); margin-bottom: 12px; }
+  .why-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* REGISTER */
+  #register { background: var(--navy-mid); }
+  .register-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .register-photo { width: 100%; height: 480px; object-fit: cover; object-position: center top; border-radius: 2px; }
+  .register-info h2 { margin-bottom: 16px; }
+  .register-info p { font-size: 15px; color: var(--text-light); line-height: 1.75; margin-bottom: 32px; font-weight: 300; }
+  .details-list { list-style: none; margin-bottom: 36px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .details-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; }
+  .details-list li span:first-child { color: var(--text-muted); }
+  .details-list li span:last-child { color: var(--cream); font-weight: 500; }
+  .wa-btn { display: inline-flex; align-items: center; gap: 12px; background: #25D366; color: #fff; padding: 16px 32px; border-radius: 2px; font-size: 15px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
+  .wa-btn:hover { opacity: 0.88; }
+  .wa-btn svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    footer { padding: 28px 24px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    section { padding: 72px 20px; }
+    #hero { padding: 120px 20px 80px; }
+    h1 { font-size: clamp(38px, 9vw, 52px); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 28px 20px; }
+    .concept-grid, .prep-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .register-grid { grid-template-columns: 1fr; }
+    .register-photo { height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="/"><img src="images/logo-parusa.png" alt="Parusa"><div>Parusa Yacht Club<span>parusa.kz</span></div></a>
+  <ul>
+    <li><a href="/#products">Программы</a></li>
+    <li><a href="/#why">О клубе</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+    <li><a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta" target="_blank" rel="noopener">Записаться</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="/#products" onclick="closeMobileMenu()">Программы</a>
+  <a href="/#why" onclick="closeMobileMenu()">О клубе</a>
+  <a href="/#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta" target="_blank" rel="noopener">Записаться</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="waves">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+  </div>
+  <div class="hero-content">
+    <a href="https://parusa.kz" class="back-link">← Все программы</a>
+    <div class="hero-tag">Корпоративный тимбилдинг · Parusa Yacht Club</div>
+    <h1>Лодка как<br><em>модель бизнеса</em></h1>
+    <p class="hero-sub">Стратегическая сессия для бизнес-команд. Командный коучинг ICF + практика на яхтах SB20. Капчагай.</p>
+    <div class="hero-btns">
+      <a href="#register" class="btn-primary">Обсудить программу</a>
+      <a href="#program" class="btn-outline">Программа дня →</a>
+    </div>
+    <div class="hero-pills">
+      <span class="pill">⛵ Яхты SB20</span>
+      <span class="pill">🧭 Коуч ICF</span>
+      <span class="pill">📍 Капчагай</span>
+      <span class="pill">🏆 Сертификат клуба</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">4</span>
+      <div class="stat-label">Яхты SB20</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2ч</span>
+      <div class="stat-label">Стратегическая сессия ICF</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2ч</span>
+      <div class="stat-label">Выход на воду</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">до 40</span>
+      <div class="stat-label">Участников</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT -->
+<section id="concept">
+  <div class="inner">
+    <div class="section-tag">Концепция</div>
+    <h2>Яхта — это<br><em>бизнес-команда</em></h2>
+    <p class="section-lead">Роли на борту — прямая метафора корпоративной структуры. Шкипер, гротовый, баковый, шкотовый — каждый несёт ответственность за общий результат. На воде это чувствуется физически.</p>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="concept-icon">⚓</div>
+        <h3>Шкипер = Лидер</h3>
+        <p>Принимает решения в условиях неопределённости. Управляет командой, а не верёвками. Отвечает за результат и атмосферу на борту.</p>
+        <span class="concept-tag">Управление</span>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">⛵</div>
+        <h3>Экипаж = Команда</h3>
+        <p>Каждая роль критична. Ни один человек не может выиграть гонку в одиночку. Доверие и синхронизация — не опция, а необходимость.</p>
+        <span class="concept-tag">Командная динамика</span>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">💨</div>
+        <h3>Ветер = Рынок</h3>
+        <p>Ветер не спрашивает разрешения. Задача команды — быстро адаптироваться и использовать его энергию, а не бороться с ним.</p>
+        <span class="concept-tag">Адаптивность</span>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🧭</div>
+        <h3>Курс = Стратегия</h3>
+        <p>Без чёткого курса яхта движется хаотично. Стратегическая сессия ICF помогает синхронизировать цели и распределить роли до выхода на воду.</p>
+        <span class="concept-tag">Стратегия</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДГОТОВКА -->
+<section id="prep">
+  <div class="inner">
+    <div class="section-tag">За неделю до мероприятия</div>
+    <h2>Онлайн-подготовка<br><em>команды</em></h2>
+    <p class="section-lead">За неделю до выхода каждый участник получает доступ к онлайн-материалам. Это создаёт вовлечённость ещё до старта и сокращает береговой инструктаж в день мероприятия.</p>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="prep-step">Шаг 1</div>
+        <div class="prep-icon">📖</div>
+        <h3>Онлайн-материалы</h3>
+        <p>Каждый участник получает доступ к курсу с морской тематикой: теория паруса, роли экипажа, базовые команды и правила безопасности на воде. Формат — короткие видео и карточки.</p>
+        <span class="prep-badge">~30 минут</span>
+      </div>
+      <div class="prep-card">
+        <div class="prep-step">Шаг 2</div>
+        <div class="prep-icon">✅</div>
+        <h3>Онлайн-экзамен</h3>
+        <p>После изучения материалов — короткий тест. Результаты учитываются при формировании экипажей: сильные участники становятся шкиперами. Это мотивирует готовиться серьёзно.</p>
+        <span class="prep-badge">15 вопросов</span>
+      </div>
+      <div class="prep-card">
+        <div class="prep-step">Шаг 3</div>
+        <div class="prep-icon">⛵</div>
+        <h3>Распределение ролей</h3>
+        <p>На основе результатов экзамена клуб заранее формирует экипажи. Каждый знает свою роль ещё до приезда: шкипер, гротовый, баковый или шкотовый.</p>
+        <span class="prep-badge">4 роли · 4 яхты</span>
+      </div>
+      <div class="prep-card">
+        <div class="prep-step">Шаг 4</div>
+        <div class="prep-icon">🏆</div>
+        <h3>Именной сертификат</h3>
+        <p>После обучения и выхода на воду каждый участник получает официальный именной сертификат Parusa Yacht Club «Матрос-Юнга» с датой и подписью.</p>
+        <span class="prep-badge">Именной · официальный</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОГРАММА ДНЯ -->
+<section id="program">
+  <div class="inner">
+    <div class="section-tag">День мероприятия</div>
+    <h2>Программа<br><em>дня</em></h2>
+    <p class="section-lead">Полный день на базе Parusa Yacht Club. От стратегической сессии до выхода в открытую воду — всё на одной территории.</p>
+    <div class="timeline">
+      <div class="tl-line"></div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">09:30</div></div>
+        <div class="tl-card">
+          <div class="tl-tag">Заезд · Регистрация</div>
+          <h3>Welcome на базе</h3>
+          <p>Прибытие участников. Регистрация, размещение. Приветственный кофе-брейк на террасе с видом на озеро.</p>
+          <div class="tl-highlight">☕ Кофе, чай, лёгкие закуски · вид на Капчагай</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">10:00</div></div>
+        <div class="tl-card">
+          <div class="tl-tag">ICF-коучинг · 2 часа</div>
+          <h3>Стратегическая сессия</h3>
+          <p>Командная работа под руководством сертифицированного ICF-коуча. Фокус — на командной динамике, распределении ролей и синхронизации целей. Методология связана с морской метафорой: экипаж как команда, шторм как кризис, курс как стратегия.</p>
+          <div class="tl-highlight">🧭 ICF-сертифицированный коуч · групповые и мини-групповые форматы</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">12:00</div></div>
+        <div class="tl-card">
+          <div class="tl-tag">Питание</div>
+          <h3>Обед</h3>
+          <p>Горячее блюдо, свежий салат, чай и кофе. Подаётся на открытой площадке базы.</p>
+          <div class="tl-highlight">🍽 Горячее · салат · чай / кофе</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">13:00</div></div>
+        <div class="tl-card">
+          <div class="tl-tag">Курс «Матрос-Юнга»</div>
+          <h3>Береговой инструктаж</h3>
+          <p>Практический курс на берегу. Устройство яхты SB20, роли экипажа, основные манёвры, команды и правила безопасности. Каждый участник понимает свою роль до выхода на воду.</p>
+          <div class="tl-highlight">⛵ Лодка как модель бизнеса: шкипер = лидер, экипаж = команда, ветер = рынок</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">15:00</div></div>
+        <div class="tl-card">
+          <div class="tl-tag">Тимбилдинг на воде · 2 часа</div>
+          <h3>Выход на яхтах SB20</h3>
+          <p>4 яхты класса SB20, экипажи с ротацией. Командные упражнения, мини-регата, парусные манёвры под руководством инструкторов. 2 моторные лодки сопровождения на воде.</p>
+          <div class="tl-highlight">🌊 4 инструктора на яхтах · 2 куратора клуба · 2 моторные лодки поддержки</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">17:00</div></div>
+        <div class="tl-card">
+          <div class="tl-tag">Церемония</div>
+          <h3>Вручение сертификатов «Матрос-Юнга»</h3>
+          <p>Торжественное вручение именных сертификатов Parusa Yacht Club каждому участнику. Официальный документ с именем, датой и подписью.</p>
+          <div class="tl-highlight">🏆 Именной сертификат · памятные фото</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">17:30</div></div>
+        <div class="tl-card">
+          <div class="tl-tag">Завершение дня</div>
+          <h3>Вечерний чай</h3>
+          <p>Вечерний чай с лёгкими закусками на террасе. Свободное время, общение, доступ к пирсам и пляжу клуба.</p>
+          <div class="tl-highlight">🍵 Чай · самса · лёгкие закуски · закат над озером</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ВКЛЮЧЕНО -->
+<section id="included">
+  <div class="inner">
+    <div class="section-tag">Полный пакет</div>
+    <h2>Что <em>включено</em></h2>
+    <p class="section-lead">Всё организационное, логистическое и методологическое сопровождение — без доплат.</p>
+    <div class="included-grid">
+      <div class="inc-item"><div class="inc-icon">☕</div><div><div class="inc-title">Welcome кофе-брейк</div><div class="inc-note">Кофе, чай, лёгкие закуски при заезде</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🍽</div><div><div class="inc-title">Обед</div><div class="inc-note">Горячее блюдо, салат, чай / кофе</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🍵</div><div><div class="inc-title">Вечерний чай</div><div class="inc-note">Чай, самса, лёгкие закуски</div></div></div>
+      <div class="inc-item"><div class="inc-icon">💧</div><div><div class="inc-title">Вода</div><div class="inc-note">0,5 л на человека в течение всего дня</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🧭</div><div><div class="inc-title">Стратегическая сессия</div><div class="inc-note">ICF-сертифицированный коуч, 2 часа</div></div></div>
+      <div class="inc-item"><div class="inc-icon">📖</div><div><div class="inc-title">Онлайн-материалы</div><div class="inc-note">Курс с морской тематикой за неделю до события</div></div></div>
+      <div class="inc-item"><div class="inc-icon">✅</div><div><div class="inc-title">Онлайн-экзамен</div><div class="inc-note">До мероприятия, результаты влияют на роли</div></div></div>
+      <div class="inc-item"><div class="inc-icon">⛵</div><div><div class="inc-title">4 яхты SB20</div><div class="inc-note">С ротацией по ролям</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🚤</div><div><div class="inc-title">2 моторные лодки</div><div class="inc-note">Сопровождение и безопасность на воде</div></div></div>
+      <div class="inc-item"><div class="inc-icon">👨‍✈️</div><div><div class="inc-title">4 инструктора на воде</div><div class="inc-note">Сертифицированные шкиперы на каждой яхте</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🤝</div><div><div class="inc-title">2 куратора от клуба</div><div class="inc-note">Координация программы весь день</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🦺</div><div><div class="inc-title">Снаряжение безопасности</div><div class="inc-note">Жилеты для всех участников</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🏖</div><div><div class="inc-title">Инфраструктура клуба</div><div class="inc-note">Пляж, пирсы, зоны отдыха</div></div></div>
+      <div class="inc-item"><div class="inc-icon">📸</div><div><div class="inc-title">Фото и видеоматериалы</div><div class="inc-note">Съёмка мероприятия, передача после события</div></div></div>
+      <div class="inc-item"><div class="inc-icon">🏆</div><div><div class="inc-title">Именные сертификаты</div><div class="inc-note">«Матрос-Юнга» Parusa Yacht Club — каждому</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОЧЕМУ РАБОТАЕТ -->
+<section id="why">
+  <div class="why-bg"></div>
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="section-tag">Почему это работает</div>
+    <h2>Яхта — <em>лучший тренажёр</em><br>для команды</h2>
+    <p class="section-lead">На воде невозможно имитировать вовлечённость. Ветер и волны создают реальные условия, в которых проявляется настоящая командная динамика.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-num">I</span>
+        <h3>Реальные условия</h3>
+        <p>Никаких ролевых игр в переговорной. Только Капчагай, ветер и гоночная яхта SB20. Стресс настоящий — и результат настоящий.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">II</span>
+        <h3>Командная ответственность</h3>
+        <p>Каждый член экипажа отвечает за свою роль. Ошибка одного — это результат всей команды. Именно так работает бизнес.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">III</span>
+        <h3>Метафора остаётся</h3>
+        <p>«Лодка как модель бизнеса» — инсайт, который участники помнят через месяц. Стратегическая сессия ICF закрепляет его на берегу.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register">
+  <div class="inner">
+    <div class="register-grid">
+      <img src="images/strategy-register.jpg" alt="Стратегическая сессия для бизнеса — Parusa Yacht Club" class="register-photo">
+      <div class="register-info">
+        <div class="section-tag">Запись</div>
+        <h2>Обсудим<br><em>вашу команду</em></h2>
+        <p>Напишите нам в WhatsApp — расскажем о программе, датах и стоимости. Подберём формат под размер и задачи вашей команды.</p>
+        <ul class="details-list">
+          <li><span>Участников</span><span>от 12 до 40 человек</span></li>
+          <li><span>Место</span><span>Конаев (Капчагай)</span></li>
+          <li><span>Сезон</span><span>Май — Сентябрь</span></li>
+          <li><span>Формат</span><span>Полный день (09:30–18:00)</span></li>
+          <li><span>Телефон</span><span>+7 701 533 43 40</span></li>
+        </ul>
+        <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="wa-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Написать в WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Parusa Yacht Club</div>
+    <div class="footer-links">
+      <a href="/#products">Программы</a>
+      <a href="/#why">О клубе</a>
+      <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener">Адрес</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Parusa Yacht Club · Капчагай, Казахстан</div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    navMobile.classList.remove('open');
+  }
+</script>
+</body>
+</html>
