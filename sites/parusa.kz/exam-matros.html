@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экзамен Матроса — Parusa.kz</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A2744;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --white: #FFFFFF;
+    --muted: #6B7A99;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Jost', sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+  .page-bg { min-height: 100vh; background: linear-gradient(180deg, #1A2744 0%, #0D1628 100%); position: relative; overflow: hidden; }
+  .page-bg::before { content: ''; position: fixed; top: -50%; left: -20%; width: 70%; height: 70%; background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none; }
+  .container { max-width: 740px; margin: 0 auto; padding: 0 20px 60px; position: relative; z-index: 1; }
+
+  .header { text-align: center; padding: 60px 0 40px; border-bottom: 1px solid rgba(201,168,76,0.2); margin-bottom: 40px; }
+  .club-name { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .header h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 8px; }
+  .header h1 em { font-style: italic; color: var(--gold); }
+  .header-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 12px; }
+  .meta-row { display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .meta-item { text-align: center; }
+  .meta-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--gold); display: block; }
+  .meta-label { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; }
+
+  .progress-wrap { position: sticky; top: 0; z-index: 10; background: rgba(13,22,40,0.95); backdrop-filter: blur(12px); padding: 10px 0; margin-bottom: 32px; border-bottom: 1px solid rgba(201,168,76,0.15); display: none; }
+  .progress-inner { max-width: 740px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 14px; }
+  .progress-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+  .progress-text { font-size: 12px; font-weight: 500; color: var(--gold); white-space: nowrap; min-width: 60px; text-align: right; }
+
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.25); width: 100%; }
+  .section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+
+  .question-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; margin-bottom: 16px; transition: border-color 0.2s, background 0.2s; }
+  .question-card:hover { border-color: rgba(201,168,76,0.2); }
+  .question-card.answered { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
+  .q-num { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .q-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 18px; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option-label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer; transition: all 0.15s ease; color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.5; }
+  .option-label:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); color: var(--white); }
+  .option-label input[type="radio"] { display: none; }
+  .option-dot { width: 18px; height: 18px; min-width: 18px; border: 1.5px solid rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 0.15s; }
+  .option-label.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); color: var(--white); }
+  .option-label.selected .option-dot { border-color: var(--gold); background: var(--gold); }
+  .option-label.selected .option-dot::after { content: ''; width: 6px; height: 6px; background: var(--navy); border-radius: 50%; }
+  .option-label.correct { border-color: #40c97e !important; background: rgba(64,201,126,0.1) !important; color: #80e6b0 !important; }
+  .option-label.correct .option-dot { border-color: #40c97e; background: #40c97e; }
+  .option-label.correct .option-dot::after { content: '✓'; color: white; font-size: 11px; font-weight: 700; }
+  .option-label.wrong { border-color: #e05e5e !important; background: rgba(224,94,94,0.08) !important; color: rgba(255,255,255,0.4) !important; text-decoration: line-through; }
+  .explanation { margin-top: 12px; padding: 12px 14px; background: rgba(201,168,76,0.08); border-left: 2px solid var(--gold); border-radius: 0 6px 6px 0; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; display: none; }
+  .explanation.visible { display: block; }
+
+  .submit-wrap { text-align: center; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .btn-submit { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); background: var(--gold); border: none; padding: 16px 48px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .unanswered-msg { font-size: 13px; color: rgba(255,150,150,0.8); margin-top: 12px; display: none; }
+
+  .results-screen { display: none; text-align: center; padding: 60px 0; }
+  .result-icon { font-size: 64px; margin-bottom: 24px; }
+  .result-title { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .result-score { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 700; color: var(--gold); margin: 16px 0; line-height: 1; }
+  .result-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+  .result-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 400px; margin: 0 auto 40px; }
+  .rb-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px 8px; }
+  .rb-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--white); }
+  .rb-num.green { color: #40c97e; }
+  .rb-num.red { color: #e05e5e; }
+  .rb-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .result-message { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 460px; margin: 0 auto 32px; padding: 20px 24px; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; background: rgba(201,168,76,0.04); }
+  .btn-retry { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1.5px solid var(--gold); padding: 14px 40px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+  .btn-retry:hover { background: rgba(201,168,76,0.1); }
+  .review-link { display: inline-block; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); cursor: pointer; margin-top: 16px; text-decoration: underline; text-underline-offset: 3px; }
+  .review-link:hover { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 34px; }
+    .q-text { font-size: 17px; }
+    .result-score { font-size: 56px; }
+    .meta-row { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-bg">
+
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-inner">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">0 / 20</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="header">
+    <div class="club-name">Parusa.kz · Яхт-клуб · Конаев</div>
+    <h1>Онлайн-экзамен<br><em>Матрос SB20</em></h1>
+    <div class="header-sub">Устройство яхты · Роли экипажа · Безопасность · Маневры</div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-num">35</span><span class="meta-label">вопросов</span></div>
+      <div class="meta-item"><span class="meta-num">75%</span><span class="meta-label">проходной балл</span></div>
+      <div class="meta-item"><span class="meta-num">15</span><span class="meta-label">минут</span></div>
+    </div>
+  </div>
+
+  <div id="examBlock">
+
+    <!-- SECTION 1 -->
+    <div class="section-tag">Раздел 1 — Устройство яхты SB20</div>
+
+    <div class="question-card" id="qc1">
+      <div class="q-num">Вопрос 01</div>
+      <div class="q-text">Что такое яхта SB20?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Моторная яхта для прогулок по водохранилищу</label>
+        <label class="option-label"><input type="radio" name="q1" value="1"><span class="option-dot"></span>Спортивный гоночный килевой монотип с экипажем 5–7 человек</label>
+        <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Надувная лодка с парусом для начинающих</label>
+        <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Катамаран для командных соревнований</label>
+      </div>
+      <div class="explanation">SB20 — килевой спортивный монотип (все лодки одинаковые). Экипаж 5–7 человек. Используется для гонок, обучения и тимбилдинга.</div>
+    </div>
+
+    <div class="question-card" id="qc2">
+      <div class="q-num">Вопрос 02</div>
+      <div class="q-text">Что такое грот?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Передний парус, крепится к штагу</label>
+        <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Большой цветной парус для полных курсов</label>
+        <label class="option-label"><input type="radio" name="q2" value="1"><span class="option-dot"></span>Главный парус, крепится к мачте и гику</label>
+        <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Парус для слабого ветра, заменяет стаксель</label>
+      </div>
+      <div class="explanation">Грот — основной парус яхты. Крепится верхней кромкой (ликтросом) к мачте, нижней — к гику. Управляется гика-шкотом.</div>
+    </div>
+
+    <div class="question-card" id="qc3">
+      <div class="q-num">Вопрос 03</div>
+      <div class="q-text">Как называется горизонтальная перекладина, удерживающая нижнюю часть грота?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Штаг</label>
+        <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Бушприт</label>
+        <label class="option-label"><input type="radio" name="q3" value="1"><span class="option-dot"></span>Гик</label>
+        <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Ванта</label>
+      </div>
+      <div class="explanation">Гик — горизонтальная рея, крепится к мачте внизу и удерживает нижнюю шкаторину грота. При повороте фордевинд гик переносится с борта на борт — это опасно, поэтому Гротовый предупреждает «Гик!»</div>
+    </div>
+
+    <div class="question-card" id="qc4">
+      <div class="q-num">Вопрос 04</div>
+      <div class="q-text">Что такое генакер (спинакер) и когда его используют?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Запасной стаксель на случай сильного ветра</label>
+        <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Парус для хождения строго против ветра</label>
+        <label class="option-label"><input type="radio" name="q4" value="1"><span class="option-dot"></span>Большой лёгкий парус для полных курсов — бакштаг и фордевинд</label>
+        <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Аварийный парус при повреждении грота</label>
+      </div>
+      <div class="explanation">Генакер (или спинакер) — большой симметричный/асимметричный парус. Используется на полных курсах (ветер сзади или сбоку-сзади). Выпускается через бушприт на носу лодки.</div>
+    </div>
+
+    <div class="question-card" id="qc5">
+      <div class="q-num">Вопрос 05</div>
+      <div class="q-text">Что такое колдунчики и зачем они нужны?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q5" value="1"><span class="option-dot"></span>Лёгкие нити на парусе, показывающие правильную работу паруса и направление потока воздуха</label>
+        <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Узлы на снасти для фиксации паруса</label>
+        <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Декоративные флажки на мачте</label>
+        <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Страховочные верёвки для экипажа</label>
+      </div>
+      <div class="explanation">Колдунчики — тонкие нити (шерсть или лента) на парусе. Когда оба колдунчика летят горизонтально параллельно — парус настроен правильно. Если верхний падает — надо потравить шкот.</div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-tag" style="margin-top:40px">Раздел 2 — Курсы и маневры</div>
+
+    <div class="question-card" id="qc6">
+      <div class="q-num">Вопрос 06</div>
+      <div class="q-text">Бейдевинд — это курс, при котором яхта идёт...</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>Строго против ветра</label>
+        <label class="option-label"><input type="radio" name="q6" value="1"><span class="option-dot"></span>Под острым углом к ветру — паруса подобраны, яхта идёт круто к ветру</label>
+        <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>Строго по ветру</label>
+        <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>Перпендикулярно ветру</label>
+      </div>
+      <div class="explanation">Бейдевинд — острый курс к ветру (угол ~45°). Паруса выбраны (подтянуты). Это самый быстрый курс к наветренному знаку. Галфвинд — 90°, бакштаг — 135°, фордевинд — 180° (прямо по ветру).</div>
+    </div>
+
+    <div class="question-card" id="qc7">
+      <div class="q-num">Вопрос 07</div>
+      <div class="q-text">Чем отличается поворот «оверштаг» от поворота «фордевинд»?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q7" value="1"><span class="option-dot"></span>Оверштаг — нос проходит сквозь ветер, фордевинд — корма проходит через ветер</label>
+        <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Оверштаг — поворот по ветру, фордевинд — против ветра</label>
+        <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Это одно и то же, только разные названия</label>
+        <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Фордевинд — быстрый поворот, оверштаг — медленный</label>
+      </div>
+      <div class="explanation">При оверштаге нос пересекает линию ветра — экипаж перебегает на другой борт, стаксель переносится. При фордевинде корма проходит через ветер — переносится гик (опасно!), предупреждение «Гик!».</div>
+    </div>
+
+    <div class="question-card" id="qc8">
+      <div class="q-num">Вопрос 08</div>
+      <div class="q-text">Команда шкипера «Готовсь к повороту!» — что должен делать стаксельщик?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Немедленно перенести шкот на другой борт</label>
+        <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Потравить шкот до максимума</label>
+        <label class="option-label"><input type="radio" name="q8" value="1"><span class="option-dot"></span>Подготовиться: взять новый шкот в руку, ответить «Готов!»</label>
+        <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Сесть на дно кокпита и ждать команды</label>
+      </div>
+      <div class="explanation">Схема поворота оверштаг: «Готовсь!» → стаксельщики берут новые шкоты в руки и отвечают «Готов!» → «Поворот!» → нос идёт через ветер → стаксельщик стравливает старый и выбирает новый шкот.</div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-tag" style="margin-top:40px">Раздел 3 — Роли экипажа</div>
+
+    <div class="question-card" id="qc9">
+      <div class="q-num">Вопрос 09</div>
+      <div class="q-text">Какова основная задача стаксельщика во время хода на бейдевинде?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Управлять рулём и следить за курсом</label>
+        <label class="option-label"><input type="radio" name="q9" value="1"><span class="option-dot"></span>Держать шкот стакселя, откренивать и синхронно работать с напарником на другом борту</label>
+        <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Следить за временем до старта</label>
+        <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Выпускать и убирать генакер</label>
+      </div>
+      <div class="explanation">Стаксельщики работают в паре (правый и левый борт). Основное: шкот и пагон стакселя + откренивание. Синхронность с напарником — ключ к скорости.</div>
+    </div>
+
+    <div class="question-card" id="qc10">
+      <div class="q-num">Вопрос 10</div>
+      <div class="q-text">Что такое «откренивание» и зачем оно нужно?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Способ быстро развернуть лодку против ветра</label>
+        <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Техника управления стакселем в сильный ветер</label>
+        <label class="option-label"><input type="radio" name="q10" value="1"><span class="option-dot"></span>Вынос тела за борт для выравнивания крена лодки — увеличивает скорость и управляемость</label>
+        <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Снятие паруса для уменьшения парусности в шторм</label>
+      </div>
+      <div class="explanation">Откренивание — экипаж выносит тело на наветренный борт, компенсируя крен от ветра. Чем ровнее яхта — тем выше скорость. На SB20 это делается на трапеции или за борт на трапезах.</div>
+    </div>
+
+    <div class="question-card" id="qc11">
+      <div class="q-num">Вопрос 11</div>
+      <div class="q-text">За что отвечает Тример на яхте SB20?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>Управление гротом и гиком</label>
+        <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>Подъём и уборка генакера через бушприт</label>
+        <label class="option-label"><input type="radio" name="q11" value="1"><span class="option-dot"></span>Закрутка стакселя, помощь при швартовке, багор и муринг</label>
+        <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>Тайминг до старта и слежение за стартовой линией</label>
+      </div>
+      <div class="explanation">Тример — универсальная роль: закрутка стакселя (furling), работа с багром при швартовке, заведение муринга. Это «руки» лодки при манёврах у причала.</div>
+    </div>
+
+    <div class="question-card" id="qc12">
+      <div class="q-num">Вопрос 12</div>
+      <div class="q-text">Какова последовательность правильной отшвартовки от причала?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Сначала поднять паруса, потом отдать швартовы</label>
+        <label class="option-label"><input type="radio" name="q12" value="1"><span class="option-dot"></span>Подготовить паруса → по команде шкипера отдать швартовы → оттолкнуться → поднять стаксель → грот</label>
+        <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Отдать все швартовы одновременно без команды шкипера</label>
+        <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Сначала отойти от причала на вёслах, потом поднять паруса</label>
+      </div>
+      <div class="explanation">Отшвартовка всегда по команде шкипера. Сначала готовим паруса (не поднимаем), отдаём швартовы в правильном порядке, отталкиваемся, и только на чистой воде поднимаем паруса.</div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section-tag" style="margin-top:40px">Раздел 4 — Безопасность</div>
+
+    <div class="question-card" id="qc13">
+      <div class="q-num">Вопрос 13</div>
+      <div class="q-text">Когда на яхте обязательно надевать спасательный жилет?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>Только при шторме и сильном ветре</label>
+        <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>Только новичкам и детям</label>
+        <label class="option-label"><input type="radio" name="q13" value="1"><span class="option-dot"></span>Всегда при нахождении на борту — без исключений</label>
+        <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>Только во время гонки по решению шкипера</label>
+      </div>
+      <div class="explanation">Спасательный жилет — обязателен всегда на борту, без исключений. Это базовое правило безопасности Parusa.kz и любого яхт-клуба.</div>
+    </div>
+
+    <div class="question-card" id="qc14">
+      <div class="q-num">Вопрос 14</div>
+      <div class="q-text">Что делает матрос, если видит человека за бортом?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Прыгает в воду на помощь</label>
+        <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Молча сообщает шкиперу жестом</label>
+        <label class="option-label"><input type="radio" name="q14" value="1"><span class="option-dot"></span>Громко кричит «Человек за бортом!», смотрит на пострадавшего не отводя взгляд, бросает буёк</label>
+        <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Ждёт команды шкипера и ничего не делает</label>
+      </div>
+      <div class="explanation">При ЧЗБ: крик «Человек за бортом!» → не отводить взгляд (ты наблюдатель) → бросить буёк. Дальше — маневр шкипера. Не прыгать за борт без команды!</div>
+    </div>
+
+    <div class="question-card" id="qc15">
+      <div class="q-num">Вопрос 15</div>
+      <div class="q-text">Почему нельзя вставать в кокпите в полный рост во время хода?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Это мешает шкиперу видеть паруса</label>
+        <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Это увеличивает сопротивление ветру и замедляет яхту</label>
+        <label class="option-label"><input type="radio" name="q15" value="1"><span class="option-dot"></span>Опасность удара гиком при повороте и риск потери равновесия — можно упасть за борт</label>
+        <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Это нарушает правила гонок</label>
+      </div>
+      <div class="explanation">Гик движется быстро и на уровне голов. Также при крене или волне легко потерять равновесие стоя. На SB20 нужно передвигаться низко и держаться за леера.</div>
+    </div>
+
+    <div class="question-card" id="qc16">
+      <div class="q-num">Вопрос 16</div>
+      <div class="q-text">Что означает команда «Гик!» во время хода?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>Приготовиться к подъёму грота</label>
+        <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>Стравить гика-шкот</label>
+        <label class="option-label"><input type="radio" name="q16" value="1"><span class="option-dot"></span>Немедленно пригнуться — гик сейчас перелетит с борта на борт</span></label>
+        <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>Выбрать гика-шкот до упора</label>
+      </div>
+      <div class="explanation">«Гик!» — предупреждение от Гротового о переносе гика при фордевинде. Реакция: немедленно пригнуться. Удар гиком по голове — одна из главных причин травм на яхте.</div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section-tag" style="margin-top:40px">Раздел 5 — Гонка и командная работа</div>
+
+    <div class="question-card" id="qc17">
+      <div class="q-num">Вопрос 17</div>
+      <div class="q-text">Что происходит на предгоночном брифинге?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>Технический осмотр яхты перед выходом</label>
+        <label class="option-label"><input type="radio" name="q17" value="1"><span class="option-dot"></span>Шкипер озвучивает погоду, дистанцию, роли каждого и приоритеты гонки</label>
+        <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>Жеребьёвка стартовых позиций</label>
+        <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>Инструктаж по правилам безопасности для новичков</label>
+      </div>
+      <div class="explanation">Брифинг перед гонкой — 3 минуты: ветер и погода, дистанция (количество знаков), роли сегодня, приоритет (старт / тактика / командная работа). Создаёт единство перед стартом.</div>
+    </div>
+
+    <div class="question-card" id="qc18">
+      <div class="q-num">Вопрос 18</div>
+      <div class="q-text">Что такое дебриф после выхода и зачем он нужен?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Разбор ошибок каждого члена экипажа по очереди</label>
+        <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Технический осмотр яхты после возвращения</label>
+        <label class="option-label"><input type="radio" name="q18" value="1"><span class="option-dot"></span>Короткое обсуждение: что сработало хорошо, что улучшить, один фокус на следующий раз</label>
+        <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Запись результатов гонки в журнал клуба</label>
+      </div>
+      <div class="explanation">Дебриф — инструмент роста команды. Всегда начинается с хорошего, потом — что улучшить (без оценок личности), потом — один конкретный фокус. 5–10 минут на берегу.</div>
+    </div>
+
+    <div class="question-card" id="qc19">
+      <div class="q-num">Вопрос 19</div>
+      <div class="q-text">Матрос не понимает команду шкипера во время гонки. Что правильно сделать?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>Промолчать и попробовать угадать что нужно сделать</label>
+        <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>Отказаться выполнять до получения понятной команды</label>
+        <label class="option-label"><input type="radio" name="q19" value="1"><span class="option-dot"></span>Коротко сказать «Не понял!» — шкипер повторит. Говорить это нормально и безопасно.</label>
+        <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>Спросить подробное объяснение у шкипера прямо сейчас</label>
+      </div>
+      <div class="explanation">Психологическая безопасность на борту: говорить «не понял» — нормально и правильно. Лучше уточнить, чем сделать неправильно. Шкипер должен повторить команду короче и чётче.</div>
+    </div>
+
+    <div class="question-card" id="qc20">
+      <div class="q-num">Вопрос 20</div>
+      <div class="q-text">Какой минимальный результат даёт право на сертификат «Матрос-юнга Parusa.kz»?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>50% (10 из 20 вопросов)</label>
+        <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>100% — все вопросы правильно</label>
+        <label class="option-label"><input type="radio" name="q20" value="1"><span class="option-dot"></span>75% (15 из 20 вопросов) + прохождение практического дня</label>
+        <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>Экзамен не нужен — только практика на воде</label>
+      </div>
+      <div class="explanation">Сертификат «Матрос-юнга» выдаётся при двух условиях: онлайн-экзамен ≥75% И прохождение полного практического дня. Только теория или только практика — недостаточно.</div>
+    </div>
+
+    <!-- ПОСТАНОВКА И УБОРКА СТАКСЕЛЯ -->
+    <div class="question-card" id="qc21">
+      <div class="q-num">Вопрос 21</div>
+      <div class="q-text">Что нужно сделать в первую очередь при постановке стакселя?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Поднять стаксель фалом до упора</label>
+        <label class="option-label"><input type="radio" name="q21" value="1"><span class="option-dot"></span>Пристегнуть нижний угол стакселя (галсовый угол) к палубному рыму</label>
+        <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Закрепить шкоты на лебёдках</label>
+        <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Протянуть шкоты через блоки</label>
+      </div>
+      <div class="explanation">Постановка стакселя начинается с крепления галсового угла к палубному рыму у основания штага — это фиксирует парус снизу перед подъёмом.</div>
+    </div>
+
+    <div class="question-card" id="qc22">
+      <div class="q-num">Вопрос 22</div>
+      <div class="q-text">В какой последовательности пристёгиваются ползуны (карабины) стакселя к штагу?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Сверху вниз — от головы паруса к галсовому углу</label>
+        <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>В любом порядке — неважно</label>
+        <label class="option-label"><input type="radio" name="q22" value="1"><span class="option-dot"></span>Снизу вверх — от галсового угла к голове паруса</label>
+        <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Через один — сначала чётные, потом нечётные</label>
+      </div>
+      <div class="explanation">Карабины пристёгиваются снизу вверх — так парус правильно ложится на штаг и не перекручивается при подъёме.</div>
+    </div>
+
+    <div class="question-card" id="qc23">
+      <div class="q-num">Вопрос 23</div>
+      <div class="q-text">Как правильно убрать стаксель?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Отдать шкоты, затем отстегнуть галс и стравить фал</label>
+        <label class="option-label"><input type="radio" name="q23" value="1"><span class="option-dot"></span>Потравить фал, собрать парус руками, отстегнуть карабины снизу вверх, затем отдать галс</label>
+        <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Снять шкоты с лебёдок и отпустить фал резко</label>
+        <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Убрать стаксель можно только на стоянке</label>
+      </div>
+      <div class="explanation">При уборке стакселя фал травится плавно, парус собирается руками чтобы не упал за борт, карабины отстёгиваются снизу вверх, последним отстёгивается галс.</div>
+    </div>
+
+    <!-- РАБОТА С ДВИГАТЕЛЕМ -->
+    <div class="question-card" id="qc24">
+      <div class="q-num">Вопрос 24</div>
+      <div class="q-text">Что нужно проверить перед запуском подвесного мотора?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Только наличие топлива</label>
+        <label class="option-label"><input type="radio" name="q24" value="1"><span class="option-dot"></span>Наличие топлива, уровень масла, опущен ли мотор в воду, отсутствие посторонних предметов у винта</label>
+        <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Достаточно просто повернуть ключ зажигания</label>
+        <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Проверить давление масла после запуска</label>
+      </div>
+      <div class="explanation">Перед запуском: убедиться что мотор опущен в воду, топливо есть, масло в норме, у винта нет верёвок и мусора. Запуск мотора вне воды (всухую) приведёт к перегреву и поломке помпы охлаждения.</div>
+    </div>
+
+    <div class="question-card" id="qc25">
+      <div class="q-num">Вопрос 25</div>
+      <div class="q-text">Что означает, если из мотора не идёт охлаждающая вода (контрольная струйка)?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Это нормально — вода подаётся только на высоких оборотах</label>
+        <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Нужно добавить топливо</label>
+        <label class="option-label"><input type="radio" name="q25" value="1"><span class="option-dot"></span>Помпа охлаждения не работает — мотор нужно немедленно заглушить</label>
+        <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Засорился выхлоп — можно продолжать работу</label>
+      </div>
+      <div class="explanation">Отсутствие контрольной струйки воды означает неисправность системы охлаждения. Работа без охлаждения быстро выводит мотор из строя — нужно сразу заглушить и устранить причину.</div>
+    </div>
+
+    <div class="question-card" id="qc26">
+      <div class="q-num">Вопрос 26</div>
+      <div class="q-text">Как правильно переключить мотор из нейтрали в передний ход?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q26" value="1"><span class="option-dot"></span>На малых оборотах плавно перевести рычаг из нейтрали вперёд</label>
+        <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Резко перевести рычаг на полный газ сразу</label>
+        <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Сначала дать полный газ, затем включить передачу</label>
+        <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Переключение делает только шкипер</label>
+      </div>
+      <div class="explanation">Переключение передач всегда выполняется на малых оборотах — это защищает редуктор от ударной нагрузки и продлевает ресурс мотора.</div>
+    </div>
+
+    <!-- ШВАРТОВКА И ОТШВАРТОВКА -->
+    <div class="question-card" id="qc27">
+      <div class="q-num">Вопрос 27</div>
+      <div class="q-text">Что делает матрос при подходе к причалу?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Стоит и ждёт команды шкипера, не двигаясь</label>
+        <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Прыгает на причал как только яхта приближается</label>
+        <label class="option-label"><input type="radio" name="q27" value="1"><span class="option-dot"></span>Готовит швартовный конец, выставляет кранцы, подаёт конец на причал по команде шкипера</label>
+        <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Убирает паруса и опускает мотор</label>
+      </div>
+      <div class="explanation">При швартовке матрос заблаговременно готовит швартовный конец (делает петлю на конце), выставляет кранцы со стороны причала и подаёт конец только по команде шкипера — не раньше.</div>
+    </div>
+
+    <div class="question-card" id="qc28">
+      <div class="q-num">Вопрос 28</div>
+      <div class="q-text">Как правильно крепить швартовный конец на причальной утке (кнехте)?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Завязать морским узлом вокруг утки</label>
+        <label class="option-label"><input type="radio" name="q28" value="1"><span class="option-dot"></span>Сделать полный оборот вокруг основания, затем восьмёркой через рога, закончить шлагом</label>
+        <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Несколько раз обмотать конец вокруг утки без схемы</label>
+        <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Закрепить только петлёй на одном роге</label>
+      </div>
+      <div class="explanation">Правильная схема крепления на утке: полный оборот вокруг основания → восьмёрка через оба рога → финальный шлаг (полуштык). Это обеспечивает надёжное крепление и быструю отдачу при необходимости.</div>
+    </div>
+
+    <div class="question-card" id="qc29">
+      <div class="q-num">Вопрос 29</div>
+      <div class="q-text">В каком порядке отдают швартовные концы при отходе от причала?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Сначала все концы сразу, затем включают мотор</label>
+        <label class="option-label"><input type="radio" name="q29" value="1"><span class="option-dot"></span>По команде шкипера — сначала носовой или кормовой (зависит от ветра и течения), последний конец отдаётся когда мотор уже работает</label>
+        <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Отдают только носовой конец, кормовой остаётся</label>
+        <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Матрос не участвует в отшвартовке</label>
+      </div>
+      <div class="explanation">Отшвартовка производится строго по команде шкипера. Порядок отдачи концов зависит от ветра, течения и манёвра — шкипер решает какой конец отдать первым. Последний конец отдаётся когда яхта готова к движению.</div>
+    </div>
+
+    <!-- ПОСТАНОВКА И УБОРКА ГРОТА -->
+    <div class="question-card" id="qc30">
+      <div class="q-num">Вопрос 30</div>
+      <div class="q-text">Перед подъёмом грота яхта должна быть:</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>На любом курсе — это не важно</label>
+        <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>На курсе бакштаг (ветер сзади-сбоку)</label>
+        <label class="option-label"><input type="radio" name="q30" value="1"><span class="option-dot"></span>Носом к ветру (левентик) — чтобы парус не наполнялся при подъёме</label>
+        <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>На курсе галфвинд (ветер сбоку)</label>
+      </div>
+      <div class="explanation">Грот поднимают только носом к ветру (левентик). В этом положении парус полощет и не создаёт нагрузки — это позволяет безопасно поднять и правильно закрепить грот.</div>
+    </div>
+
+    <div class="question-card" id="qc31">
+      <div class="q-num">Вопрос 31</div>
+      <div class="q-text">Что делает матрос при подъёме грота?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q31" value="1"><span class="option-dot"></span>Тянет грота-фал по команде шкипера, выбирая слабину, пока парус не поднят до упора</label>
+        <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Держит гика-шкот натянутым во время подъёма</label>
+        <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Стоит у мачты и придерживает гик руками</label>
+        <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Разматывает шкоты и готовит кранцы</label>
+      </div>
+      <div class="explanation">Матрос тянет грота-фал равномерно по команде шкипера. Важно выбирать фал без слабины — парус должен идти вверх без перекосов. Гика-шкот во время подъёма должен быть потравлен.</div>
+    </div>
+
+    <div class="question-card" id="qc32">
+      <div class="q-num">Вопрос 32</div>
+      <div class="q-text">Как закрепляется грота-фал после подъёма паруса?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Завязывается любым узлом на утке</label>
+        <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Просто зажимается в руках</label>
+        <label class="option-label"><input type="radio" name="q32" value="1"><span class="option-dot"></span>Крепится восьмёркой на утке у мачты, остаток укладывается аккуратно</label>
+        <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Привязывается к леерному ограждению</label>
+      </div>
+      <div class="explanation">Грота-фал крепится на утке у мачты схемой «восьмёрка» — надёжно и с возможностью быстрой отдачи. Лишний конец аккуратно укладывается чтобы не путался под ногами.</div>
+    </div>
+
+    <div class="question-card" id="qc33">
+      <div class="q-num">Вопрос 33</div>
+      <div class="q-text">В какой последовательности убирают грот?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q33" value="1"><span class="option-dot"></span>Лечь носом к ветру → потравить фал → опустить парус руками → уложить по гику → закрепить</label>
+        <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Отдать фал резко → поймать парус → свернуть как получится</label>
+        <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Убрать грот можно на любом курсе в любой момент</label>
+        <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Сначала убрать гика-шкот, затем отдать фал стоя на гике</label>
+      </div>
+      <div class="explanation">Грот убирают носом к ветру: фал отдаётся плавно, парус принимается и укладывается по гику «гармошкой», фиксируется завязками или резинками. Спешка и резкое стравливание фала приводят к беспорядку на борту.</div>
+    </div>
+
+    <div class="question-card" id="qc34">
+      <div class="q-num">Вопрос 34</div>
+      <div class="q-text">Что такое «риф» и когда его берут?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Подводное препятствие — обходят стороной</label>
+        <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Специальный узел для крепления грота</label>
+        <label class="option-label"><input type="radio" name="q34" value="1"><span class="option-dot"></span>Уменьшение площади грота — берут при усилении ветра для снижения крена и нагрузки</label>
+        <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Дополнительный парус, который ставят в шторм</label>
+      </div>
+      <div class="explanation">Риф — уменьшение площади паруса путём подвязывания нижней части грота к гику. Берут риф когда ветер усиливается и яхта кренится сильнее нормы — это делает управление безопаснее и комфортнее.</div>
+    </div>
+
+    <div class="question-card" id="qc35">
+      <div class="q-num">Вопрос 35</div>
+      <div class="q-text">Что делать если при уборке грота парус упал за борт в воду?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Включить мотор на полный ход и вытащить парус из воды</label>
+        <label class="option-label"><input type="radio" name="q35" value="1"><span class="option-dot"></span>Немедленно доложить шкиперу, не включать мотор (парус может намотаться на винт), выбирать парус руками</label>
+        <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Отрезать фал и отпустить парус</label>
+        <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Прыгнуть за борт и поднять парус из воды</label>
+      </div>
+      <div class="explanation">Парус за бортом — опасная ситуация. Главное — не включать мотор, иначе парус намотается на винт. Доложить шкиперу, выбирать парус руками с борта. Только после того как парус убран из воды — можно использовать двигатель.</div>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="btn-submit" id="submitBtn" onclick="submitExam()">Завершить экзамен</button>
+      <div class="unanswered-msg" id="unansweredMsg">Ответь на все вопросы перед отправкой</div>
+    </div>
+
+  </div><!-- /examBlock -->
+
+  <div class="results-screen" id="resultsBlock">
+    <div class="result-icon" id="resultIcon">⚓</div>
+    <div class="result-title" id="resultTitle">Результат</div>
+    <div class="result-score" id="resultScore">0%</div>
+    <div class="result-sub" id="resultSub"></div>
+    <div class="result-breakdown">
+      <div class="rb-item"><div class="rb-num green" id="rbCorrect">0</div><div class="rb-label">верно</div></div>
+      <div class="rb-item"><div class="rb-num red" id="rbWrong">0</div><div class="rb-label">неверно</div></div>
+      <div class="rb-item"><div class="rb-num" id="rbTotal">20</div><div class="rb-label">всего</div></div>
+    </div>
+    <div class="result-message" id="resultMessage"></div>
+    <button class="btn-retry" onclick="retryExam()">Попробовать снова</button>
+    <div class="review-link" onclick="showReview()">Посмотреть разбор ответов</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const TOTAL = 35;
+const PASS = 75;
+
+function updateProgress() {
+  let n = 0;
+  for (let i = 1; i <= TOTAL; i++) {
+    if (document.querySelector(`input[name="q${i}"]:checked`)) n++;
+  }
+  const pct = Math.round(n / TOTAL * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = n + ' / ' + TOTAL;
+}
+
+document.querySelectorAll('.options input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => r.closest('.option-label').classList.remove('selected'));
+    this.closest('.option-label').classList.add('selected');
+    const num = parseInt(this.name.replace('q', ''));
+    document.getElementById('qc' + num).classList.add('answered');
+    updateProgress();
+  });
+});
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) document.getElementById('progressWrap').style.display = 'block';
+});
+
+function submitExam() {
+  let unanswered = [];
+  for (let i = 1; i <= TOTAL; i++) {
+    if (!document.querySelector(`input[name="q${i}"]:checked`)) unanswered.push(i);
+  }
+  if (unanswered.length) {
+    document.getElementById('unansweredMsg').style.display = 'block';
+    const fc = document.getElementById('qc' + unanswered[0]);
+    fc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    fc.style.borderColor = 'rgba(224,94,94,0.6)';
+    return;
+  }
+  let correct = 0;
+  for (let i = 1; i <= TOTAL; i++) {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === '1') correct++;
+  }
+  const pct = Math.round(correct / TOTAL * 100);
+  const passed = pct >= PASS;
+  document.getElementById('examBlock').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  const res = document.getElementById('resultsBlock');
+  res.style.display = 'block';
+  document.getElementById('resultIcon').textContent = passed ? '⚓' : '🌊';
+  document.getElementById('resultTitle').textContent = passed ? 'Сертификат заработан' : 'Нужно подготовиться';
+  document.getElementById('resultScore').textContent = pct + '%';
+  document.getElementById('resultSub').textContent = correct + ' из ' + TOTAL + ' правильных ответов';
+  document.getElementById('rbCorrect').textContent = correct;
+  document.getElementById('rbWrong').textContent = TOTAL - correct;
+  document.getElementById('resultMessage').textContent = passed
+    ? 'Отлично! Ты набрал ' + pct + '% и прошёл теоретический экзамен. Следующий шаг — практический день на воде. После него ты получишь сертификат «Матрос-юнга Parusa.kz». До встречи на причале!'
+    : 'Ты набрал ' + pct + '% — нужно ' + PASS + '% для прохождения. Вернись к материалам курса, изучи разделы с ошибками и попробуй снова. Ты справишься!';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function retryExam() {
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected', 'correct', 'wrong'));
+  document.querySelectorAll('.explanation').forEach(e => e.classList.remove('visible'));
+  document.querySelectorAll('.question-card').forEach(c => { c.classList.remove('answered'); c.style.borderColor = ''; });
+  document.getElementById('unansweredMsg').style.display = 'none';
+  document.getElementById('resultsBlock').style.display = 'none';
+  document.getElementById('examBlock').style.display = 'block';
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('progressText').textContent = '0 / ' + TOTAL;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showReview() {
+  document.getElementById('resultsBlock').style.display = 'none';
+  document.getElementById('examBlock').style.display = 'block';
+  document.getElementById('progressWrap').style.display = 'none';
+  for (let i = 1; i <= TOTAL; i++) {
+    document.querySelectorAll(`input[name="q${i}"]`).forEach(opt => {
+      const label = opt.closest('.option-label');
+      label.style.pointerEvents = 'none';
+      if (opt.value === '1') label.classList.add('correct');
+      else if (opt.checked) label.classList.add('wrong');
+    });
+    document.getElementById('qc' + i).querySelector('.explanation').classList.add('visible');
+  }
+  document.getElementById('submitBtn').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
