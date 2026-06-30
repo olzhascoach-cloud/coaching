@@ -99,18 +99,6 @@
   .mission-photo img { width: 100%; height: 480px; object-fit: cover; display: block; }
   @media (max-width: 768px) { .mission-wrap { grid-template-columns: 1fr; gap: 40px; } .mission-photo img { height: 280px; } }
 
-  /* WHY */
-  #why { background: var(--navy-mid); position: relative; }
-  #why::before { content: ''; position: absolute; inset: 0; background: url('images/why-bg.jpg') center center / cover no-repeat; opacity: 0.18; z-index: 0; }
-  #why > * { position: relative; z-index: 1; }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 56px; }
-  .why-card { background: rgba(255,255,255,0.03); padding: 40px 32px; border: 1px solid rgba(255,255,255,0.06); transition: background 0.3s; }
-  .why-card:hover { background: rgba(201,169,110,0.05); }
-  .why-icon { width: 48px; height: 48px; margin-bottom: 20px; border: 1px solid rgba(201,169,110,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .why-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
-  .why-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
-  .why-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-
   /* PRODUCTS */
   #products { background: var(--navy); }
   .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
@@ -282,7 +270,7 @@
   <div class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Parusa Yacht Club<span>parusa.kz</span></div></div>
   <ul>
     <li><a href="#about">О нас</a></li>
-    <li><a href="#why">Почему Парус</a></li>
+
     <li><a href="#products">Программы</a></li>
 
     <li><a href="#faq">FAQ</a></li>
@@ -297,7 +285,7 @@
 <!-- MOBILE MENU -->
 <div class="nav-mobile" id="navMobile">
   <a href="#about" onclick="closeMobileMenu()">О нас</a>
-  <a href="#why" onclick="closeMobileMenu()">Почему Парус</a>
+
   <a href="#products" onclick="closeMobileMenu()">Программы</a>
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
   <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener" onclick="closeMobileMenu()">Адрес</a>
@@ -388,48 +376,6 @@
     <div class="mission-photo">
       <img src="images/mission.jpg" alt="Сообщество яхт-клуба">
     </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section id="why">
-  <div class="section-tag">Почему парусный клуб</div>
-  <h2>Парус — как <em>стиль жизни</em></h2>
-  <p class="section-lead">Свобода. Команда. Рост.</p>
-  <p class="section-lead" style="margin-top: -32px;">Наш яхт-клуб — это пространство, где появляется уверенность, энергия и движение. Где ты выходишь из привычного ритма и начинаешь чувствовать жизнь по-другому. Здесь рождаются решения, укрепляется характер и собирается сильное окружение. Это место, куда хочется возвращаться снова и снова.</p>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      </div>
-      <h3>Доступно</h3>
-      <p>Просто записаться онлайн. Первый выход на воду уже через пару часов. Даже без опыта — всему научим на месте.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      </div>
-      <h3>Рядом</h3>
-      <p>Капчагай — всего 1 час от Алматы. Легко встроить в жизнь: в будни или в выходной. Без перелётов и долгих сборов.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <h3>Сообщество</h3>
-      <p>Люди, которые выбирают движение и развитие. Предприниматели, семьи, активное окружение. Нетворкинг происходит естественно — на воде и вне её.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      </div>
-      <h3>Эмоция</h3>
-      <p>Ветер, скорость, команда. Живые ощущения, которые остаются с тобой. Опыт, к которому хочется возвращаться.</p>
-    </div>
-  </div>
-  <div style="margin-top: 48px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
-    <p style="font-size: 15px; color: var(--text-muted);">📍 Яхт-клуб Parusa.kz · Капчагай (Конаев), Казахстан</p>
-    <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener" class="btn-outline" style="padding: 10px 24px; font-size: 14px;">Как проехать →</a>
   </div>
 </section>
 
