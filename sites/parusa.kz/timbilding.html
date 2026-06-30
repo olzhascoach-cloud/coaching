@@ -34,7 +34,7 @@
   .nav-mobile a:hover { color: var(--gold); }
   .nav-mobile .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 14px 36px; border-radius: 2px; font-weight: 500; margin-top: 8px; }
   #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 140px 48px 100px; }
-  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.65) 55%, rgba(10,22,40,0.35) 100%), url('images/kapitan-hero.jpg') center 40% / cover no-repeat; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.6) 55%, rgba(10,22,40,0.3) 100%), url('images/tb-result-1.jpg') center center / cover no-repeat; }
   .hero-badge-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
   .back-link { font-size: 13px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
   .back-link:hover { color: var(--gold); }
@@ -272,7 +272,9 @@
       <p><strong>Ваши коллеги уйдут домой с другим взглядом на команду — и друг на друга.</strong></p>
     </div>
     <div class="what-photo">
-      <img src="images/team-photo.jpg" alt="Тимбилдинг на яхте">
+      <video autoplay muted loop playsinline style="width:100%;height:500px;object-fit:cover;display:block;border-radius:4px;">
+        <source src="videos/hero-main.mp4" type="video/mp4">
+      </video>
       <div class="what-photo-badge">
         <strong>SB20</strong>
         <span>Спортивная яхта</span>
@@ -398,13 +400,8 @@
       <div class="rdesc">Совместная победа в регате или совместная ошибка на воде — это общая история. Такое не забывают и не обсуждают в Slack.</div>
     </div>
   </div>
-  <div style="margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-    <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--p-gold-dim);">
-      <img src="images/tb-result-1.jpg" alt="Команда тимбилдинга" style="width: 100%; display: block; object-fit: cover;">
-    </div>
-    <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--p-gold-dim);">
-      <img src="images/tb-result-2.jpg" alt="Вручение сертификатов" style="width: 100%; display: block; object-fit: cover;">
-    </div>
+  <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--p-gold-dim);">
+    <img src="images/tb-result-2.jpg" alt="Вручение сертификатов" style="width: 100%; display: block; object-fit: cover;">
   </div>
 </section>
 
