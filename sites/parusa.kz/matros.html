@@ -203,9 +203,9 @@
 
   /* FAQ */
   #faq { background: var(--navy); }
-  .faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+  .faq-wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start; margin-top: 48px; }
   .faq-list { }
-  .faq-video { position: sticky; top: 100px; border-radius: 8px; overflow: hidden; }
+  .faq-video { position: sticky; top: 100px; border-radius: 8px; overflow: hidden; max-width: 260px; justify-self: center; }
   .faq-video video { width: 100%; border-radius: 8px; display: block; }
   @media (max-width: 768px) { .faq-wrap { grid-template-columns: 1fr; } .faq-video { display: none; } }
   .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; cursor: pointer; }
