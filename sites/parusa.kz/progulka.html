@@ -38,11 +38,9 @@
   .nav-mobile a:hover { color: var(--gold); }
   .nav-mobile .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 14px 36px; border-radius: 2px; font-weight: 500; margin-top: 8px; }
   #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 140px 48px 100px; }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.65) 55%, rgba(10,22,40,0.35) 100%),
-                url('images/hero-main.jpg') center 40% / cover no-repeat;
-  }
+  .hero-bg { position: absolute; inset: 0; overflow: hidden; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.65) 55%, rgba(10,22,40,0.35) 100%); }
   .hero-badge-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
   .back-link { font-size: 13px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
   .back-link:hover { color: var(--gold); }
@@ -85,6 +83,34 @@
   #program::before { content: ''; position: absolute; inset: 0; background: url('images/why-bg.jpg') center / cover no-repeat; opacity: 0.12; }
   #program > * { position: relative; z-index: 1; }
   .include-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 48px; }
+  .prog-meta-row { display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 48px; }
+  .prog-meta-label { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+  .prog-meta-value { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--white); font-weight: 600; }
+  .prog-section-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--gold); margin: 48px 0 28px; }
+  .prog-timeline { margin-bottom: 40px; }
+  .prog-tl-item { display: flex; gap: 0; padding-bottom: 28px; }
+  .prog-tl-item:last-child { padding-bottom: 0; }
+  .prog-tl-time { flex: 0 0 140px; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; color: var(--white); padding-top: 4px; }
+  .prog-tl-dot-wrap { flex: 0 0 28px; display: flex; flex-direction: column; align-items: center; }
+  .prog-tl-dot { width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--gold); background: var(--navy-mid); margin-top: 6px; flex-shrink: 0; }
+  .prog-tl-line { flex: 1; width: 1px; background: linear-gradient(to bottom, rgba(201,169,110,0.4), rgba(201,169,110,0.1)); margin-top: 4px; }
+  .prog-tl-content { flex: 1; }
+  .prog-tl-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+  .prog-tl-content p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+  .prog-stay-box { background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.2); border-radius: 4px; padding: 32px; margin: 32px 0; }
+  .prog-stay-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--gold); text-align: center; margin-bottom: 24px; }
+  .prog-stay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .prog-stay-item { display: flex; align-items: flex-start; gap: 14px; }
+  .prog-stay-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--white); font-weight: 600; margin-bottom: 4px; }
+  .prog-stay-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .prog-checklist { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 36px; margin-top: 16px; }
+  .prog-checklist h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--white); font-weight: 600; text-align: center; margin-bottom: 6px; }
+  .prog-checklist > p { font-size: 13px; color: var(--text-muted); text-align: center; margin-bottom: 28px; }
+  .prog-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+  .prog-check-item { display: flex; align-items: flex-start; gap: 10px; }
+  .prog-check-dot { flex: 0 0 6px; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; margin-top: 6px; }
+  .prog-check-text { font-size: 14px; color: var(--text-light); }
+  .prog-check-text small { display: block; font-size: 12px; color: var(--text-muted); margin-top: 1px; }
   .include-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); padding: 36px 28px; transition: background 0.3s; }
   .include-card:hover { background: rgba(201,169,110,0.04); }
   .include-icon { width: 44px; height: 44px; margin-bottom: 18px; border: 1px solid rgba(201,169,110,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
@@ -186,7 +212,12 @@
 </div>
 
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="videos/progulka-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
   <div class="waves">
     <div class="wave wave-1"></div>
     <div class="wave wave-2"></div>
@@ -249,39 +280,133 @@
 </section>
 
 <section id="program">
-  <div class="section-tag">Что входит</div>
-  <h2>Всё для<br><em>идеальной прогулки</em></h2>
-  <p class="section-lead">Просто приезжайте — остальное мы возьмём на себя.</p>
-  <div class="include-grid">
-    <div class="include-card">
-      <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-      <h3>01 · Встреча</h3>
-      <p>Знакомство с инструктором, инструктаж по безопасности: части яхты, правила поведения, жилеты. 10–15 минут.</p>
+  <div class="section-tag">Программа</div>
+  <h2>Расписание<br><em>прогулки</em></h2>
+
+  <div class="prog-meta-row">
+    <div class="prog-meta-item">
+      <div class="prog-meta-label">До обеда</div>
+      <div class="prog-meta-value">09:30 – 12:30</div>
     </div>
-    <div class="include-card">
-      <div class="include-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-      <h3>02 · Подготовка</h3>
-      <p>Инструктор показывает устройство яхты, объясняет как работают паруса и ветер. 10 минут на берегу.</p>
+    <div class="prog-meta-item">
+      <div class="prog-meta-label">После обеда</div>
+      <div class="prog-meta-value">13:30 – 16:30</div>
     </div>
-    <div class="include-card">
-      <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-      <h3>03 · Выход в море</h3>
-      <p>Отходите от берега, поднимаете паруса. Чувствуете, как яхта оживает под ветром. 15–20 минут.</p>
+    <div class="prog-meta-item">
+      <div class="prog-meta-label">Место</div>
+      <div class="prog-meta-value">Капчагай</div>
     </div>
-    <div class="include-card">
-      <div class="include-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <h3>04 · Прогулка</h3>
-      <p>Парусное плавание по водохранилищу. Можно порулить, поработать с парусами, пофотографировать. 60–70 минут.</p>
+  </div>
+
+  <div class="prog-section-title">Программа до обеда</div>
+
+  <div class="prog-timeline">
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">09:30 – 10:00</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div><div class="prog-tl-line"></div></div>
+      <div class="prog-tl-content">
+        <h3>Встреча и знакомство с базой</h3>
+        <p>Приветствие гостей, короткий инструктаж по технике безопасности на воде и подбор спасательных жилетов по размеру.</p>
+      </div>
     </div>
-    <div class="include-card">
-      <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-      <h3>05 · Возвращение</h3>
-      <p>Убираете паруса, пришвартовываетесь. Вопросы и ответы, фото на борту. 10–15 минут.</p>
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">10:00 – 11:30</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div><div class="prog-tl-line"></div></div>
+      <div class="prog-tl-content">
+        <h3>Выход на воду</h3>
+        <p>Знакомство с парусным спортом на практике: участие в управлении парусами и возможность лично порулить яхтой под руководством инструктора.</p>
+      </div>
     </div>
-    <div class="include-card">
-      <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>Всегда included</h3>
-      <p>Яхта SB20, инструктор, спасательные жилеты. Группа от 4 человек. Расписание 10:00–17:00.</p>
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">11:30 – 12:00</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div><div class="prog-tl-line"></div></div>
+      <div class="prog-tl-content">
+        <h3>Возвращение в клуб</h3>
+        <p>Швартовка, сдача экипировки и спасательных жилетов, время поделиться впечатлениями за чашкой чая.</p>
+      </div>
+    </div>
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">12:30</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div></div>
+      <div class="prog-tl-content">
+        <h3>Отъезд гостей</h3>
+        <p>Завершение программы. До новых встреч на воде!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prog-stay-box">
+    <div class="prog-stay-title">Хотите остаться на весь день?</div>
+    <div class="prog-stay-grid">
+      <div class="prog-stay-item">
+        <span style="font-size: 22px; flex-shrink:0; margin-top:2px;">⛱</span>
+        <div>
+          <h4>Пляж</h4>
+          <p>Открытая пляжная зона базы — отдохните и искупайтесь между сессиями</p>
+        </div>
+      </div>
+      <div class="prog-stay-item">
+        <span style="font-size: 22px; flex-shrink:0; margin-top:2px;">🍽</span>
+        <div>
+          <h4>Ресторан</h4>
+          <p>На территории клуба работает ресторан — пообедайте с видом на воду</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prog-section-title">Программа после обеда</div>
+
+  <div class="prog-timeline">
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">13:30 – 14:00</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div><div class="prog-tl-line"></div></div>
+      <div class="prog-tl-content">
+        <h3>Встреча и подготовка</h3>
+        <p>Сбор гостей, инструктаж по технике безопасности и подбор спасательных жилетов.</p>
+      </div>
+    </div>
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">14:00 – 15:30</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div><div class="prog-tl-line"></div></div>
+      <div class="prog-tl-content">
+        <h3>Выход на воду</h3>
+        <p>Управление парусами и возможность лично порулить яхтой под руководством инструктора.</p>
+      </div>
+    </div>
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">15:30 – 16:00</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div><div class="prog-tl-line"></div></div>
+      <div class="prog-tl-content">
+        <h3>Возвращение в клуб</h3>
+        <p>Швартовка, сдача экипировки и спасательных жилетов, время поделиться впечатлениями.</p>
+      </div>
+    </div>
+    <div class="prog-tl-item">
+      <div class="prog-tl-time">16:30</div>
+      <div class="prog-tl-dot-wrap"><div class="prog-tl-dot"></div></div>
+      <div class="prog-tl-content">
+        <h3>Отъезд гостей</h3>
+        <p>Завершение программы. До новых встреч на воде!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prog-checklist">
+    <h3>Что взять с собой</h3>
+    <p>Несколько простых вещей сделают прогулку комфортнее</p>
+    <div class="prog-check-grid">
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Сменная одежда<small>на случай брызг и ветра</small></div></div>
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Головной убор<small>кепка или панама от солнца</small></div></div>
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Солнцезащитные очки<small>с фиксирующим шнурком, если есть</small></div></div>
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Солнцезащитный крем<small>SPF 30+</small></div></div>
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Удобная закрытая обувь<small>нескользящая подошва</small></div></div>
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Вода<small>из расчёта 1,0 л на человека</small></div></div>
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Лёгкая ветровка<small>на воде может быть прохладнее</small></div></div>
+      <div class="prog-check-item"><div class="prog-check-dot"></div><div class="prog-check-text">Хорошее настроение<small>всё остальное мы предоставим</small></div></div>
+    </div>
+    <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--gold); text-align: center;">
+      Спасательные жилеты выдаются на базе — личное снаряжение не требуется
     </div>
   </div>
 </section>
