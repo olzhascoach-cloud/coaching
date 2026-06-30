@@ -180,7 +180,9 @@
   #cta .hero-btns { justify-content: center; }
 
   /* FAQ */
-  #faq { background: var(--navy); }
+  #faq { background: var(--navy); position: relative; overflow: hidden; }
+  #faq::before { content: ''; position: absolute; inset: 0; background: url('images/faq-bg.jpg') center center / cover no-repeat; opacity: 0.18; z-index: 0; }
+  #faq > * { position: relative; z-index: 1; }
   .faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 56px; }
   .faq-list { }
   .faq-photo { border-radius: 4px; overflow: hidden; position: sticky; top: 100px; }
@@ -627,9 +629,9 @@
 <!-- CTA -->
 <section id="cta">
   <div class="section-inner">
-    <div class="section-tag">Присоединяйся</div>
+    <div class="section-tag">Бронирование</div>
     <h2>Готовы выйти<br>на <em>воду?</em></h2>
-    <p class="section-lead">Оставьте заявку — и мы свяжемся с Вами, расскажем и подберём формат.</p>
+    <p class="section-lead" style="margin: 0 auto 56px; text-align: center;">Оставьте заявку — и мы свяжемся с Вами, расскажем и подберём формат.</p>
     <div class="hero-btns">
       <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="btn-primary">Написать в WhatsApp</a>
       <a href="https://instagram.com/parus.kapchagay" class="btn-outline">Instagram</a>
@@ -686,7 +688,7 @@
     </div>
     <div class="faq-photo">
       <div class="faq-photo-inner">
-        <img src="images/kapitan-hero.jpg" alt="Яхтинг">
+        <img src="images/faq-bg.jpg" alt="Яхтинг">
       </div>
     </div>
   </div>
