@@ -203,7 +203,11 @@
 
   /* FAQ */
   #faq { background: var(--navy); }
-  .faq-list { max-width: 740px; margin-top: 48px; }
+  .faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+  .faq-list { }
+  .faq-video { position: sticky; top: 100px; border-radius: 8px; overflow: hidden; }
+  .faq-video video { width: 100%; border-radius: 8px; display: block; }
+  @media (max-width: 768px) { .faq-wrap { grid-template-columns: 1fr; } .faq-video { display: none; } }
   .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; cursor: pointer; }
   .faq-q { font-size: 17px; color: var(--white); font-weight: 400; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .toggle { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
@@ -862,11 +866,41 @@
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section style="background: var(--navy-mid); padding: 80px 48px;">
+  <div class="section-tag">Отзывы</div>
+  <h2>Что <em>говорят</em></h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;">
+    <a href="https://www.instagram.com/p/DZAKGeuMoLU/" target="_blank" rel="noopener" style="display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(201,169,110,0.2);text-decoration:none;background:var(--navy);">
+      <img src="images/matros-review-1.jpg" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;">
+      <div style="padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span style="font-size:12px;color:#c9a96e;">@parus.kapchagay</span>
+      </div>
+    </a>
+    <a href="https://www.instagram.com/p/DZAEdiRsQa2/" target="_blank" rel="noopener" style="display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(201,169,110,0.2);text-decoration:none;background:var(--navy);">
+      <img src="images/matros-review-2.jpg" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;">
+      <div style="padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span style="font-size:12px;color:#c9a96e;">@parus.kapchagay</span>
+      </div>
+    </a>
+    <a href="https://www.instagram.com/p/DY_lN7rMdU6/" target="_blank" rel="noopener" style="display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(201,169,110,0.2);text-decoration:none;background:var(--navy);">
+      <img src="images/matros-review-3.jpg" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;">
+      <div style="padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span style="font-size:12px;color:#c9a96e;">@parus.kapchagay</span>
+      </div>
+    </a>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="faq">
   <div class="section-tag">Частые вопросы</div>
   <h2><em>FAQ</em></h2>
-  <div class="faq-list">
+  <div class="faq-wrap">
+    <div class="faq-list">
     <div class="faq-item">
       <div class="faq-q">Когда проходит онлайн-часть? <div class="toggle">+</div></div>
       <div class="faq-a">После подтверждения записи мы открываем доступ к личному кабинету с видеоуроками. Смотрите в любое удобное время — до 04 июля. Онлайн-экзамен тоже проходит в своём темпе, без ограничений по времени. Это ваша подготовка к водному интенсиву.</div>
@@ -902,6 +936,12 @@
     <div class="faq-item">
       <div class="faq-q">Как добраться до яхт-клуба? <div class="toggle">+</div></div>
       <div class="faq-a">Яхт-клуб Parusa находится в Капчагае (Конаев) — около 1 часа от Алматы по трассе А-2. Точный адрес и схему проезда высылаем при подтверждении записи.</div>
+    </div>
+    </div>
+    <div class="faq-video">
+      <video autoplay muted loop playsinline>
+        <source src="videos/hero-main.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
