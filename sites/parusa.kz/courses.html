@@ -76,7 +76,21 @@
   .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
   /* HERO */
-  .hero { padding: 140px 24px 80px; text-align: center; }
+  .hero {
+    padding: 160px 24px 100px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 40%;
+    z-index: 0;
+  }
+  .hero-overlay-dark {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(10,21,32,0.78) 0%, rgba(10,21,32,0.65) 60%, rgba(10,21,32,0.90) 100%);
+    z-index: 1;
+  }
+  .hero > *:not(.hero-bg-img):not(.hero-overlay-dark) { position: relative; z-index: 2; }
   .kicker { font-size: 13px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; font-family: 'DM Sans', sans-serif; }
   .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 60px); font-weight: 600; color: var(--white); margin-bottom: 18px; line-height: 1.1; }
   .hero h1 em { color: var(--gold); font-style: italic; }
@@ -158,6 +172,8 @@
 
 <!-- HERO -->
 <section class="hero">
+  <img src="images/hero-courses.jpg" alt="" class="hero-bg-img">
+  <div class="hero-overlay-dark"></div>
   <div class="kicker">Курсы и тренировки</div>
   <h1>Путь от новичка <em>до капитана</em></h1>
   <p class="lead">
