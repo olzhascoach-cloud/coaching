@@ -347,68 +347,49 @@
 </section>
 
 
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="section-tag">Наши программы</div>
-  <h2><em>Наши</em> программы</h2>
-  <p class="section-lead">От первой парусной прогулки до капитанского курса и корпоративных регат — любой уровень и формат.</p>
-  <div class="products-grid">
-    <a href="/progulka.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">01</div>
-      <h3>Парусная прогулка</h3>
-      <p>Познакомиться с парусным спортом, дать возможность пройти под парусами на спортивной яхте.</p>
-      <div class="product-price">от 20 000 <small>₸/час/чел</small></div>
-      <span class="product-link">Подробнее →</span>
-    </a>
-    <a href="/matros.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">02</div>
-      <h3>Курс матроса</h3>
-      <p>С нуля до уверенного матроса. Онлайн-теория + практика на воде. Идеально для первого знакомства с яхтингом.</p>
-      <div class="product-price">150 000 <small>₸</small></div>
-      <span class="product-link">Подробнее →</span>
-    </a>
-    <a href="/timbilding.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">03</div>
-      <h3>Тимбилдинг под парусами</h3>
-      <p>Командное мероприятие на воде. Совместная работа с парусами, доверие и взаимодействие — лучший формат для сплочения коллектива.</p>
-      <div class="product-price">от 40 000 <small>₸/чел</small></div>
-      <span class="product-link">Подробнее →</span>
-    </a>
-    <a href="/regata-club.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">04</div>
-      <h3>Клубная регата</h3>
-      <p>Регулярные гонки среди членов клуба. Командная динамика, дух соперничества, живые эмоции на воде.</p>
-      <div class="product-price">от 50 000 <small>₸/чел</small></div>
-      <span class="product-link">Подробнее →</span>
-    </a>
-    <a href="/training-day.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">05</div>
-      <h3>Тренировочный Кемп</h3>
-      <p>Подготовка экипажа к регате на воде. Старты, огибание знаков, генакер — с инструктором-мастером спорта на борту.</p>
-      <div class="product-price">от 25 000 <small>₸/чел/час</small></div>
-      <span class="product-link">Подробнее →</span>
-    </a>
-    <a href="/kapitan.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">06</div>
-      <h3>Курс Рулевой / Капитан</h3>
-      <p>Полный курс управления яхтой. Онлайн-теория + практика за рулём. Для тех, кто хочет самостоятельно вести команду.</p>
-      <div class="product-price">200 000 <small>₸</small></div>
-      <span class="product-link">Подробнее →</span>
-    </a>
-    <a href="/fotosessiya.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">07</div>
-      <h3>Фотосессия под парусами</h3>
-      <p>Профессиональная съёмка на борту яхты. Паруса, ветер и вода создают неповторимые кадры для любого повода.</p>
-      <div class="product-price">от 50 000 <small>₸/час</small></div>
-      <span class="product-link">Подробнее →</span>
-    </a>
-    <a href="/boat-business.html" target="_blank" rel="noopener" class="product-card">
-      <div class="product-num">08</div>
-      <h3>Лодка как модель бизнеса</h3>
-      <p>Стратегическая сессия для бизнес-команд. Командный коучинг ICF + практика на яхтах SB20. Сертификат клуба каждому участнику.</p>
-      <div class="product-price">По запросу</div>
-      <span class="product-link">Подробнее →</span>
-    </a>
+<style>
+  .pk-products { background:#0A1628; padding:90px 24px; }
+  .pk-products-inner { max-width:1100px; margin:0 auto; }
+  .pk-products .pk-kicker { text-align:center; font-size:13px; letter-spacing:3px; color:#c9a96e; text-transform:uppercase; margin-bottom:10px; font-family:'DM Sans', sans-serif; }
+  .pk-products h2 { font-family:'Cormorant Garamond', serif; text-align:center; font-size:42px; color:#fff; font-weight:600; margin-bottom:12px; }
+  .pk-products h2 em { color:#c9a96e; font-style:normal; }
+  .pk-products .pk-sub { text-align:center; font-size:16px; color:rgba(247,243,236,0.6); max-width:600px; margin:0 auto 56px; font-family:'DM Sans', sans-serif; }
+  .pk-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  @media (max-width: 900px) { .pk-cards { grid-template-columns:1fr; } }
+  a.pk-card { background:#0f1f33; border:1px solid rgba(201,169,110,0.25); border-radius:10px; padding:34px 30px; display:flex; flex-direction:column; text-decoration:none; transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+  a.pk-card:hover { transform:translateY(-4px); border-color:#c9a96e; background:#152744; }
+  .pk-card .pk-label { display:inline-block; font-family:'DM Sans', sans-serif; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#0a1628; background:#c9a96e; padding:5px 12px; border-radius:14px; margin-bottom:18px; width:fit-content; }
+  .pk-card h3 { font-family:'Cormorant Garamond', serif; font-size:27px; color:#f7f3ec; font-weight:600; margin-bottom:14px; }
+  .pk-card p.pk-desc { font-family:'DM Sans', sans-serif; font-size:14.5px; color:rgba(247,243,236,0.7); line-height:1.65; margin-bottom:6px; flex-grow:1; }
+  .pk-card .pk-more { display:flex; align-items:center; gap:6px; font-family:'DM Sans', sans-serif; font-size:14px; font-weight:600; color:#c9a96e; margin-top:20px; }
+  a.pk-card:hover .pk-more { gap:10px; }
+</style>
+
+<section class="pk-products" id="products">
+  <div class="pk-products-inner">
+    <div class="pk-kicker">Наши программы</div>
+    <h2>Откройте свой путь <em>в мир парусного спорта</em></h2>
+    <p class="pk-sub">От первой прогулки под парусом до корпоративного тимбилдинга и полноценного обучения — три формата под любую задачу.</p>
+    <div class="pk-cards">
+      <a class="pk-card" href="/progulka.html">
+        <div class="pk-label">Впервые на яхте</div>
+        <h3>Парусная прогулка</h3>
+        <p class="pk-desc">Парусная прогулка с Parusa Yacht Club — это не просто отдых. Это возможность замедлиться, почувствовать свободу, научиться чему-то новому и провести время так, чтобы захотелось вернуться снова.<br><br>Добро пожаловать на борт!</p>
+        <div class="pk-more">Подробнее →</div>
+      </a>
+      <a class="pk-card" href="/timbilding.html">
+        <div class="pk-label">Компаниям</div>
+        <h3>Тимбилдинг и командный коучинг</h3>
+        <p class="pk-desc">Тимбилдинг под парусами для руководителей и команд — это не просто корпоративный отдых. Это командный опыт, который помогает увидеть реальные сильные стороны сотрудников, улучшить взаимодействие и укрепить доверие внутри коллектива.</p>
+        <div class="pk-more">Подробнее →</div>
+      </a>
+      <a class="pk-card" href="/matros.html">
+        <div class="pk-label">Курсы матроса / рулевого</div>
+        <h3>Курсы и тренировки</h3>
+        <p class="pk-desc">Мечтаете научиться управлять парусной яхтой? Мы обучим вас с нуля.<br><br>Курс разработан для тех, кто никогда не был под парусом, но хочет уверенно чувствовать себя на воде. Также проводим обучение капитанов и тренировки перед регатами — для тех, кто уже готов идти дальше.</p>
+        <div class="pk-more">Подробнее →</div>
+      </a>
+    </div>
   </div>
 </section>
 
