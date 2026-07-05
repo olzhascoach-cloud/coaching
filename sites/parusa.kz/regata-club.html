@@ -114,7 +114,8 @@
   .register-form-wrap > p { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
   footer { background: rgba(0,0,0,0.5); padding: 48px; border-top: 1px solid rgba(255,255,255,0.07); }
   .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
   .footer-links { display: flex; gap: 24px; }
   .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
   .footer-links a:hover { color: var(--gold); }
@@ -139,7 +140,7 @@
 </head>
 <body>
 <nav>
-  <a href="/" class="logo">Капчагайский яхт-клуб<span>parusa.kz</span></a>
+  <a href="/" class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Parusa Yacht Club<span>parusa.kz</span></div></a>
   <ul>
     <li><a href="/#about">О клубе</a></li>
     <li><a href="/#products">Программы</a></li>
@@ -295,9 +296,7 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">Капчагайский яхт-клуб</div>
-      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 6px;">parusa.kz</p>
-      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 4px;">2026</p>
+      <div class="footer-logo"><img src="images/logo-parusa.png" alt="Parusa">Parusa Yacht Club</div>
     </div>
     <div class="footer-links">
       <a href="/">Главная</a><a href="/#products">Программы</a><a href="/#membership">Членство</a><a href="/#faq">FAQ</a>
@@ -309,7 +308,7 @@
       <a href="tel:+77015334340" class="footer-icon-link"><img src="images/icon-phone.png" alt="Телефон"></a>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 Капчагайский яхт-клуб · Капчагай, Казахстан</div>
+  <div class="footer-bottom">© 2026 Parusa Yacht Club · Капчагай, Казахстан</div>
 </footer>
 
 <div class="sticky-cta" id="stickyCta">

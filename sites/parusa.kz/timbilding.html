@@ -127,7 +127,8 @@
   .register-form-wrap > p { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
   footer { background: rgba(0,0,0,0.5); padding: 48px; border-top: 1px solid rgba(255,255,255,0.07); }
   .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
   .footer-links { display: flex; gap: 24px; }
   .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
   .footer-links a:hover { color: var(--gold); }
@@ -207,7 +208,7 @@
 <body>
 
 <nav>
-  <a href="/" class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Капчагайский яхт-клуб<span>parusa.kz</span></div></a>
+  <a href="/" class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Parusa Yacht Club<span>parusa.kz</span></div></a>
   <ul>
     <li><a href="/#about">О клубе</a></li>
     <li><a href="/#products">Программы</a></li>
@@ -233,16 +234,7 @@
     <div class="wave wave-2"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge-row">
-      <a href="/" class="back-link">
-        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        parusa.kz
-      </a>
-      <span class="sep">/</span>
-      <span style="font-size:13px; color: var(--gold);">Тимбилдинг на яхте</span>
-    </div>
-    <div class="hero-tag">Корпоративный формат · Капчагай</div>
-    <h1>Тимбилдинг<br><em>на яхте</em></h1>
+    <h1>Тимбилдинг<br><em>«Матрос Юнга»</em></h1>
     <p class="hero-sub">Настоящая командная работа под парусами. Ваша команда справится с яхтой — и поймёт, что способна на большее.</p>
     <p class="hero-sub-detail">Не офисный тренинг. Живой опыт на воде, где каждый в команде важен и каждое решение ощущается физически.</p>
     <div class="hero-btns">
@@ -256,11 +248,11 @@
       </div>
       <div class="pill">
         <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        От 6 человек
+        От 6 до 80 человек
       </div>
       <div class="pill">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Инструкторы клуба
+        Командный коучинг
       </div>
       <div class="pill">
         <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
@@ -283,66 +275,11 @@
       <video autoplay muted loop playsinline style="width:100%;height:500px;object-fit:cover;display:block;border-radius:4px;">
         <source src="videos/hero-main.mp4" type="video/mp4">
       </video>
-      <div class="what-photo-badge">
-        <strong>SB20</strong>
-        <span>Спортивная яхта</span>
-      </div>
     </div>
   </div>
 </section>
 
-<section id="why">
-  <div class="section-tag">Почему яхта</div>
-  <h2>Чего не даст<br><em>офисный тренинг</em></h2>
-  <p class="section-lead">Яхта создаёт условия, в которых невозможно спрятаться за формальностями.</p>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <h3>Реальная команда</h3>
-      <p>На яхте нет возможности работать одному. Каждый выполняет свою роль — и чувствует зависимость от других.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <h3>Живые эмоции</h3>
-      <p>Ветер, скорость, вода — это невозможно организовать в зале. Яхта создаёт настоящие переживания, которые объединяют.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>Доверие через дело</h3>
-      <p>Не упражнения на доверие — настоящее доверие, когда от действий коллеги зависит твоя безопасность.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-      <h3>Нестандартный опыт</h3>
-      <p>Мероприятие, которое запомнят надолго. Не очередной корпоратив — событие, которое обсуждают месяцами.</p>
-    </div>
-  </div>
-</section>
 
-<!-- БЛОК А — ДЛЯ КОГО -->
-<section class="pb-section" id="audience">
-  <div class="pb-label">Аудитория</div>
-  <h2 class="pb-title">Для кого<br><em>этот формат</em></h2>
-  <p class="pb-intro">Тимбилдинг на яхте — не развлечение. Это рабочий инструмент для компаний, которые хотят видеть в команде настоящих лидеров, а не офисные маски.</p>
-  <div class="pb-audience-grid">
-    <div class="pb-audience-card">
-      <div class="role">Владельцы бизнеса</div>
-      <div class="desc">Хотят увидеть, кто в команде реальный лидер — а кто только на совещаниях.</div>
-    </div>
-    <div class="pb-audience-card">
-      <div class="role">HR-директора</div>
-      <div class="desc">Ищут формат, который даёт реальный командный эффект, а не просто «хорошо провели время».</div>
-    </div>
-    <div class="pb-audience-card">
-      <div class="role">CEO и управленцы</div>
-      <div class="desc">Формируют управленческую команду, которая принимает решения быстро и слаженно.</div>
-    </div>
-    <div class="pb-audience-card">
-      <div class="role">Руководители отделов</div>
-      <div class="desc">Строят доверие внутри команды там, где не справляются планёрки и ретроспективы.</div>
-    </div>
-  </div>
-</section>
 
 <!-- БЛОК Б — ЯХТА КАК УПРАВЛЕНЧЕСКАЯ ЛАБОРАТОРИЯ -->
 <section class="pb-section" id="methodology">
@@ -413,48 +350,11 @@
   </div>
 </section>
 
-<section id="program">
-  <div class="section-tag">Программа</div>
-  <h2>Как проходит<br><em>день на воде</em></h2>
-  <p class="section-lead">Программа гибкая и настраивается под формат и размер вашей команды.</p>
-  <div class="program-grid">
-    <div class="prog-card">
-      <div class="prog-num">01 · Сбор</div>
-      <h3>Встреча и брифинг</h3>
-      <p>Знакомство с клубом, инструктаж по безопасности, разбивка на команды и экипажи. Первые переговоры и знакомство с яхтой на берегу.</p>
-    </div>
-    <div class="prog-card">
-      <div class="prog-num">02 · Обучение</div>
-      <h3>Основы управления</h3>
-      <p>Короткий инструктаж — самое необходимое, чтобы безопасно выйти на воду. Базовые команды, роли в экипаже.</p>
-    </div>
-    <div class="prog-card">
-      <div class="prog-num">03 · Вода</div>
-      <h3>Выход на яхте</h3>
-      <p>Команды выходят в море под руководством инструкторов. Маневрирование, взаимодействие, работа с парусами. Каждый в роли.</p>
-    </div>
-    <div class="prog-card">
-      <div class="prog-num">04 · Гонка</div>
-      <h3>Мини-регата</h3>
-      <p>Дружеская гонка между командами. Соревнование выявляет лидеров, учит стратегии и поднимает азарт. Лучший финал дня.</p>
-    </div>
-    <div class="prog-card">
-      <div class="prog-num">05 · Разбор</div>
-      <h3>Итоги и рефлексия</h3>
-      <p>Обсуждение дня: что сработало, кто удивил, чему научились. По запросу — фасилитация от тренера клуба.</p>
-    </div>
-    <div class="prog-card">
-      <div class="prog-num">06 · Атмосфера</div>
-      <h3>Неформальное общение</h3>
-      <p>После гонки — тёплая атмосфера на берегу. Ваша команда уже другая.</p>
-    </div>
-  </div>
-</section>
 
 <!-- БЛОК Г — ОТЗЫВЫ -->
 <section class="pb-section" id="reviews">
   <div class="pb-label">Отзывы</div>
-  <h2 class="pb-title">Что <em>говорят</em></h2>
+  <h2 class="pb-title">Что говорят <em>Компании</em></h2>
   <p class="pb-intro">Команды, которые прошли тимбилдинг в Parusa Yacht Club.</p>
   <div class="pb-reviews-grid">
     <a href="https://www.instagram.com/p/DZh_iu6slXp/" target="_blank" rel="noopener" class="pb-review-card" style="padding:0;overflow:hidden;text-decoration:none;">
@@ -604,11 +504,7 @@
 
 <footer>
   <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Капчагайский яхт-клуб</div>
-      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 6px;">parusa.kz</p>
-      <p style="font-size:13px; color: rgba(247,243,236,0.4); margin-top: 4px;">2026</p>
-    </div>
+    <div class="footer-logo"><img src="images/logo-parusa.png" alt="Parusa">Parusa Yacht Club</div>
     <div class="footer-links">
       <a href="/">Главная</a>
       <a href="/#products">Программы</a>
@@ -622,7 +518,7 @@
       <a href="tel:+77015334340" class="footer-icon-link"><img src="images/icon-phone.png" alt="Телефон"></a>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 Капчагайский яхт-клуб · Капчагай, Казахстан</div>
+  <div class="footer-bottom">© 2026 Parusa Yacht Club · Капчагай, Казахстан</div>
 </footer>
 
 <div class="sticky-cta" id="stickyCta">
