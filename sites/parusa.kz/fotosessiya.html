@@ -40,7 +40,8 @@
     background: linear-gradient(to bottom, rgba(10,22,40,0.97), transparent);
     backdrop-filter: blur(4px);
   }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); text-decoration: none; display: block; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo img { height: 40px; width: auto; object-fit: contain; filter: brightness(0) invert(1); flex-shrink: 0; }
   .logo span { color: var(--cream); font-size: 13px; display: block; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; font-weight: 300; opacity: 0.7; }
   nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
   nav ul li a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
@@ -207,7 +208,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="logo">Parusa Yacht Club<span>parusa.kz</span></a>
+  <a href="/" class="logo"><img src="images/logo-parusa.png" alt="Parusa"><div>Parusa Yacht Club<span>parusa.kz</span></div></a>
   <ul>
     <li><a href="/#about">О клубе</a></li>
     <li><a href="/#products">Программы</a></li>
@@ -481,8 +482,18 @@
       <a href="https://maps.app.goo.gl/EQCgM4BXSCgK5zxG6" target="_blank" rel="noopener">Адрес</a>
     </div>
     <div class="footer-icons">
-      <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-wa.avif" alt="WhatsApp"></a>
-      <a href="https://instagram.com/parus.kapchagay" class="footer-icon-link" target="_blank" rel="noopener"><img src="images/icon-ig.jpg" alt="Instagram"></a>
+      <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-icon-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 3C9.716 3 3 9.716 3 18c0 2.686.703 5.21 1.932 7.393L3 33l7.84-2.056A14.93 14.93 0 0 0 18 33c8.284 0 15-6.716 15-15S26.284 3 18 3zm0 2.25c7.046 0 12.75 5.704 12.75 12.75S25.046 30.75 18 30.75a12.7 12.7 0 0 1-6.553-1.818l-.457-.277-4.733 1.241 1.265-4.617-.304-.478A12.693 12.693 0 0 1 5.25 18C5.25 10.954 10.954 5.25 18 5.25zm-4.219 6.188c-.266 0-.695.1-1.059.492-.363.392-1.383 1.352-1.383 3.296 0 1.944 1.414 3.824 1.613 4.089.199.265 2.762 4.375 6.82 5.957 3.373 1.322 4.059 1.059 4.793.992.734-.067 2.367-.965 2.7-1.898.332-.934.332-1.734.232-1.899-.1-.165-.365-.265-.764-.464-.398-.2-2.35-1.16-2.714-1.29-.365-.133-.631-.2-.896.198-.266.4-1.027 1.29-1.258 1.556-.232.265-.464.298-.863.1-.398-.199-1.683-.62-3.206-1.977-1.185-1.056-1.986-2.36-2.219-2.757-.232-.398-.025-.614.174-.812.179-.178.398-.465.597-.697.2-.232.266-.398.398-.664.133-.266.067-.498-.033-.697-.1-.199-.884-2.163-1.227-2.96-.332-.775-.67-.665-.896-.675a15.81 15.81 0 0 0-.759-.009z" fill="#c9a96e"/>
+        </svg>
+      </a>
+      <a href="https://instagram.com/parus.kapchagay" class="footer-icon-link" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="28" height="28" rx="8" stroke="#c9a96e" stroke-width="2.2"/>
+          <circle cx="18" cy="18" r="6.5" stroke="#c9a96e" stroke-width="2.2"/>
+          <circle cx="25.5" cy="10.5" r="1.8" fill="#c9a96e"/>
+        </svg>
+      </a>
       <a href="tel:+77015334340" class="footer-icon-link"><img src="images/icon-phone.png" alt="Телефон"></a>
     </div>
   </div>
