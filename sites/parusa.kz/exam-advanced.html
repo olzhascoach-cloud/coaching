@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-836599286"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "AW-836599286");
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экзамен Advanced Матрос — Parusa.kz</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #1A2744; --gold: #C9A84C; --gold-light: #E8C97A; --white: #FFFFFF; --muted: #6B7A99; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Jost', sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+  .page-bg { min-height: 100vh; background: linear-gradient(180deg, #1A2744 0%, #0D1628 100%); position: relative; overflow: hidden; }
+  .page-bg::before { content: ''; position: fixed; top: -50%; left: -20%; width: 70%; height: 70%; background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none; }
+  .container { max-width: 740px; margin: 0 auto; padding: 0 20px 60px; position: relative; z-index: 1; }
+  .header { text-align: center; padding: 60px 0 40px; border-bottom: 1px solid rgba(201,168,76,0.2); margin-bottom: 40px; }
+  .club-name { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .header h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 8px; }
+  .header h1 em { font-style: italic; color: var(--gold); }
+  .header-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 12px; }
+  .meta-row { display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .meta-item { text-align: center; }
+  .meta-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--gold); display: block; }
+  .meta-label { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; }
+  .progress-wrap { position: sticky; top: 0; z-index: 10; background: rgba(13,22,40,0.95); backdrop-filter: blur(12px); padding: 10px 0; margin-bottom: 32px; border-bottom: 1px solid rgba(201,168,76,0.15); display: none; }
+  .progress-inner { max-width: 740px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 14px; }
+  .progress-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+  .progress-text { font-size: 12px; font-weight: 500; color: var(--gold); white-space: nowrap; min-width: 60px; text-align: right; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.25); width: 100%; }
+  .section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+  .question-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; margin-bottom: 16px; transition: border-color 0.2s, background 0.2s; }
+  .question-card:hover { border-color: rgba(201,168,76,0.2); }
+  .question-card.answered { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
+  .q-num { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .q-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 18px; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option-label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer; transition: all 0.15s ease; color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.5; }
+  .option-label:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); color: var(--white); }
+  .option-label input[type="radio"] { display: none; }
+  .option-dot { width: 18px; height: 18px; min-width: 18px; border: 1.5px solid rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 0.15s; }
+  .option-label.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); color: var(--white); }
+  .option-label.selected .option-dot { border-color: var(--gold); background: var(--gold); }
+  .option-label.selected .option-dot::after { content: ''; width: 6px; height: 6px; background: var(--navy); border-radius: 50%; }
+  .option-label.correct { border-color: #40c97e !important; background: rgba(64,201,126,0.1) !important; color: #80e6b0 !important; }
+  .option-label.correct .option-dot { border-color: #40c97e; background: #40c97e; }
+  .option-label.correct .option-dot::after { content: '✓'; color: white; font-size: 11px; font-weight: 700; }
+  .option-label.wrong { border-color: #e05e5e !important; background: rgba(224,94,94,0.08) !important; color: rgba(255,255,255,0.4) !important; text-decoration: line-through; }
+  .explanation { margin-top: 12px; padding: 12px 14px; background: rgba(201,168,76,0.08); border-left: 2px solid var(--gold); border-radius: 0 6px 6px 0; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; display: none; }
+  .explanation.visible { display: block; }
+  .submit-wrap { text-align: center; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .btn-submit { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); background: var(--gold); border: none; padding: 16px 48px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .unanswered-msg { font-size: 13px; color: rgba(255,150,150,0.8); margin-top: 12px; display: none; }
+  .results-screen { display: none; text-align: center; padding: 60px 0; }
+  .result-icon { font-size: 64px; margin-bottom: 24px; }
+  .result-title { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .result-score { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 700; color: var(--gold); margin: 16px 0; line-height: 1; }
+  .result-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+  .result-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 400px; margin: 0 auto 40px; }
+  .rb-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px 8px; }
+  .rb-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--white); }
+  .rb-num.green { color: #40c97e; }
+  .rb-num.red { color: #e05e5e; }
+  .rb-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .result-message { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 460px; margin: 0 auto 32px; padding: 20px 24px; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; background: rgba(201,168,76,0.04); }
+  .btn-retry { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1.5px solid var(--gold); padding: 14px 40px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+  .btn-retry:hover { background: rgba(201,168,76,0.1); }
+  .review-link { display: inline-block; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); cursor: pointer; margin-top: 16px; text-decoration: underline; text-underline-offset: 3px; }
+  .review-link:hover { color: rgba(255,255,255,0.7); }
+  @media (max-width: 600px) { .header h1 { font-size: 34px; } .q-text { font-size: 17px; } .result-score { font-size: 56px; } .meta-row { gap: 20px; } }
+</style>
+</head>
+<body>
+<div class="page-bg">
+
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-inner">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">0 / 35</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="header">
+    <div class="club-name">Parusa.kz · Яхт-клуб · Конаев</div>
+    <h1>Онлайн-экзамен<br><em>Advanced Матрос</em></h1>
+    <div class="header-sub">Флаги регаты · Спасение · Первая помощь · Генакер · Стопоры · Настройка парусов</div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-num">35</span><span class="meta-label">вопросов</span></div>
+      <div class="meta-item"><span class="meta-num">75%</span><span class="meta-label">проходной балл</span></div>
+      <div class="meta-item"><span class="meta-num">20</span><span class="meta-label">минут</span></div>
+    </div>
+  </div>
+
+  <div id="examBlock">
+
+    <!-- SECTION 1: ФЛАГИ РЕГАТЫ -->
+    <div class="section-tag">Раздел 1 — Флаги регаты</div>
+
+    <div class="question-card" id="qc1">
+      <div class="q-num">Вопрос 01</div>
+      <div class="q-text">Что означает флаг «AP» (Answering Pennant) на гоночном знаке?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Гонка началась — немедленно стартуй</label>
+        <label class="option-label"><input type="radio" name="q1" value="1"><span class="option-dot"></span>Старт отложен — оставайся в готовности</label>
+        <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Курс сокращён</label>
+        <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Обязательно надеть жилет</label>
+      </div>
+      <div class="explanation">AP (Answering Pennant) — флаг отсрочки. Когда поднят — старт переносится. Убирается не ранее чем за 1 минуту до нового старта. Следи за сигнальным судном.</div>
+    </div>
+
+    <div class="question-card" id="qc2">
+      <div class="q-num">Вопрос 02</div>
+      <div class="q-text">Флаг «X» (Икс) поднимается после старта. Что он означает?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Гонка отменена — все возвращаются</label>
+        <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Всем остановиться и ждать</label>
+        <label class="option-label"><input type="radio" name="q2" value="1"><span class="option-dot"></span>Индивидуальный возврат — одна или несколько лодок стартовали раньше времени</label>
+        <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Смена курса гонки</label>
+      </div>
+      <div class="explanation">Флаг X = индивидуальный возврат (Individual Recall). Один или несколько участников стартовали досрочно — они должны вернуться и пересечь линию заново с правильной стороны.</div>
+    </div>
+
+    <div class="question-card" id="qc3">
+      <div class="q-num">Вопрос 03</div>
+      <div class="q-text">Что означает «Чёрный флаг» (Black Flag) на старте регаты?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Предупреждение всем экипажам</label>
+        <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Смерть участника — гонка остановлена</label>
+        <label class="option-label"><input type="radio" name="q3" value="1"><span class="option-dot"></span>Любая лодка в зоне старта в последнюю минуту — дисквалификация без права апелляции</label>
+        <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Финиш гонки</label>
+      </div>
+      <div class="explanation">Чёрный флаг (правило 30.3) — жёсткое правило при повторных фальстартах. Любая лодка в стартовой зоне после последней минуты перед стартом дисквалифицируется, даже если гонка ушла на повторный старт.</div>
+    </div>
+
+    <div class="question-card" id="qc4">
+      <div class="q-num">Вопрос 04</div>
+      <div class="q-text">Флаг «S» с синим треугольником поднимается во время гонки. Что нужно делать?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Остановиться и ждать команды</label>
+        <label class="option-label"><input type="radio" name="q4" value="1"><span class="option-dot"></span>Финишировать на сокращённой дистанции у судейского судна</label>
+        <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Обойти все знаки заново</label>
+        <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Надеть спасательный жилет</label>
+      </div>
+      <div class="explanation">Флаг S = Shorten Course (сокращение курса). Судьи меняют дистанцию, как правило из-за погоды. Финиш проходит между судейским судном и ближайшим знаком — следи за объявлением.</div>
+    </div>
+
+    <div class="question-card" id="qc5">
+      <div class="q-num">Вопрос 05</div>
+      <div class="q-text">Флаг «Y» (жёлтый с диагональной полосой) — что он требует от экипажа?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Выйти из гонки</label>
+        <label class="option-label"><input type="radio" name="q5" value="1"><span class="option-dot"></span>Надеть спасательные жилеты — обязательно для всего экипажа</label>
+        <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Снизить скорость до минимума</label>
+        <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Подойти к сигнальному судну</label>
+      </div>
+      <div class="explanation">Флаг Y = «Жилеты обязательны». Судьи поднимают его при усилении ветра или ухудшении условий. Все члены экипажа обязаны надеть и застегнуть спасательный жилет.</div>
+    </div>
+
+    <div class="question-card" id="qc6">
+      <div class="q-num">Вопрос 06</div>
+      <div class="q-text">Как экипаж узнаёт, что именно его лодка фальстартовала при поднятом флаге «X»?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>Судьи дают звуковой сигнал отдельно каждой лодке</label>
+        <label class="option-label"><input type="radio" name="q6" value="1"><span class="option-dot"></span>Судьи объявляют парусный номер по рупору или показывают на лодку — экипаж сам должен следить</label>
+        <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>Другие лодки обязаны предупредить фальстартера</label>
+        <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>Фальстартер сам обязан подойти к судьям</label>
+      </div>
+      <div class="explanation">При флаге X судьи объявляют номер по рупору или VHF. Но ответственность — на экипаже: следи за линией старта, и если сомневаешься — возвращайся. Незнание не освобождает от дисквалификации.</div>
+    </div>
+
+    <!-- SECTION 2: ЧЕЛОВЕК ЗА БОРТОМ -->
+    <div class="section-tag" style="margin-top:40px">Раздел 2 — Спасение человека за бортом</div>
+
+    <div class="question-card" id="qc7">
+      <div class="q-num">Вопрос 07</div>
+      <div class="q-text">Первые три действия при падении человека за борт — в правильном порядке?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Бросить якорь → прыгнуть следом → звать на помощь</label>
+        <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Убрать паруса → повернуть лодку → бросить буй</label>
+        <label class="option-label"><input type="radio" name="q7" value="1"><span class="option-dot"></span>Крикнуть «Человек за бортом!» → бросить спасательный буй → не терять пострадавшего из виду</label>
+        <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Звонить в МЧС → остановить яхту → ждать помощи</label>
+      </div>
+      <div class="explanation">MOB-алгоритм: 1) Кричим «Человек за бортом!» 2) Бросаем буй-конец или подковообразный буй немедленно 3) Один человек НЕ отводит взгляд от пострадавшего — он «маяк». Только после этого начинаем манёвр возврата.</div>
+    </div>
+
+    <div class="question-card" id="qc8">
+      <div class="q-num">Вопрос 08</div>
+      <div class="q-text">Метод «Quick Stop» при спасении с яхты — в чём его суть?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Немедленно остановить яхту, бросить якорь и ждать</label>
+        <label class="option-label"><input type="radio" name="q8" value="1"><span class="option-dot"></span>Немедленный поворот на ветер, затем круговой манёвр вокруг пострадавшего, подход с подветра</label>
+        <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Разогнаться и буксировать пострадавшего</label>
+        <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Спустить паруса и плыть вёслами</label>
+      </div>
+      <div class="explanation">Quick Stop: сразу поворачиваем на ветер (оверштаг), затем описываем круг вокруг пострадавшего, сохраняя его в поле зрения. Подходим с подветренной стороны — лодку не сносит на человека. Заходим медленно, с минимальной скоростью.</div>
+    </div>
+
+    <div class="question-card" id="qc9">
+      <div class="q-num">Вопрос 09</div>
+      <div class="q-text">С какой стороны нужно подходить к человеку за бортом?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>С наветренной — чтобы паруса тянули к пострадавшему</label>
+        <label class="option-label"><input type="radio" name="q9" value="1"><span class="option-dot"></span>С подветренной — чтобы яхта не навалилась на пострадавшего при потере хода</label>
+        <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Со стороны кормы — так проще достать</label>
+        <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Неважно — главное скорость подхода</label>
+      </div>
+      <div class="explanation">Подход с подветра (leeward approach): яхта стоит между ветром и пострадавшим. Если потеряем ход — нас отнесёт от пострадавшего, а не на него. Подходим медленно, готовим конец и подковообразный буй.</div>
+    </div>
+
+    <div class="question-card" id="qc10">
+      <div class="q-num">Вопрос 10</div>
+      <div class="q-text">Пострадавший в воде без сознания или не может помочь себе сам. Как поднять его на борт?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Бросить конец и ждать пока сам ухватится</label>
+        <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Прыгнуть в воду и подтолкнуть</label>
+        <label class="option-label"><input type="radio" name="q10" value="1"><span class="option-dot"></span>Использовать спасательный строп или петлю, перекинуть через борт, несколько человек тянут одновременно</span></label>
+        <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Подождать пока пострадавший отдохнёт и сам заберётся</label>
+      </div>
+      <div class="explanation">Подъём пассивного пострадавшего — командная работа. Используем петлю-строп, заводим под мышки. Два-три человека поднимают по счёту. На гоночной яхте без лебёдки это физически тяжело — тренируйтесь заранее. Прыгать в воду самому — запрещено без команды шкипера.</div>
+    </div>
+
+    <!-- SECTION 3: ПЕРВАЯ ПОМОЩЬ -->
+    <div class="section-tag" style="margin-top:40px">Раздел 3 — Первая помощь на воде</div>
+
+    <div class="question-card" id="qc11">
+      <div class="q-num">Вопрос 11</div>
+      <div class="q-text">Признаки переохлаждения (гипотермии) у члена экипажа?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>Высокая температура, покрасневшая кожа, возбуждение</label>
+        <label class="option-label"><input type="radio" name="q11" value="1"><span class="option-dot"></span>Сильный озноб, бледность, спутанность сознания, замедленная речь</label>
+        <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>Боль в суставах, тошнота, жажда</label>
+        <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>Судороги и потеря зрения</label>
+      </div>
+      <div class="explanation">Гипотермия: дрожь (начало) → прекращение дрожи + спутанность сознания (опасная стадия) → потеря сознания (критично). Первая помощь: убрать с ветра, снять мокрую одежду, укутать, тёплое питьё (если в сознании). Нельзя растирать конечности — это гонит холодную кровь к сердцу.</div>
+    </div>
+
+    <div class="question-card" id="qc12">
+      <div class="q-num">Вопрос 12</div>
+      <div class="q-text">Что нельзя делать при признаках теплового удара у члена экипажа?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Перенести в тень</label>
+        <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Охладить голову влажной тканью</label>
+        <label class="option-label"><input type="radio" name="q12" value="1"><span class="option-dot"></span>Давать алкоголь «для бодрости» или крепкий кофе</label>
+        <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Обеспечить питьё воды небольшими глотками</label>
+      </div>
+      <div class="explanation">При тепловом ударе нельзя: алкоголь (расширяет сосуды и усиливает обезвоживание), кофеин, класть в ледяную воду. Нужно: тень, умеренное охлаждение, вода небольшими глотками, вентиляция. При потере сознания — вызвать помощь.</div>
+    </div>
+
+    <div class="question-card" id="qc13">
+      <div class="q-num">Вопрос 13</div>
+      <div class="q-text">Пострадавший без сознания, дышит. В какое положение его укладывают?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>На спину, голову назад, руки вдоль тела</label>
+        <label class="option-label"><input type="radio" name="q13" value="1"><span class="option-dot"></span>Восстановительное положение — на боку, нижняя рука вперёд, верхнее колено согнуто</label>
+        <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>Сидя, прислонив к мачте</label>
+        <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>На животе, лицом вниз</label>
+      </div>
+      <div class="explanation">Восстановительное (боковое) положение — стандарт первой помощи при бессознательном состоянии с сохранённым дыханием. Предотвращает аспирацию рвотных масс и западание языка. Контролируй дыхание каждые 2 минуты.</div>
+    </div>
+
+    <div class="question-card" id="qc14">
+      <div class="q-num">Вопрос 14</div>
+      <div class="q-text">Пострадавший не дышит. Ты один. Алгоритм СЛР (CPR)?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>5 вдохов → 15 нажатий → вызов помощи</label>
+        <label class="option-label"><input type="radio" name="q14" value="1"><span class="option-dot"></span>Вызвать помощь → 30 нажатий на грудину → 2 вдоха, повторять</label>
+        <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Только вдохи «рот в рот» каждые 5 секунд</label>
+        <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Нажатия на живот для удаления воды из лёгких</label>
+      </div>
+      <div class="explanation">СЛР: сначала вызови помощь (крикни экипажу), затем 30 компрессий грудины (глубина 5–6 см, ритм ~100/мин) + 2 вдоха. Цикл 30:2 до прибытия помощи или восстановления дыхания. Современные рекомендации ВОЗ допускают только компрессии без вдохов, если боишься.</div>
+    </div>
+
+    <div class="question-card" id="qc15">
+      <div class="q-num">Вопрос 15</div>
+      <div class="q-text">Матрос получил удар гиком по голове. Что делать в первую очередь?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Дать обезболивающее и продолжать гонку</label>
+        <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Вылить воду на голову для охлаждения</label>
+        <label class="option-label"><input type="radio" name="q15" value="1"><span class="option-dot"></span>Остановить активность пострадавшего, проверить сознание и зрение, не давать двигаться — подозревать сотрясение</label>
+        <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Немедленно прыгнуть за борт, чтобы освежиться</label>
+      </div>
+      <div class="explanation">Удар гиком — серьёзная травма головы. Признаки сотрясения: спутанность, тошнота, двоение в глазах, не помнит события. Пострадавшего садим, обездвиживаем, не даём снова активничать. Шкипер принимает решение о прекращении гонки и возвращении.</div>
+    </div>
+
+    <!-- SECTION 4: ГЕНАКЕР -->
+    <div class="section-tag" style="margin-top:40px">Раздел 4 — Генакер: подъём, манёвры, уборка</div>
+
+    <div class="question-card" id="qc16">
+      <div class="q-num">Вопрос 16</div>
+      <div class="q-text">На каких курсах используется генакер на яхте SB20?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>На всех курсах кроме фордевинда</label>
+        <label class="option-label"><input type="radio" name="q16" value="1"><span class="option-dot"></span>На полных курсах — бакштаг и фордевинд (от ~120° до 180° к ветру)</label>
+        <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>Только на бейдевинде при слабом ветре</label>
+        <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>На галфвинде вместо стакселя</label>
+      </div>
+      <div class="explanation">Генакер — парус для полных курсов (120–180° к ветру). Выпускается через выдвижной бушприт на носу. На бейдевинде и галфвинде генакер не работает — его заменяет стаксель.</div>
+    </div>
+
+    <div class="question-card" id="qc17">
+      <div class="q-num">Вопрос 17</div>
+      <div class="q-text">Правильная последовательность подъёма генакера на SB20?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>Сначала травим стаксель → выдвигаем бушприт → поднимаем генакер</label>
+        <label class="option-label"><input type="radio" name="q17" value="1"><span class="option-dot"></span>Закрутить стаксель → выдвинуть бушприт → прикрепить галс → поднять фал → раскрыть шкоты</label>
+        <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>Поднять фал → выдвинуть бушприт → прикрепить галс</label>
+        <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>Открыть мешок → бросить парус за борт → поднять</label>
+      </div>
+      <div class="explanation">Последовательность: 1) Закрутить стаксель (furling) чтобы не мешал 2) Выдвинуть бушприт 3) Прикрепить галсовый угол к бушприту 4) Поднять фал (генакер выходит из мешка) 5) Выбрать шкоты — парус наполнился. Ошибка в порядке = парус в воде.</div>
+    </div>
+
+    <div class="question-card" id="qc18">
+      <div class="q-num">Вопрос 18</div>
+      <div class="q-text">Как выполняется «дженни-гайб» — смена галса с генакером?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Убрать генакер → сделать фордевинд → поднять снова на другом галсе</label>
+        <label class="option-label"><input type="radio" name="q18" value="1"><span class="option-dot"></span>Шкотовый переносит шкот под бушпритом, затем шкипер поворачивает — генакер переходит на другой борт без уборки</label>
+        <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Генакер автоматически переходит сам при фордевинде</label>
+        <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Нужно остановить яхту и перенести парус руками</label>
+      </div>
+      <div class="explanation">Дженни-гайб: перед поворотом шкотовый берёт новый шкот, протаскивает под бушпритом. По команде шкипера — фордевинд (корма через ветер), в этот момент переносим шкот. Генакер «облетает» через нос бушприта. Ключ — синхронность рулевого и шкотового.</div>
+    </div>
+
+    <div class="question-card" id="qc19">
+      <div class="q-num">Вопрос 19</div>
+      <div class="q-text">Правильная уборка генакера на SB20?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>Отдать фал → затянуть в мешок → задвинуть бушприт</label>
+        <label class="option-label"><input type="radio" name="q19" value="1"><span class="option-dot"></span>Раскрутить стаксель → травить фал и одновременно тянуть мешок-шкот → задвинуть бушприт</label>
+        <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>Отрезать шкоты и поднять на борт</label>
+        <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>Убрать после остановки яхты</label>
+      </div>
+      <div class="explanation">Уборка: 1) Раскрутить стаксель (закрыть парус от ветра) 2) Одновременно травить фал и выбирать мешок-шкот (затягиваем парус в мешок) 3) Парус убран → задвигаем бушприт 4) Крепим галс. Ошибка — парус в воде под лодкой.</div>
+    </div>
+
+    <div class="question-card" id="qc20">
+      <div class="q-num">Вопрос 20</div>
+      <div class="q-text">Генакер «завернулся» вокруг штага и не убирается. Что делать?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>Резко выбрать все шкоты и дёрнуть</label>
+        <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>Остановить лодку и ждать</label>
+        <label class="option-label"><input type="radio" name="q20" value="1"><span class="option-dot"></span>Повернуть лодку против закрутки (сменить курс), потравить фал и помочь развернуть снасть вручную</label>
+        <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>Немедленно обрезать галс</label>
+      </div>
+      <div class="explanation">Закрутка генакера — частая авария. Решение: потравить шкоты, изменить курс в сторону «разкрутки», помочь вручную у штага. Если не помогает — убрать нос от ветра (фордевинд), потравить фал и осторожно распутать. Не рвать и не резать без крайней необходимости.</div>
+    </div>
+
+    <!-- SECTION 5: СТОПОРЫ -->
+    <div class="section-tag" style="margin-top:40px">Раздел 5 — Стопоры и управление снастями</div>
+
+    <div class="question-card" id="qc21">
+      <div class="q-num">Вопрос 21</div>
+      <div class="q-text">Что такое стопор (джаммер) и для чего он используется?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Устройство для экстренной остановки мачты</label>
+        <label class="option-label"><input type="radio" name="q21" value="1"><span class="option-dot"></span>Механический зажим, фиксирующий снасть в нужном положении без удержания руками или намотки на утку</label>
+        <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Страховочный карабин для экипажа</label>
+        <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Блок для изменения направления тяги</label>
+      </div>
+      <div class="explanation">Джаммер (стопор) — кулачковый зажим. Снасть проходит через него: когда рычаг закрыт — снасть заблокирована, можно отпустить руки. Освобождение: открыть рычаг и вытянуть снасть. Используется для фиксации фала, оттяжки гика, бакштага.</div>
+    </div>
+
+    <div class="question-card" id="qc22">
+      <div class="q-num">Вопрос 22</div>
+      <div class="q-text">Можно ли отдавать снасть из стопора когда на неё идёт сильная нагрузка?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q22" value="1"><span class="option-dot"></span>Нет — сначала сбросить нагрузку (потравить с лебёдки или изменить курс), потом открыть стопор</label>
+        <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Да, стопор выдерживает любую нагрузку</label>
+        <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Можно, если нажать рычаг очень быстро</label>
+        <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Да, но только при ветре до 10 узлов</label>
+      </div>
+      <div class="explanation">Открывать стопор под нагрузкой — опасно. Снасть может выскочить бесконтрольно, травмировав руки, или повредить стопор. Правильно: сначала сбросить нагрузку через лебёдку или изменив курс, убедиться что ход снасти контролируется, затем открыть стопор.</div>
+    </div>
+
+    <div class="question-card" id="qc23">
+      <div class="q-num">Вопрос 23</div>
+      <div class="q-text">Фал генакера нужно быстро потравить на уборке. Как правильно?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Открыть стопор и отпустить фал свободно падать</label>
+        <label class="option-label"><input type="radio" name="q23" value="1"><span class="option-dot"></span>Несколько оборотов на лебёдке, открыть стопор, контролируемо травить с лебёдки удерживая конец</label>
+        <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Срезать фал ножом</label>
+        <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Не трогать — пусть сам упадёт</label>
+      </div>
+      <div class="explanation">Контролируемая отдача: несколько оборотов на лебёдке (без стопора) создают трение — можно травить с нужной скоростью удерживая конец руками. Бесконтрольно отпущенный фал — парус в воде, блоки бьют по палубе, риск травмы.</div>
+    </div>
+
+    <div class="question-card" id="qc24">
+      <div class="q-num">Вопрос 24</div>
+      <div class="q-text">Что такое «оттяжка гика» (вэнг/кикер) и как она влияет на парус?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Удерживает гик у мачты при сильном ветре</label>
+        <label class="option-label"><input type="radio" name="q24" value="1"><span class="option-dot"></span>Тянет гик вниз, контролируя скручивание грота и поддерживая форму паруса на полных курсах</label>
+        <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Соединяет гик со штагом при фордевинде</label>
+        <label class="option-label"><input type="radio" name="q24">  <span class="option-dot"></span>Тянет гик к корме, уменьшая парусность</label>
+      </div>
+      <div class="explanation">Оттяжка гика (vang/kicker) контролирует угол гика к мачте. Натяжение → гик вниз → лик-трос подтягивается → уменьшается скручивание (twist) грота → верхняя шапка работает эффективнее. На бейдевинде — умеренно, на полных курсах — подтягиваем сильнее.</div>
+    </div>
+
+    <div class="question-card" id="qc25">
+      <div class="q-num">Вопрос 25</div>
+      <div class="q-text">Как правильно намотать снасть на утку (cleат)?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Завязать морским узлом</label>
+        <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Несколько оборотов «восьмёркой» и затянуть</label>
+        <label class="option-label"><input type="radio" name="q25" value="1"><span class="option-dot"></span>Один-два полных оборота, затем «восьмёрка» через рога, заканчивая петлёй для быстрой отдачи</label>
+        <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Намотать как можно больше оборотов для надёжности</label>
+      </div>
+      <div class="explanation">На утку: 1-2 полных оборота вокруг основания, затем восьмёрки через рога. Последний шлаг — петлёй (шлюпочный узел) для мгновенной отдачи. Слишком много оборотов = не отдашь быстро в аварийной ситуации. Жёсткий узел на утке — грубая ошибка.</div>
+    </div>
+
+    <!-- SECTION 6: ТОНКАЯ НАСТРОЙКА ПАРУСОВ -->
+    <div class="section-tag" style="margin-top:40px">Раздел 6 — Тонкая настройка парусов</div>
+
+    <div class="question-card" id="qc26">
+      <div class="q-num">Вопрос 26</div>
+      <div class="q-text">Колдунчики на стакселе: верхний «падает» (клонится вниз к парусу). Что нужно сделать?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Выбрать (подтянуть) шкот стакселя</label>
+        <label class="option-label"><input type="radio" name="q26" value="1"><span class="option-dot"></span>Потравить (отпустить) шкот стакселя</label>
+        <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Изменить курс на бакштаг</label>
+        <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Убрать стаксель и поднять генакер</label>
+      </div>
+      <div class="explanation">Верхний колдунчик падает = парус «перетянут» — угол атаки слишком мал, верхняя часть отваливает. Решение: потравить шкот. Нижний падает — наоборот, шкот нужно выбрать. Оба летят горизонтально = идеальная настройка.</div>
+    </div>
+
+    <div class="question-card" id="qc27">
+      <div class="q-num">Вопрос 27</div>
+      <div class="q-text">Для чего служит «каннингхэм» (cunningham) на парусе?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Опускает мачту для прохода под мостами</label>
+        <label class="option-label"><input type="radio" name="q27" value="1"><span class="option-dot"></span>Натягивает переднюю шкаторину грота, смещая точку максимального прогиба вперёд в сильный ветер</label>
+        <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Закрепляет нижний угол генакера</label>
+        <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Регулирует натяжение штага</label>
+      </div>
+      <div class="explanation">Каннингхэм — снасть, натягивающая лик-трос (переднюю шкаторину) грота. В сильный ветер: натягиваем → точка максимального прогиба сдвигается вперёд → профиль парусит становится более плоским → меньше крен, больше управляемость. В слабый ветер — отпускаем.</div>
+    </div>
+
+    <div class="question-card" id="qc28">
+      <div class="q-num">Вопрос 28</div>
+      <div class="q-text">Что регулирует «оттяжка шкаторины» (outhaul) грота?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q28" value="1"><span class="option-dot"></span>Натяжение нижней шкаторины грота — влияет на глубину профиля в нижней части паруса</label>
+        <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Высоту гика над кокпитом</label>
+        <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Угол наклона мачты</label>
+        <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Скручивание верхушки грота</label>
+      </div>
+      <div class="explanation">Outhaul натягивает нижнюю шкаторину к концу гика. Натяжение → парус плоский в нижней части → быстрее в сильный ветер. Слабее → парус «пузатый» → больше тяги в слабый ветер. Классический компромисс: сила тяги vs управляемость.</div>
+    </div>
+
+    <div class="question-card" id="qc29">
+      <div class="q-num">Вопрос 29</div>
+      <div class="q-text">«Провисание» штага (forestay sag) — это хорошо или плохо на бейдевинде?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Всегда хорошо — парус становится более мощным</label>
+        <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Неважно — штаг не влияет на форму стакселя</label>
+        <label class="option-label"><input type="radio" name="q29" value="1"><span class="option-dot"></span>Обычно плохо — провисший штаг делает стаксель «пузатым», снижая остроту хода к ветру</label>
+        <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Хорошо только при ветре выше 15 узлов</label>
+      </div>
+      <div class="explanation">Провисание штага = стаксель становится глубже (пузатее). На бейдевинде это ухудшает угол к ветру. Борьба: натянуть бакштаг (если есть) или изменить положение мачты. В слабый ветер небольшое провисание допустимо — добавляет тягу.</div>
+    </div>
+
+    <div class="question-card" id="qc30">
+      <div class="q-num">Вопрос 30</div>
+      <div class="q-text">Что означает «скручивание» (twist) паруса и зачем оно нужно?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>Дефект паруса, который нужно немедленно устранить</label>
+        <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>Поворот всего паруса вокруг мачты</label>
+        <label class="option-label"><input type="radio" name="q30" value="1"><span class="option-dot"></span>Разница углов атаки нижней и верхней частей паруса — верхушка открывается чтобы компенсировать разницу ветра по высоте</label>
+        <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>Скручивание мачты под нагрузкой</label>
+      </div>
+      <div class="explanation">Ветер у воды медленнее, чем выше. Поэтому верхняя часть паруса должна стоять под другим углом — её «открывают» (twist). Контролируется оттяжкой гика и натяжением шкота. Нулевое скручивание = верхушка «закрыта» = крен. Слишком много = верхушка не работает.</div>
+    </div>
+
+    <div class="question-card" id="qc31">
+      <div class="q-num">Вопрос 31</div>
+      <div class="q-text">Как правильно настроить пагон (traveler) грота на бейдевинде в свежий ветер?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Поднять пагон в наветренную сторону</label>
+        <label class="option-label"><input type="radio" name="q31" value="1"><span class="option-dot"></span>Опустить пагон под ветер, сохраняя гика-шкот натянутым — уменьшается крен без потери скорости</label>
+        <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Зафиксировать по центру при любом ветре</label>
+        <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Убрать пагон и работать только шкотом</label>
+      </div>
+      <div class="explanation">В свежий ветер на бейдевинде: опускаем пагон под ветер → гик идёт вниз, а не в сторону → грот сохраняет форму, но крен уменьшается. Альтернатива — потравить шкот, но тогда теряем мощь. Пагон даёт баланс между скоростью и управляемостью.</div>
+    </div>
+
+    <div class="question-card" id="qc32">
+      <div class="q-num">Вопрос 32</div>
+      <div class="q-text">Лик-трос стакселя создаёт складку («кожаный ремень»). Что нужно отрегулировать?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Увеличить натяжение штага</label>
+        <label class="option-label"><input type="radio" name="q32" value="1"><span class="option-dot"></span>Переместить пагон стакселя вперёд — изменить угол тяги шкота</label>
+        <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Убрать стаксель и перейти на грот</label>
+        <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Потравить гика-шкот</label>
+      </div>
+      <div class="explanation">«Кожаный ремень» (горизонтальная складка на лик-тросе) = пагон стоит слишком далеко назад, шкот тянет нижний угол больше чем надо. Решение: пагон вперёд → шкот тянет одновременно нижнюю и заднюю шкаторину равномерно → складка исчезает.</div>
+    </div>
+
+    <div class="question-card" id="qc33">
+      <div class="q-num">Вопрос 33</div>
+      <div class="q-text">Что происходит с яхтой если грот слишком «перетянут» (выбран) на бейдевинде?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Яхта ускоряется и набирает дополнительный угол к ветру</label>
+        <label class="option-label"><input type="radio" name="q33" value="1"><span class="option-dot"></span>Яхта «приводит» (поворачивает на ветер), увеличивается крен, скорость падает</label>
+        <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Ничего не меняется — только снасть натянута</label>
+        <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Яхта уваливается (поворачивает под ветер)</label>
+      </div>
+      <div class="explanation">Перетянутый грот = центр парусности смещается назад = яхта приводится (стремится повернуть на ветер). Рулевой вынужден давать «под ветер» → тормозящее сопротивление руля. Признак: трудно держать курс, постоянно борешься с рулём. Решение: потравить грот.</div>
+    </div>
+
+    <div class="question-card" id="qc34">
+      <div class="q-num">Вопрос 34</div>
+      <div class="q-text">Как определить, что яхта идёт на оптимальном угле к ветру на бейдевинде?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Максимальная скорость по GPS</label>
+        <label class="option-label"><input type="radio" name="q34" value="1"><span class="option-dot"></span>Передний нижний угол грота начинает «мигать» (парус у мачты слегка трепещет) — чуть-чуть уваливаемся и мигание пропадает</label>
+        <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Когда все колдунчики опущены вниз</label>
+        <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Когда рулевой не двигает румпелем</label>
+      </div>
+      <div class="explanation">«Мигание» (luffing) переднего угла грота — индикатор максимально острого курса. Если мигает — чуть увалились → перестало мигать = оптимальный угол. Идти «чище» = уже теряем скорость. Постоянный баланс между приводкой и уваливанием — навык рулевого.</div>
+    </div>
+
+    <div class="question-card" id="qc35">
+      <div class="q-num">Вопрос 35</div>
+      <div class="q-text">В сильный ветер яхта сильно кренится и плохо управляется. Что делать с парусами в первую очередь?</div>
+      <div class="options">
+        <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Выбрать грот ещё сильнее чтобы «пробиться» сквозь ветер</label>
+        <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Убрать все паруса и дрейфовать</label>
+        <label class="option-label"><input type="radio" name="q35" value="1"><span class="option-dot"></span>Потравить грот (traveler вниз + шкот), закрутить часть стакселя, затем откренить экипаж сильнее</label>
+        <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Резко повернуть фордевинд</label>
+      </div>
+      <div class="explanation">В шквал: 1) Потравить грот — снять давление (depowerить), пагон под ветер 2) Закрутить 20-30% стакселя 3) Откренить экипаж максимально 4) Шкипер держит лодку. Резкий фордевинд в шквал — опасен (неконтролируемый перенос гика). Действия должны быть быстрыми, но без паники.</div>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="btn-submit" id="submitBtn" onclick="submitExam()">Сдать экзамен</button>
+      <div class="unanswered-msg" id="unansweredMsg">⚠ Ответьте на все вопросы перед отправкой</div>
+    </div>
+  </div>
+
+  <div class="results-screen" id="resultsBlock">
+    <div class="result-icon" id="resultIcon"></div>
+    <div class="result-title" id="resultTitle"></div>
+    <div class="result-score" id="resultScore"></div>
+    <div class="result-sub" id="resultSub"></div>
+    <div class="result-breakdown">
+      <div class="rb-item"><div class="rb-num green" id="rbCorrect">—</div><div class="rb-label">Верно</div></div>
+      <div class="rb-item"><div class="rb-num red" id="rbWrong">—</div><div class="rb-label">Ошибок</div></div>
+      <div class="rb-item"><div class="rb-num" id="rbTotal">35</div><div class="rb-label">Всего</div></div>
+    </div>
+    <div class="result-message" id="resultMessage"></div>
+    <button class="btn-retry" onclick="retryExam()">Пройти ещё раз</button>
+    <div><span class="review-link" onclick="showReview()">Посмотреть ошибки</span></div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const TOTAL = 35;
+const PASS = 75;
+
+function updateProgress() {
+  let n = 0;
+  for (let i = 1; i <= TOTAL; i++) {
+    if (document.querySelector(`input[name="q${i}"]:checked`)) n++;
+  }
+  const pct = Math.round(n / TOTAL * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = n + ' / ' + TOTAL;
+}
+
+document.querySelectorAll('.options input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => r.closest('.option-label').classList.remove('selected'));
+    this.closest('.option-label').classList.add('selected');
+    const num = parseInt(this.name.replace('q', ''));
+    document.getElementById('qc' + num).classList.add('answered');
+    updateProgress();
+  });
+});
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) document.getElementById('progressWrap').style.display = 'block';
+});
+
+function submitExam() {
+  let unanswered = [];
+  for (let i = 1; i <= TOTAL; i++) {
+    if (!document.querySelector(`input[name="q${i}"]:checked`)) unanswered.push(i);
+  }
+  if (unanswered.length) {
+    document.getElementById('unansweredMsg').style.display = 'block';
+    const fc = document.getElementById('qc' + unanswered[0]);
+    fc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    fc.style.borderColor = 'rgba(224,94,94,0.6)';
+    return;
+  }
+  let correct = 0;
+  for (let i = 1; i <= TOTAL; i++) {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === '1') correct++;
+  }
+  const pct = Math.round(correct / TOTAL * 100);
+  const passed = pct >= PASS;
+  document.getElementById('examBlock').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  const res = document.getElementById('resultsBlock');
+  res.style.display = 'block';
+  document.getElementById('resultIcon').textContent = passed ? '⚓' : '🌊';
+  document.getElementById('resultTitle').textContent = passed ? 'Сертификат заработан' : 'Нужно подготовиться';
+  document.getElementById('resultScore').textContent = pct + '%';
+  document.getElementById('resultSub').textContent = correct + ' из ' + TOTAL + ' правильных ответов';
+  document.getElementById('rbCorrect').textContent = correct;
+  document.getElementById('rbWrong').textContent = TOTAL - correct;
+  document.getElementById('resultMessage').textContent = passed
+    ? 'Отлично! Ты набрал ' + pct + '% и прошёл теоретический экзамен Advanced Матроса. Следующий шаг — практика на воде. После неё ты получишь звание Матрос Parusa.kz. До встречи на причале!'
+    : 'Ты набрал ' + pct + '% — нужно ' + PASS + '% для прохождения. Повтори разделы по флагам регаты, генакеру и настройке парусов и попробуй снова. Ты справишься!';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function retryExam() {
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected', 'correct', 'wrong'));
+  document.querySelectorAll('.explanation').forEach(e => e.classList.remove('visible'));
+  document.querySelectorAll('.question-card').forEach(c => { c.classList.remove('answered'); c.style.borderColor = ''; });
+  document.getElementById('unansweredMsg').style.display = 'none';
+  document.getElementById('resultsBlock').style.display = 'none';
+  document.getElementById('examBlock').style.display = 'block';
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('progressText').textContent = '0 / ' + TOTAL;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showReview() {
+  document.getElementById('resultsBlock').style.display = 'none';
+  document.getElementById('examBlock').style.display = 'block';
+  document.getElementById('progressWrap').style.display = 'none';
+  for (let i = 1; i <= TOTAL; i++) {
+    document.querySelectorAll(`input[name="q${i}"]`).forEach(opt => {
+      const label = opt.closest('.option-label');
+      label.style.pointerEvents = 'none';
+      if (opt.value === '1') label.classList.add('correct');
+      else if (opt.checked) label.classList.add('wrong');
+    });
+    document.getElementById('qc' + i).querySelector('.explanation').classList.add('visible');
+  }
+  document.getElementById('submitBtn').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
