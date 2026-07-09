@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-836599286"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","AW-836599286");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экзамен Капитана — Parusa.kz</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1A2744;--gold:#C9A84C;--gold-light:#E8C97A;--white:#FFFFFF;--muted:#6B7A99;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Jost',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;}
+  .page-bg{min-height:100vh;background:linear-gradient(180deg,#1A2744 0%,#0D1628 100%);position:relative;overflow:hidden;}
+  .page-bg::before{content:'';position:fixed;top:-50%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none;}
+  .container{max-width:740px;margin:0 auto;padding:0 20px 60px;position:relative;z-index:1;}
+  .header{text-align:center;padding:60px 0 40px;border-bottom:1px solid rgba(201,168,76,0.2);margin-bottom:40px;}
+  .club-name{font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+  .header h1{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--white);line-height:1.1;margin-bottom:8px;}
+  .header h1 em{font-style:italic;color:var(--gold);}
+  .header-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-top:12px;}
+  .meta-row{display:flex;justify-content:center;gap:32px;margin-top:28px;flex-wrap:wrap;}
+  .meta-item{text-align:center;}
+  .meta-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--gold);display:block;}
+  .meta-label{font-size:11px;font-weight:400;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px;}
+  .progress-wrap{position:sticky;top:0;z-index:10;background:rgba(13,22,40,0.95);backdrop-filter:blur(12px);padding:10px 0;margin-bottom:32px;border-bottom:1px solid rgba(201,168,76,0.15);display:none;}
+  .progress-inner{max-width:740px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:14px;}
+  .progress-bar{flex:1;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width 0.4s ease;width:0%;}
+  .progress-text{font-size:12px;font-weight:500;color:var(--gold);white-space:nowrap;min-width:60px;text-align:right;}
+  .section-tag{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.25);width:100%;}
+  .section-tag::before{content:'';display:block;width:20px;height:1px;background:var(--gold);}
+  .question-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;margin-bottom:16px;transition:border-color 0.2s,background 0.2s;}
+  .question-card:hover{border-color:rgba(201,168,76,0.2);}
+  .question-card.answered{border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.04);}
+  .q-num{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .q-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--white);line-height:1.4;margin-bottom:18px;}
+  .options{display:flex;flex-direction:column;gap:8px;}
+  .option-label{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;transition:all 0.15s ease;color:rgba(255,255,255,0.75);font-size:14px;line-height:1.5;}
+  .option-label:hover{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.06);color:var(--white);}
+  .option-label input[type="radio"]{display:none;}
+  .option-dot{width:18px;height:18px;min-width:18px;border:1.5px solid rgba(255,255,255,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all 0.15s;}
+  .option-label.selected{border-color:var(--gold);background:rgba(201,168,76,0.1);color:var(--white);}
+  .option-label.selected .option-dot{border-color:var(--gold);background:var(--gold);}
+  .option-label.selected .option-dot::after{content:'';width:6px;height:6px;background:var(--navy);border-radius:50%;}
+  .option-label.correct{border-color:#40c97e!important;background:rgba(64,201,126,0.1)!important;color:#80e6b0!important;}
+  .option-label.correct .option-dot{border-color:#40c97e;background:#40c97e;}
+  .option-label.correct .option-dot::after{content:'✓';color:white;font-size:11px;font-weight:700;}
+  .option-label.wrong{border-color:#e05e5e!important;background:rgba(224,94,94,0.08)!important;color:rgba(255,255,255,0.4)!important;text-decoration:line-through;}
+  .explanation{margin-top:12px;padding:12px 14px;background:rgba(201,168,76,0.08);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;display:none;}
+  .explanation.visible{display:block;}
+  .submit-wrap{text-align:center;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);}
+  .btn-submit{font-family:'Jost',sans-serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--navy);background:var(--gold);border:none;padding:16px 48px;border-radius:6px;cursor:pointer;transition:all 0.2s;}
+  .btn-submit:hover{background:var(--gold-light);transform:translateY(-1px);}
+  .unanswered-msg{font-size:13px;color:rgba(255,150,150,0.8);margin-top:12px;display:none;}
+  .results-screen{display:none;text-align:center;padding:60px 0;}
+  .result-icon{font-size:64px;margin-bottom:24px;}
+  .result-title{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--white);margin-bottom:8px;}
+  .result-score{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;color:var(--gold);margin:16px 0;line-height:1;}
+  .result-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:32px;}
+  .result-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:400px;margin:0 auto 40px;}
+  .rb-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px 8px;}
+  .rb-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--white);}
+  .rb-num.green{color:#40c97e;}
+  .rb-num.red{color:#e05e5e;}
+  .rb-label{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+  .result-message{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:460px;margin:0 auto 32px;padding:20px 24px;border:1px solid rgba(201,168,76,0.2);border-radius:8px;background:rgba(201,168,76,0.04);}
+  .btn-retry{font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1.5px solid var(--gold);padding:14px 40px;border-radius:6px;cursor:pointer;transition:all 0.2s;}
+  .btn-retry:hover{background:rgba(201,168,76,0.1);}
+  .review-link{display:inline-block;font-size:12px;font-weight:500;color:rgba(255,255,255,0.4);cursor:pointer;margin-top:16px;text-decoration:underline;text-underline-offset:3px;}
+  @media(max-width:600px){.header h1{font-size:34px;}.q-text{font-size:17px;}.result-score{font-size:56px;}.meta-row{gap:20px;}}
+</style>
+</head>
+<body>
+<div class="page-bg">
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-inner">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">0 / 35</div>
+  </div>
+</div>
+<div class="container">
+
+<div id="examBlock">
+<div class="header">
+  <div class="club-name">Parusa Yacht Club · Капчагай</div>
+  <h1>Экзамен <em>Капитана</em></h1>
+  <div class="header-sub">Правила гонок · Тактика · Метеорология · Навигация · Управление · Командование</div>
+  <div class="meta-row">
+    <div class="meta-item"><span class="meta-num">35</span><span class="meta-label">вопросов</span></div>
+    <div class="meta-item"><span class="meta-num">75%</span><span class="meta-label">порог</span></div>
+    <div class="meta-item"><span class="meta-num">25</span><span class="meta-label">минут</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1 — ПРАВИЛА ГОНОК -->
+<div class="section-tag">Раздел 1 — Правила гонок RRS</div>
+
+<div class="question-card" id="qc1">
+  <div class="q-num">Вопрос 1</div>
+  <div class="q-text">Две яхты сближаются на разных галсах. Кто имеет преимущество?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Яхта, идущая быстрее</label>
+    <label class="option-label"><input type="radio" name="q1" value="1"><span class="option-dot"></span>Яхта на правом галсе (Правило 10 RRS)</label>
+    <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Яхта с большей парусностью</label>
+    <label class="option-label"><input type="radio" name="q1" value="0"><span class="option-dot"></span>Яхта, которая первой увидела другую</label>
+  </div>
+  <div class="explanation">Правило 10 RRS — одно из основных: яхта на левом галсе уступает яхте на правом галсе. Галс определяется по тому, с какого борта дует ветер: правый галс — ветер справа.</div>
+</div>
+
+<div class="question-card" id="qc2">
+  <div class="q-num">Вопрос 2</div>
+  <div class="q-text">Две яхты идут одним курсом. Наветренная яхта обгоняет подветренную. Кто уступает?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Подветренная — она мешает обгону</label>
+    <label class="option-label"><input type="radio" name="q2" value="1"><span class="option-dot"></span>Наветренная яхта уступает подветренной (Правило 11)</label>
+    <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Обгоняющая яхта всегда имеет преимущество</label>
+    <label class="option-label"><input type="radio" name="q2" value="0"><span class="option-dot"></span>Та, которая идёт медленнее</label>
+  </div>
+  <div class="explanation">Правило 11 RRS: когда яхты на одном галсе накрываются, наветренная уступает подветренной. Подветренная яхта имеет право держать курс.</div>
+</div>
+
+<div class="question-card" id="qc3">
+  <div class="q-num">Вопрос 3</div>
+  <div class="q-text">Что означает сигнал AP (Answering Pennant) на стартовой лодке?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Общий отзыв — все яхты возвращаются</label>
+    <label class="option-label"><input type="radio" name="q3" value="1"><span class="option-dot"></span>Перенос старта (Postponement)</label>
+    <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Индивидуальный отзыв одной яхты</label>
+    <label class="option-label"><input type="radio" name="q3" value="0"><span class="option-dot"></span>Сокращение дистанции</label>
+  </div>
+  <div class="explanation">AP = Answering Pennant = Postponement (перенос). Общий отзыв — First Substitute. Индивидуальный — флаг X. Сокращение дистанции — флаг S.</div>
+</div>
+
+<div class="question-card" id="qc4">
+  <div class="q-num">Вопрос 4</div>
+  <div class="q-text">Яхта касается знака при огибании. Что должен сделать шкипер по правилам RRS?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Немедленно снять яхту с гонки</label>
+    <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Вернуться и обогнуть знак повторно</label>
+    <label class="option-label"><input type="radio" name="q4" value="1"><span class="option-dot"></span>Выполнить штрафной разворот: один оверштаг + один фордевинд (Правило 44)</label>
+    <label class="option-label"><input type="radio" name="q4" value="0"><span class="option-dot"></span>Касание знака не является нарушением</label>
+  </div>
+  <div class="explanation">Правило 44.2 RRS: штраф за касание знака — «один оборот», включающий один оверштаг и один фордевинд. Выполняется немедленно, не мешая другим яхтам.</div>
+</div>
+
+<div class="question-card" id="qc5">
+  <div class="q-num">Вопрос 5</div>
+  <div class="q-text">Правило «места у знака» (Rule 18). Когда внутренняя яхта имеет право на воду?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q5" value="1"><span class="option-dot"></span>Когда она перекрылась с внешней до входа в зону трёх корпусов</label>
+    <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Всегда, если она ближе к знаку</label>
+    <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Только если она на правом галсе</label>
+    <label class="option-label"><input type="radio" name="q5" value="0"><span class="option-dot"></span>Только на первом знаке дистанции</label>
+  </div>
+  <div class="explanation">Правило 18 RRS: зона знака — 3 корпуса яхты. Если внутренняя яхта перекрылась с внешней до входа в зону, она имеет право на воду для огибания. Если перекрытие возникло уже в зоне — право не возникает.</div>
+</div>
+
+<div class="question-card" id="qc6">
+  <div class="q-num">Вопрос 6</div>
+  <div class="q-text">В течение какого времени после финиша нужно подать протест?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>Немедленно, не покидая воду</label>
+    <label class="option-label"><input type="radio" name="q6" value="1"><span class="option-dot"></span>В пределах тайм-лимита протеста — обычно 60 минут после финиша последней яхты класса</label>
+    <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>В течение 24 часов</label>
+    <label class="option-label"><input type="radio" name="q6" value="0"><span class="option-dot"></span>До начала следующей гонки серии</label>
+  </div>
+  <div class="explanation">Правило 61.3 RRS: протест должен быть подан в срок, установленный парусными инструкциями. Обычно это 60 минут после финиша последней яхты флота. Пропустить срок — значит потерять право протеста.</div>
+</div>
+
+<div class="question-card" id="qc7">
+  <div class="q-num">Вопрос 7</div>
+  <div class="q-text">Яхта стартовала раньше сигнала и получила OCS. Что она обязана сделать?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q7" value="1"><span class="option-dot"></span>Вернуться за стартовую линию и стартовать заново после сигнала</label>
+    <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Выполнить штрафной разворот</label>
+    <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Продолжить гонку — OCS исправляется автоматически</label>
+    <label class="option-label"><input type="radio" name="q7" value="0"><span class="option-dot"></span>Сойти с гонки</label>
+  </div>
+  <div class="explanation">OCS (On Course Side) — яхта на стартовой стороне линии до сигнала. Обязана вернуться и пересечь линию правильно. Если не вернулась — дисквалификация (DNF или DNS).</div>
+</div>
+
+<!-- SECTION 2 — ТАКТИКА -->
+<div class="section-tag" style="margin-top:40px">Раздел 2 — Тактика и стратегия</div>
+
+<div class="question-card" id="qc8">
+  <div class="q-num">Вопрос 8</div>
+  <div class="q-text">Ветер зашёл вправо (вeed shift вправо). На каком галсе выгоднее идти в наветренный знак?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q8" value="1"><span class="option-dot"></span>На правом галсе — он становится более острым к знаку</label>
+    <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>На левом галсе — там больше пространства</label>
+    <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Направление ветра не влияет на выбор галса</label>
+    <label class="option-label"><input type="radio" name="q8" value="0"><span class="option-dot"></span>Всегда идти на правом галсе независимо от ветра</label>
+  </div>
+  <div class="explanation">При зашедшем вправо ветре правый галс становится «lifted» — более острым к наветренному знаку. Идти на lifted tack = меньше расстояние до знака. Это базовое тактическое правило лавировки.</div>
+</div>
+
+<div class="question-card" id="qc9">
+  <div class="q-num">Вопрос 9</div>
+  <div class="q-text">Что такое «layline» и когда её нельзя пересекать раньше времени?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Линия старта — нельзя пересекать до сигнала</label>
+    <label class="option-label"><input type="radio" name="q9" value="1"><span class="option-dot"></span>Курс к знаку без лишних поворотов — выходить на неё рано значит потерять при зашедшем ветре</label>
+    <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Граница дистанции — нельзя выходить за неё</label>
+    <label class="option-label"><input type="radio" name="q9" value="0"><span class="option-dot"></span>Линия финиша — нельзя пересекать в неправильном направлении</label>
+  </div>
+  <div class="explanation">Layline — курс, с которого яхта идёт прямо к знаку без дополнительного поворота. Выйти на layline рано — риск: если ветер зайдёт, придётся проходить лишнее расстояние. Опытные шкиперы выходят на layline поздно.</div>
+</div>
+
+<div class="question-card" id="qc10">
+  <div class="q-num">Вопрос 10</div>
+  <div class="q-text">Что такое «ветровая тень» (dirty air) и как от неё уходить?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q10" value="1"><span class="option-dot"></span>Зона турбулентного ветра позади и под ветром от яхты — уходить в чистый ветер поворотом</label>
+    <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Тень от паруса на воде — не влияет на скорость</label>
+    <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Зона перед яхтой с усиленным ветром</label>
+    <label class="option-label"><input type="radio" name="q10" value="0"><span class="option-dot"></span>Направление ветра в тени берега</label>
+  </div>
+  <div class="explanation">Dirty air — зона нарушенного ветра позади и подветренно от яхты. Яхта в ней теряет 10–30% скорости. Уходить: поворот, смена галса или форсирование обгона вперёд и в чистый ветер.</div>
+</div>
+
+<div class="question-card" id="qc11">
+  <div class="q-num">Вопрос 11</div>
+  <div class="q-text">Тактика «cover» (покрытие) — когда и зачем её применяют?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>Когда нужно обогнать лидера гонки</label>
+    <label class="option-label"><input type="radio" name="q11" value="1"><span class="option-dot"></span>Когда лидируешь — держаться между преследователем и следующим знаком, повторяя его повороты</label>
+    <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>При огибании знака в плотной группе яхт</label>
+    <label class="option-label"><input type="radio" name="q11" value="0"><span class="option-dot"></span>При старте в первом ряду</label>
+  </div>
+  <div class="explanation">Cover — защита лидерской позиции. Лидер держится между преследователем и следующим знаком, повторяя каждый его поворот. Цель — оставаться в чистом ветре и не дать сопернику выйти вперёд при сдвиге ветра.</div>
+</div>
+
+<div class="question-card" id="qc12">
+  <div class="q-num">Вопрос 12</div>
+  <div class="q-text">При огибании наветренного знака с левого борта (port rounding) — на какой галс выходит яхта?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>На левый галс</label>
+    <label class="option-label"><input type="radio" name="q12" value="1"><span class="option-dot"></span>На правый галс — это даёт тактическое преимущество при правом сдвиге ветра</label>
+    <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Зависит только от расположения следующего знака</label>
+    <label class="option-label"><input type="radio" name="q12" value="0"><span class="option-dot"></span>Галс определяет шкипер произвольно</label>
+  </div>
+  <div class="explanation">Port rounding (огибание слева) → выход на starboard tack (правый галс). Это стандарт для большинства гонок и даёт преимущество при правом сдвиге ветра на бакштаге.</div>
+</div>
+
+<!-- SECTION 3 — МЕТЕОРОЛОГИЯ -->
+<div class="section-tag" style="margin-top:40px">Раздел 3 — Метеорология</div>
+
+<div class="question-card" id="qc13">
+  <div class="q-num">Вопрос 13</div>
+  <div class="q-text">Барометр падает более 4 гПа за 3 часа. Что это означает?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q13" value="1"><span class="option-dot"></span>Быстрое приближение глубокого циклона — ожидать резкого усиления ветра и ухудшения погоды</label>
+    <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>Нормальное суточное колебание давления</label>
+    <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>Улучшение погоды — антициклон</label>
+    <label class="option-label"><input type="radio" name="q13" value="0"><span class="option-dot"></span>Смена направления ветра без изменения силы</label>
+  </div>
+  <div class="explanation">Падение давления ≥4 гПа/3ч — «быстрое» падение, признак надвигающегося шторма. Нормальные суточные колебания: 1–2 гПа. При таком падении нужно возвращаться в марину или укрытие.</div>
+</div>
+
+<div class="question-card" id="qc14">
+  <div class="q-num">Вопрос 14</div>
+  <div class="q-text">Кучево-дождевые облака (Cumulonimbus) на горизонте с наветренной стороны. Что делать?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Продолжать гонку — они могут пройти стороной</label>
+    <label class="option-label"><input type="radio" name="q14" value="1"><span class="option-dot"></span>Взять рифы немедленно, предупредить экипаж, оценить возможность возврата в марину</label>
+    <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Cb-облака безопасны, они приносят только дождь</label>
+    <label class="option-label"><input type="radio" name="q14" value="0"><span class="option-dot"></span>Подождать пока ветер усилится, потом взять рифы</label>
+  </div>
+  <div class="explanation">Cumulonimbus — источник шквалов, молний и резких порывов 25–40 узлов. При виде Cb с наветра: немедленно взять рифы, принять защитное снаряжение, оценить отход в укрытие. Не ждать пока шквал придёт.</div>
+</div>
+
+<div class="question-card" id="qc15">
+  <div class="q-num">Вопрос 15</div>
+  <div class="q-text">Термический ветер на Капчагайском водохранилище — в какое время суток он обычно развивается?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Рано утром, до восхода солнца</label>
+    <label class="option-label"><input type="radio" name="q15" value="1"><span class="option-dot"></span>После полудня, когда суша прогревается сильнее воды — от 12:00 до 17:00</label>
+    <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Только ночью при ясном небе</label>
+    <label class="option-label"><input type="radio" name="q15" value="0"><span class="option-dot"></span>Термические ветра на водохранилищах не возникают</label>
+  </div>
+  <div class="explanation">Термический (бризовый) ветер возникает из-за разницы нагрева суши и воды. На Капчагае: суша прогревается быстрее, воздух поднимается, с воды идёт прохладный бриз. Пик — 13–16 часов. Знание этого помогает планировать выходы.</div>
+</div>
+
+<div class="question-card" id="qc16">
+  <div class="q-num">Вопрос 16</div>
+  <div class="q-text">Что означает потемнение воды полосой с наветренной стороны?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q16" value="1"><span class="option-dot"></span>Порыв ветра (gust) приближается — подготовиться к крену, откренить</label>
+    <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>Глубина воды изменилась</label>
+    <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>Температура воды упала</label>
+    <label class="option-label"><input type="radio" name="q16" value="0"><span class="option-dot"></span>Загрязнение воды</label>
+  </div>
+  <div class="explanation">Рябь на воде — видимый признак ветра. Тёмная полоса = рябь от порыва. Опытный шкипер читает воду и готовится к порыву за 10–30 секунд: предупреждает экипаж «порыв!», чуть уваливается или откреняет активнее.</div>
+</div>
+
+<div class="question-card" id="qc17">
+  <div class="q-num">Вопрос 17</div>
+  <div class="q-text">При каком прогнозе ветра шкипер должен отменить выход с начинающим экипажем на SB20?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>При ветре свыше 30 узлов</label>
+    <label class="option-label"><input type="radio" name="q17" value="1"><span class="option-dot"></span>При устойчивом ветре свыше 15–18 узлов или порывах свыше 20 узлов</label>
+    <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>Выходить при любом ветре — SB20 не переворачивается</label>
+    <label class="option-label"><input type="radio" name="q17" value="0"><span class="option-dot"></span>При ветре свыше 25 узлов</label>
+  </div>
+  <div class="explanation">SB20 с опытным экипажем — до 20–25 узлов. Для начинающих 15–18 узлов уже серьёзная нагрузка. Решение об отмене — ответственность капитана. Лучше не выйти, чем создать опасную ситуацию для новичков.</div>
+</div>
+
+<!-- SECTION 4 — НАВИГАЦИЯ -->
+<div class="section-tag" style="margin-top:40px">Раздел 4 — Навигация и управление дистанцией</div>
+
+<div class="question-card" id="qc18">
+  <div class="q-num">Вопрос 18</div>
+  <div class="q-text">Что такое «истинный ветер» и чем он отличается от «кажущегося»?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q18" value="1"><span class="option-dot"></span>Истинный — ветер природы; кажущийся — вектор истинного ветра + скорость яхты, его чувствует экипаж</label>
+    <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Истинный — то что показывает маскачтовый анемометр</label>
+    <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Кажущийся — ветер на берегу, истинный — на воде</label>
+    <label class="option-label"><input type="radio" name="q18" value="0"><span class="option-dot"></span>Разница только в единицах измерения</label>
+  </div>
+  <div class="explanation">Apparent wind (кажущийся) = True wind + velocity made good яхты. На лавировке кажущийся ветер заходит вперёд и усиливается. На бакштаге — уходит назад и ослабевает. Паруса настраиваются по кажущемуся ветру.</div>
+</div>
+
+<div class="question-card" id="qc19">
+  <div class="q-num">Вопрос 19</div>
+  <div class="q-text">Как рассчитать время прохождения дистанции 6 миль при средней скорости 4 узла?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>24 минуты</label>
+    <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>45 минут</label>
+    <label class="option-label"><input type="radio" name="q19" value="1"><span class="option-dot"></span>90 минут (1,5 часа)</label>
+    <label class="option-label"><input type="radio" name="q19" value="0"><span class="option-dot"></span>2 часа 24 минуты</label>
+  </div>
+  <div class="explanation">Время = расстояние / скорость = 6 / 4 = 1,5 часа = 90 минут. Формула: T(мин) = (Расстояние × 60) / Скорость. Базовая навигационная математика для планирования выхода.</div>
+</div>
+
+<div class="question-card" id="qc20">
+  <div class="q-num">Вопрос 20</div>
+  <div class="q-text">Что такое «дрейф» яхты и как его учитывать при прокладке курса?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q20" value="1"><span class="option-dot"></span>Боковое сноса под давлением ветра на паруса — компенсировать, беря курс чуть на наветренную сторону от цели</label>
+    <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>Скорость яхты по GPS минус скорость по лагу</label>
+    <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>Угол крена яхты при лавировке</label>
+    <label class="option-label"><input type="radio" name="q20" value="0"><span class="option-dot"></span>Снос течением — не связан с ветром</label>
+  </div>
+  <div class="explanation">Дрейф (leeway) — угол между курсом яхты и её фактическим движением по воде. На SB20 на лавировке дрейф 3–5°. При навигации к точке нужно брать поправку на дрейф — целиться чуть выше точки назначения.</div>
+</div>
+
+<div class="question-card" id="qc21">
+  <div class="q-num">Вопрос 21</div>
+  <div class="q-text">Как по звёздному небу определить север ночью без компаса?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q21" value="1"><span class="option-dot"></span>Найти Большую Медведицу → провести линию через крайние звёзды «ковша» × 5 → Полярная звезда = Север</label>
+    <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Самая яркая звезда всегда указывает на север</label>
+    <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>Луна всегда находится на юге в полночь</label>
+    <label class="option-label"><input type="radio" name="q21" value="0"><span class="option-dot"></span>По движению звёзд — они движутся на запад</label>
+  </div>
+  <div class="explanation">Полярная звезда (Polaris) находится почти точно над Северным полюсом. Находим через Большую Медведицу: крайние звёзды «ковша» Дубхе и Мерак → 5× расстояние между ними → Полярная звезда. Это базовая астронавигация.</div>
+</div>
+
+<div class="question-card" id="qc22">
+  <div class="q-num">Вопрос 22</div>
+  <div class="q-text">Как правильно выставить стартовую линию для проведения регаты?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q22" value="1"><span class="option-dot"></span>Перпендикулярно ветру с небольшим смещением в сторону правого борта (pin end advantage)</label>
+    <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Параллельно берегу для удобства судей</label>
+    <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Строго по компасу на 90°</label>
+    <label class="option-label"><input type="radio" name="q22" value="0"><span class="option-dot"></span>Произвольно — это не влияет на гонку</label>
+  </div>
+  <div class="explanation">Идеальная линия старта — перпендикулярна истинному ветру. Небольшое смещение pin end (буйкового конца) в наветренную сторону создаёт баланс. Если линия плохо выставлена — все стартуют с одного конца, теряется тактика.</div>
+</div>
+
+<!-- SECTION 5 — УПРАВЛЕНИЕ В СЛОЖНЫХ УСЛОВИЯХ -->
+<div class="section-tag" style="margin-top:40px">Раздел 5 — Управление в сложных условиях</div>
+
+<div class="question-card" id="qc23">
+  <div class="q-num">Вопрос 23</div>
+  <div class="q-text">Яхта попала в резкий шквал на полном курсе. Первое действие шкипера?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q23" value="1"><span class="option-dot"></span>Стравить грота-шкот и слегка привести к ветру — уменьшить крен немедленно</label>
+    <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Немедленно убрать стаксель</label>
+    <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Включить мотор и уйти с курса</label>
+    <label class="option-label"><input type="radio" name="q23" value="0"><span class="option-dot"></span>Дать экипажу взять рифы до уменьшения хода</label>
+  </div>
+  <div class="explanation">При шквале: первый приоритет — снять нагрузку с парусов. Стравить грота-шкот (грот полощется, крен уходит) и/или привести к ветру. Потом рифы. Паника и резкие движения — главная опасность.</div>
+</div>
+
+<div class="question-card" id="qc24">
+  <div class="q-num">Вопрос 24</div>
+  <div class="q-text">Что такое «брочинг» (broaching) и как его предотвратить?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q24" value="1"><span class="option-dot"></span>Неконтролируемый разворот яхты к ветру при фордевинде — предотвратить откреном и контролем грота</label>
+    <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Опрокидывание яхты через нос на волне</label>
+    <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Потеря хода при штиле</label>
+    <label class="option-label"><input type="radio" name="q24" value="0"><span class="option-dot"></span>Неправильное выполнение поворота фордевинд</label>
+  </div>
+  <div class="explanation">Брочинг — яхта резко разворачивается к ветру, ложится на борт. Причина: чрезмерное давление ветра на грот при попутном ветре. Предотвращение: откренивать экипаж на наветренный борт, травить грот-шкот при усилении, контролировать руль плавными движениями.</div>
+</div>
+
+<div class="question-card" id="qc25">
+  <div class="q-num">Вопрос 25</div>
+  <div class="q-text">Правильная последовательность взятия рифов в грот на лавировке при свежем ветре?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Взять рифы на ходу не меняя курс</label>
+    <label class="option-label"><input type="radio" name="q25" value="1"><span class="option-dot"></span>Привести к ветру до «в дрейфе» → опустить галс → завязать риф-сезни → поднять галс → продолжить</label>
+    <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Сначала убрать стаксель, потом рифы в грот</label>
+    <label class="option-label"><input type="radio" name="q25" value="0"><span class="option-dot"></span>Встать на якорь, потом взять рифы</label>
+  </div>
+  <div class="explanation">Безопасное взятие рифов: 1) привести к ветру — грот перестаёт тянуть; 2) опустить фал на длину рифа; 3) закрепить галс и шкот рифа; 4) завязать сезни; 5) поднять фал. В дрейфе яхта управляема и экипаж работает без опасности.</div>
+</div>
+
+<div class="question-card" id="qc26">
+  <div class="q-num">Вопрос 26</div>
+  <div class="q-text">Правильное выполнение фордевинда (gybe) в свежий ветер на SB20?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q26" value="1"><span class="option-dot"></span>Заранее подобрать грота-шкот, плавно переложить руль, контролировать гик при перебросе, сразу травить шкот</label>
+    <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Резко переложить руль до упора на фордевинде</label>
+    <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Убрать стаксель перед поворотом фордевинд</label>
+    <label class="option-label"><input type="radio" name="q26" value="0"><span class="option-dot"></span>Выполнять только при ветре менее 8 узлов</label>
+  </div>
+  <div class="explanation">Контролируемый фордевинд: подобрать грота-шкот до центра → плавный перекладка руля → гик переходит контролируемо → немедленно травить шкот на новом галсе. Неконтролируемый перекидка гика — удар по голове и риск брочинга.</div>
+</div>
+
+<div class="question-card" id="qc27">
+  <div class="q-num">Вопрос 27</div>
+  <div class="q-text">Что делать, если яхта перевернулась (капсайз) на SB20?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q27" value="1"><span class="option-dot"></span>Экипаж держится за яхту → шкипер встаёт на шверт → тянет за трапецию-фал → яхта поднимается</label>
+    <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Немедленно подать сигнал бедствия и ждать помощи</label>
+    <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>Нырнуть под яхту и поднимать снизу</label>
+    <label class="option-label"><input type="radio" name="q27" value="0"><span class="option-dot"></span>SB20 не переворачивается — это невозможно</label>
+  </div>
+  <div class="explanation">Капсайз SB20: 1) все держатся за корпус яхты; 2) убедиться что все на поверхности; 3) шкипер забирается на шверт; 4) тянет за трапецию или леер — яхта встаёт; 5) экипаж залезает с кормы. Отработать этот маневр нужно до гонок.</div>
+</div>
+
+<div class="question-card" id="qc28">
+  <div class="q-num">Вопрос 28</div>
+  <div class="q-text">Яхта идёт ночью. Встречное судно показывает красный огонь слева и белый топовый. Что означает эта комбинация?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Судно стоит на якоре</label>
+    <label class="option-label"><input type="radio" name="q28" value="1"><span class="option-dot"></span>Встречное судно идёт на вас — вы видите его левый (красный) борт, курсы сходятся</label>
+    <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Судно выполняет разворот</label>
+    <label class="option-label"><input type="radio" name="q28" value="0"><span class="option-dot"></span>Рыболовное судно с сетями</label>
+  </div>
+  <div class="explanation">Красный = левый борт судна. Белый топовый = идущее судно. Если вы видите красный огонь справа по борту — судно идёт справа налево (пересекает ваш курс спереди). Красный слева — судно идёт навстречу. Уступить дорогу!</div>
+</div>
+
+<!-- SECTION 6 — КОМАНДОВАНИЕ И БЕЗОПАСНОСТЬ -->
+<div class="section-tag" style="margin-top:40px">Раздел 6 — Командование экипажем и безопасность</div>
+
+<div class="question-card" id="qc29">
+  <div class="q-num">Вопрос 29</div>
+  <div class="q-text">Человек за бортом. Первые три действия шкипера?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q29" value="1"><span class="option-dot"></span>«Человек за бортом!» → бросить спасательный круг → не спускать глаз с пострадавшего</label>
+    <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Немедленно прыгнуть за борт для спасения</label>
+    <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Позвонить в МЧС, потом думать о маневре</label>
+    <label class="option-label"><input type="radio" name="q29" value="0"><span class="option-dot"></span>Зафиксировать координаты GPS, потом спасать</label>
+  </div>
+  <div class="explanation">MOB протокол: 1) КРИК «Человек за бортом!»; 2) БРОСИТЬ спасательный круг/буй; 3) ОДИН человек не сводит глаз с пострадавшего; 4) шкипер выполняет Quick Stop или маневр Уильямсона. Прыгать за борт — опасно, теперь два человека в воде.</div>
+</div>
+
+<div class="question-card" id="qc30">
+  <div class="q-num">Вопрос 30</div>
+  <div class="q-text">Что входит в обязательный безопасный брифинг перед выходом?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q30" value="1"><span class="option-dot"></span>Расположение жилетов и их надевание, сигнал MOB, связь и рация, маршрут и время возврата</label>
+    <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>Только правила гонок для участников</label>
+    <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>Технические характеристики яхты</label>
+    <label class="option-label"><input type="radio" name="q30" value="0"><span class="option-dot"></span>Брифинг проводится только для новичков</label>
+  </div>
+  <div class="explanation">Safety briefing обязателен для ВСЕГО экипажа при КАЖДОМ выходе. Минимум: где жилеты и как надеть, что делать при MOB, как связаться с берегом, когда возвращаемся. 3 минуты которые могут спасти жизнь.</div>
+</div>
+
+<div class="question-card" id="qc31">
+  <div class="q-num">Вопрос 31</div>
+  <div class="q-text">Шкипер видит, что один из членов экипажа запаниковал в сложных условиях. Что делать?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Отругать — это отвлечёт от страха</label>
+    <label class="option-label"><input type="radio" name="q31" value="1"><span class="option-dot"></span>Дать конкретное простое задание, спокойным голосом, снизить нагрузку на него</label>
+    <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Игнорировать — он справится сам</label>
+    <label class="option-label"><input type="radio" name="q31" value="0"><span class="option-dot"></span>Немедленно вернуться в порт любой ценой</label>
+  </div>
+  <div class="explanation">Паника заразна. Шкипер: спокойный голос, конкретная задача («держи этот шкот, не отпускай»), зрительный контакт. Занятость руками прерывает панический цикл. Одновременно оцениваем — нужно ли возвращаться.</div>
+</div>
+
+<div class="question-card" id="qc32">
+  <div class="q-num">Вопрос 32</div>
+  <div class="q-text">Как правильно провести дебриф после тренировочного выхода?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q32" value="1"><span class="option-dot"></span>Начать с позитивного, потом что улучшить, один конкретный фокус на следующий раз — 5–10 минут</label>
+    <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Разобрать все ошибки каждого по очереди</label>
+    <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Дебриф нужен только после гонок, не тренировок</label>
+    <label class="option-label"><input type="radio" name="q32" value="0"><span class="option-dot"></span>Записать ошибки в журнал без обсуждения</label>
+  </div>
+  <div class="explanation">Формула дебрифа: ПЛЮС (что сработало) → ДЕЛЬТА (что улучшить) → ФОКУС (один конкретный приоритет). Не «ты делал плохо», а «в следующий раз попробуем...». Психологическая безопасность = команда открыта к обучению.</div>
+</div>
+
+<div class="question-card" id="qc33">
+  <div class="q-num">Вопрос 33</div>
+  <div class="q-text">Шкипер несёт ответственность за безопасность. Что это означает при выходе с учеником?</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q33" value="1"><span class="option-dot"></span>Шкипер отвечает за жизнь и здоровье всех на борту и принимает финальные решения независимо от желаний экипажа</label>
+    <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Ответственность делится поровну между всеми</label>
+    <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Ученик сам отвечает за свою безопасность</label>
+    <label class="option-label"><input type="radio" name="q33" value="0"><span class="option-dot"></span>Ответственность несёт только владелец яхты</label>
+  </div>
+  <div class="explanation">Капитан (шкипер) по морскому праву несёт полную ответственность за безопасность судна и всех на борту. Это не делегируется. Право и обязанность принять любое решение — от отмены выхода до подачи сигнала бедствия.</div>
+</div>
+
+<div class="question-card" id="qc34">
+  <div class="q-num">Вопрос 34</div>
+  <div class="q-text">При виде тонущего или бедствующего судна шкипер обязан...</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Сообщить по телефону и продолжить путь</label>
+    <label class="option-label"><input type="radio" name="q34" value="1"><span class="option-dot"></span>Оказать помощь, насколько возможно без риска для собственного судна и экипажа</label>
+    <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Оказывать помощь только если есть страховка</label>
+    <label class="option-label"><input type="radio" name="q34" value="0"><span class="option-dot"></span>Подождать профессиональных спасателей</label>
+  </div>
+  <div class="explanation">По международному морскому праву (SOLAS) и здравому смыслу — капитан обязан оказать помощь людям в опасности на море, если это не создаёт серьёзного риска для его судна и экипажа. Игнорирование — уголовная ответственность.</div>
+</div>
+
+<div class="question-card" id="qc35">
+  <div class="q-num">Вопрос 35</div>
+  <div class="q-text">Главный критерий успешного капитана яхты — это:</div>
+  <div class="options">
+    <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Первое место в регате любой ценой</label>
+    <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Максимальная скорость лодки</label>
+    <label class="option-label"><input type="radio" name="q35" value="1"><span class="option-dot"></span>Безопасное возвращение всего экипажа, выполнение задачи, рост команды</label>
+    <label class="option-label"><input type="radio" name="q35" value="0"><span class="option-dot"></span>Отсутствие ошибок во время выхода</label>
+  </div>
+  <div class="explanation">Капитанство — это прежде всего ответственность за людей. Победа в гонке, красивые манёвры, скорость — всё это вторично. Главное: все вернулись целыми, задача выполнена, команда стала лучше. Это и есть лидерство на воде.</div>
+</div>
+
+<div class="submit-wrap">
+  <button class="btn-submit" id="submitBtn" onclick="submitExam()">Завершить экзамен</button>
+  <div class="unanswered-msg" id="unansweredMsg">Ответь на все вопросы перед отправкой</div>
+</div>
+</div><!-- /examBlock -->
+
+<div class="results-screen" id="resultsBlock">
+  <div class="result-icon" id="resultIcon">🎖</div>
+  <div class="result-title" id="resultTitle">Результат</div>
+  <div class="result-score" id="resultScore">0%</div>
+  <div class="result-sub" id="resultSub"></div>
+  <div class="result-breakdown">
+    <div class="rb-item"><div class="rb-num green" id="rbCorrect">0</div><div class="rb-label">верно</div></div>
+    <div class="rb-item"><div class="rb-num red" id="rbWrong">0</div><div class="rb-label">неверно</div></div>
+    <div class="rb-item"><div class="rb-num" id="rbTotal">35</div><div class="rb-label">всего</div></div>
+  </div>
+  <div class="result-message" id="resultMessage"></div>
+  <button class="btn-retry" onclick="retryExam()">Попробовать снова</button>
+  <div class="review-link" onclick="showReview()">Посмотреть разбор ответов</div>
+</div>
+
+</div>
+</div>
+
+<script>
+const TOTAL = 35;
+const PASS = 75;
+
+function updateProgress() {
+  let n = 0;
+  for (let i = 1; i <= TOTAL; i++) {
+    if (document.querySelector(`input[name="q${i}"]:checked`)) n++;
+  }
+  const pct = Math.round(n / TOTAL * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = n + ' / ' + TOTAL;
+}
+
+document.querySelectorAll('.options input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => r.closest('.option-label').classList.remove('selected'));
+    this.closest('.option-label').classList.add('selected');
+    const num = parseInt(this.name.replace('q', ''));
+    document.getElementById('qc' + num).classList.add('answered');
+    updateProgress();
+  });
+});
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) document.getElementById('progressWrap').style.display = 'block';
+});
+
+function submitExam() {
+  let unanswered = [];
+  for (let i = 1; i <= TOTAL; i++) {
+    if (!document.querySelector(`input[name="q${i}"]:checked`)) unanswered.push(i);
+  }
+  if (unanswered.length) {
+    document.getElementById('unansweredMsg').style.display = 'block';
+    const fc = document.getElementById('qc' + unanswered[0]);
+    fc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    fc.style.borderColor = 'rgba(224,94,94,0.6)';
+    return;
+  }
+  let correct = 0;
+  for (let i = 1; i <= TOTAL; i++) {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === '1') correct++;
+  }
+  const pct = Math.round(correct / TOTAL * 100);
+  const passed = pct >= PASS;
+  document.getElementById('examBlock').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  const res = document.getElementById('resultsBlock');
+  res.style.display = 'block';
+  document.getElementById('resultIcon').textContent = passed ? '🎖' : '🌊';
+  document.getElementById('resultTitle').textContent = passed ? 'Экзамен сдан!' : 'Нужно подготовиться';
+  document.getElementById('resultScore').textContent = pct + '%';
+  document.getElementById('resultSub').textContent = correct + ' из ' + TOTAL + ' правильных ответов';
+  document.getElementById('rbCorrect').textContent = correct;
+  document.getElementById('rbWrong').textContent = TOTAL - correct;
+  document.getElementById('resultMessage').textContent = passed
+    ? 'Отличный результат — ' + pct + '%! Ты успешно прошёл теоретический экзамен Капитана. Следующий шаг — практический аттестационный выход. До встречи на воде!'
+    : 'Ты набрал ' + pct + '% — нужно ' + PASS + '% для прохождения. Повтори разделы правил гонок и управления в сложных условиях — и попробуй снова. Всё получится!';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function retryExam() {
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected', 'correct', 'wrong'));
+  document.querySelectorAll('.explanation').forEach(e => e.classList.remove('visible'));
+  document.querySelectorAll('.question-card').forEach(c => { c.classList.remove('answered'); c.style.borderColor = ''; });
+  document.getElementById('unansweredMsg').style.display = 'none';
+  document.getElementById('resultsBlock').style.display = 'none';
+  document.getElementById('examBlock').style.display = 'block';
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('progressText').textContent = '0 / ' + TOTAL;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showReview() {
+  document.getElementById('resultsBlock').style.display = 'none';
+  document.getElementById('examBlock').style.display = 'block';
+  for (let i = 1; i <= TOTAL; i++) {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    const card = document.getElementById('qc' + i);
+    const exp = card ? card.querySelector('.explanation') : null;
+    card.querySelectorAll('.option-label').forEach(label => {
+      const inp = label.querySelector('input');
+      if (inp.value === '1') label.classList.add('correct');
+      else if (inp.checked) label.classList.add('wrong');
+    });
+    if (exp) exp.classList.add('visible');
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
