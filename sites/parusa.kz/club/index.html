@@ -113,6 +113,31 @@
   .member-name { font-size: 14px; font-weight: 500; color: #EDEDED; margin-bottom: 6px; }
   .member-since { font-size: 11px; color: #9ca3af; }
 
+  /* TEAM */
+  .team-section { padding: 90px 24px; background: #0D1926; }
+  .team-section .page-wrap { max-width: 1100px; margin: 0 auto; }
+  .team-kicker { font-size: 12px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+  .team-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 600; color: #fff; margin-bottom: 48px; }
+  .team-section h2 em { color: var(--gold); font-style: italic; }
+  .team-manager { display: flex; gap: 40px; align-items: center; margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .team-manager-photo { width: 200px; height: 200px; min-width: 200px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid rgba(201,169,110,0.35); background: rgba(255,255,255,0.05); }
+  .team-manager-info { flex: 1; }
+  .team-role { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 500; }
+  .team-manager-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: #fff; margin-bottom: 14px; }
+  .team-manager-info p { font-size: 15px; color: #9AA3AD; line-height: 1.75; max-width: 560px; }
+  .team-instructors { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
+  .team-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 28px 20px 24px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .team-card:hover { border-color: rgba(201,169,110,0.3); transform: translateY(-3px); }
+  .team-card-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(201,169,110,0.25); margin: 0 auto 16px; display: block; background: rgba(255,255,255,0.05); }
+  .team-card-role { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .team-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+  .team-card p { font-size: 13px; color: #9AA3AD; line-height: 1.65; }
+  @media (max-width: 768px) {
+    .team-manager { flex-direction: column; text-align: center; }
+    .team-manager-photo { width: 150px; height: 150px; min-width: 150px; }
+    .team-manager-info p { margin: 0 auto; }
+  }
+
   /* CTA */
   .cta-section { padding: 100px 24px; text-align: center; background: rgba(201,169,110,0.04); border-top: 1px solid rgba(201,169,110,0.1); }
   .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4vw, 42px); color: #fff; margin-bottom: 16px; font-weight: 600; }
@@ -189,6 +214,57 @@
     <div class="section-kicker">Состав клуба</div>
     <h2>Члены <em>клуба</em></h2>
     <div id="members-wrap" class="loading">Загружаем данные...</div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="page-wrap">
+    <div class="team-kicker">Команда</div>
+    <h2>Люди за <em>парусами</em></h2>
+
+    <!-- Manager -->
+    <div class="team-manager">
+      <img src="../images/team-olzhas.jpg" alt="Олжас Кундакбаев" class="team-manager-photo"
+           onerror="this.style.cssText='width:200px;height:200px;min-width:200px;border-radius:50%;background:rgba(201,169,110,0.1);border:3px solid rgba(201,169,110,0.35);display:flex;align-items:center;justify-content:center;font-size:64px;'; this.outerHTML='<div class=\'team-manager-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:64px;\'>⚓</div>'">
+      <div class="team-manager-info">
+        <div class="team-role">Управляющий · Основатель</div>
+        <h3>Олжас Кундакбаев</h3>
+        <p>Основатель Parusa Yacht Club. Сертифицированный яхтенный инструктор ISSA, капитан с более чем 10-летним стажем. Провёл сотни выходов на Капчагае, подготовил десятки матросов и капитанов. Организатор клубных регат и учебных сборов.</p>
+      </div>
+    </div>
+
+    <!-- Instructors -->
+    <div class="team-instructors">
+      <div class="team-card">
+        <img src="../images/team-instructor-1.jpg" alt="Инструктор" class="team-card-photo"
+             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
+        <div class="team-card-role">Инструктор</div>
+        <h4>Имя Фамилия</h4>
+        <p>Описание достижений и специализации инструктора.</p>
+      </div>
+      <div class="team-card">
+        <img src="../images/team-instructor-2.jpg" alt="Инструктор" class="team-card-photo"
+             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
+        <div class="team-card-role">Инструктор</div>
+        <h4>Имя Фамилия</h4>
+        <p>Описание достижений и специализации инструктора.</p>
+      </div>
+      <div class="team-card">
+        <img src="../images/team-instructor-3.jpg" alt="Инструктор" class="team-card-photo"
+             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
+        <div class="team-card-role">Инструктор</div>
+        <h4>Имя Фамилия</h4>
+        <p>Описание достижений и специализации инструктора.</p>
+      </div>
+      <div class="team-card">
+        <img src="../images/team-instructor-4.jpg" alt="Инструктор" class="team-card-photo"
+             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
+        <div class="team-card-role">Инструктор</div>
+        <h4>Имя Фамилия</h4>
+        <p>Описание достижений и специализации инструктора.</p>
+      </div>
+    </div>
   </div>
 </section>
 
