@@ -22,7 +22,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="../images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -70,12 +70,15 @@
   .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
   /* HERO */
-  .club-hero { padding: 140px 24px 80px; text-align: center; }
+  .club-hero { position: relative; padding: 160px 24px 100px; text-align: center; overflow: hidden; }
+  .club-hero-bg { position: absolute; inset: 0; background: url('../images/hero-club.jpg') center center / cover no-repeat; z-index: 0; }
+  .club-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,22,40,0.72) 0%, rgba(10,22,40,0.55) 50%, rgba(10,22,40,0.82) 100%); z-index: 1; }
+  .club-hero-content { position: relative; z-index: 2; }
   .club-hero .kicker { font-size: 12px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
-  .club-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 600; color: #fff; margin-bottom: 20px; line-height: 1.1; }
+  .club-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 64px); font-weight: 600; color: #fff; margin-bottom: 20px; line-height: 1.05; text-shadow: 0 2px 20px rgba(0,0,0,0.4); }
   .club-hero h1 em { color: var(--gold); font-style: italic; }
   .stats-row { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
-  .stat-pill { background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.25); border-radius: 40px; padding: 10px 24px; font-size: 15px; color: var(--cream); }
+  .stat-pill { background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.3); border-radius: 40px; padding: 10px 24px; font-size: 15px; color: var(--cream); backdrop-filter: blur(8px); }
   .stat-pill strong { color: var(--gold); font-weight: 600; }
   .stats-skeleton { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
   .skeleton { background: rgba(255,255,255,0.07); border-radius: 40px; height: 40px; width: 140px; animation: pulse 1.5s infinite; }
@@ -132,7 +135,7 @@
 
 <nav>
   <a href="/" class="logo">
-    <img src="images/logo-parusa.png" alt="Parusa">
+    <img src="../images/logo-parusa.png" alt="Parusa">
     <div>Parusa Yacht Club<span>parusa.kz</span></div>
   </a>
   <ul>
@@ -156,13 +159,17 @@
 
 <!-- HERO -->
 <section class="club-hero">
-  <div class="kicker">Parusa Yacht Club · Капчагай</div>
-  <h1>Команда <em>клуба</em></h1>
-  <div id="stats-wrap">
-    <div class="stats-skeleton">
-      <div class="skeleton"></div>
-      <div class="skeleton"></div>
-      <div class="skeleton"></div>
+  <div class="club-hero-bg"></div>
+  <div class="club-hero-overlay"></div>
+  <div class="club-hero-content">
+    <div class="kicker">Parusa Yacht Club · Капчагай</div>
+    <h1>Команда <em>клуба</em></h1>
+    <div id="stats-wrap">
+      <div class="stats-skeleton">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -194,7 +201,7 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo"><img src="images/logo-parusa.png" alt="Parusa">Parusa Yacht Club</div>
+    <div class="footer-logo"><img src="../images/logo-parusa.png" alt="Parusa">Parusa Yacht Club</div>
     <div class="footer-links">
       <a href="/">Главная</a>
       <a href="/#products">Программы</a>
