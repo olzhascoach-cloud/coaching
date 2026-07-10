@@ -125,7 +125,8 @@
   .team-role { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 500; }
   .team-manager-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: #fff; margin-bottom: 14px; }
   .team-manager-info p { font-size: 15px; color: #9AA3AD; line-height: 1.75; max-width: 560px; }
-  .team-instructors { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
+  .team-instructors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  @media (max-width: 900px) { .team-instructors { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } }
   .team-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 28px 20px 24px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
   .team-card:hover { border-color: rgba(201,169,110,0.3); transform: translateY(-3px); }
   .team-card-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(201,169,110,0.25); margin: 0 auto 16px; display: block; background: rgba(255,255,255,0.05); }
@@ -225,44 +226,33 @@
 
     <!-- Manager -->
     <div class="team-manager">
-      <img src="../images/team-olzhas.jpg" alt="Олжас Кундакбаев" class="team-manager-photo"
-           onerror="this.style.cssText='width:200px;height:200px;min-width:200px;border-radius:50%;background:rgba(201,169,110,0.1);border:3px solid rgba(201,169,110,0.35);display:flex;align-items:center;justify-content:center;font-size:64px;'; this.outerHTML='<div class=\'team-manager-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:64px;\'>⚓</div>'">
+      <img src="../images/olzhas-avatar.jpg" alt="Олжас Кундакбаев" class="team-manager-photo">
       <div class="team-manager-info">
-        <div class="team-role">Управляющий · Основатель</div>
+        <div class="team-role">Основатель · Управляющий</div>
         <h3>Олжас Кундакбаев</h3>
-        <p>Основатель Parusa Yacht Club. Сертифицированный яхтенный инструктор ISSA, капитан с более чем 10-летним стажем. Провёл сотни выходов на Капчагае, подготовил десятки матросов и капитанов. Организатор клубных регат и учебных сборов.</p>
+        <p>Предприниматель, командный коуч ICF и яхтсмен с 2009 года в парусном спорте. Участник 40+ международных регат, автор книг по бизнесу и развитию личности. Создал Parusa Yacht Club как пространство, где люди через парусный спорт учатся лидерству, командной работе и находят своё сообщество близких по духу людей.</p>
       </div>
     </div>
 
     <!-- Instructors -->
     <div class="team-instructors">
       <div class="team-card">
-        <img src="../images/team-instructor-1.jpg" alt="Инструктор" class="team-card-photo"
-             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
+        <img src="../images/team-svetlana.jpg" alt="Светлана Ильиных" class="team-card-photo">
         <div class="team-card-role">Инструктор</div>
-        <h4>Имя Фамилия</h4>
-        <p>Описание достижений и специализации инструктора.</p>
+        <h4>Светлана Ильиных</h4>
+        <p>Инструктор по яхтингу и парусному спорту, мастер спорта Республики Казахстан, чемпионка Казахстана по парусному спорту.</p>
       </div>
       <div class="team-card">
-        <img src="../images/team-instructor-2.jpg" alt="Инструктор" class="team-card-photo"
-             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
+        <img src="../images/team-timur.jpg" alt="Тимур Джангазов" class="team-card-photo">
         <div class="team-card-role">Инструктор</div>
-        <h4>Имя Фамилия</h4>
-        <p>Описание достижений и специализации инструктора.</p>
+        <h4>Тимур Джангазов</h4>
+        <p>Мастер спорта Республики Казахстан по парусному спорту. Чемпион и многократный призёр республиканских соревнований, посвятивший этому виду спорта более 15 лет.</p>
       </div>
       <div class="team-card">
-        <img src="../images/team-instructor-3.jpg" alt="Инструктор" class="team-card-photo"
-             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
-        <div class="team-card-role">Инструктор</div>
-        <h4>Имя Фамилия</h4>
-        <p>Описание достижений и специализации инструктора.</p>
-      </div>
-      <div class="team-card">
-        <img src="../images/team-instructor-4.jpg" alt="Инструктор" class="team-card-photo"
-             onerror="this.outerHTML='<div class=\'team-card-photo\' style=\'display:flex;align-items:center;justify-content:center;font-size:40px;color:#9ca3af;\'>⛵</div>'">
-        <div class="team-card-role">Инструктор</div>
-        <h4>Имя Фамилия</h4>
-        <p>Описание достижений и специализации инструктора.</p>
+        <img src="../images/team-ruslan.jpg" alt="Руслан Алексеенко" class="team-card-photo">
+        <div class="team-card-role">Шкипер-инструктор</div>
+        <h4>Руслан Алексеенко</h4>
+        <p>Мастер спорта РК. Опыт в парусе более 10 лет.</p>
       </div>
     </div>
   </div>
