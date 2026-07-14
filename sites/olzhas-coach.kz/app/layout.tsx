@@ -67,11 +67,59 @@ export const metadata: Metadata = {
   },
 };
 
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://olzhas-coach.kz/#person",
+      name: "Олжас Кундакбаев",
+      url: "https://olzhas-coach.kz",
+      image: "https://olzhas-coach.kz/images/hero-olzhas.jpg",
+      jobTitle: "Бизнес-наставник, ICF PCC коуч",
+      description:
+        "Предприниматель и бизнес-наставник с 25-летним опытом. Создал 17 проектов. Сертифицированный коуч ICF PCC. Помогает собственникам бизнеса принимать стратегические решения.",
+      sameAs: [
+        "https://www.instagram.com/olzhas_kundakbayev/",
+      ],
+      knowsAbout: [
+        "бизнес-коучинг",
+        "стратегия",
+        "предпринимательство",
+        "командный коучинг",
+      ],
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://olzhas-coach.kz/#service",
+      name: "Олжас Кундакбаев — Бизнес-наставник",
+      url: "https://olzhas-coach.kz",
+      description:
+        "Стратегические сессии, личное сопровождение собственников бизнеса, работа с управленческими командами. ICF PCC коучинг.",
+      provider: { "@id": "https://olzhas-coach.kz/#person" },
+      areaServed: ["Казахстан", "СНГ"],
+      serviceType: "Бизнес-коучинг и наставничество",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+7-701-765-14-60",
+        contactType: "customer service",
+        availableLanguage: ["Russian", "Kazakh"],
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ru" className={`${cormorant.variable} ${manrope.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

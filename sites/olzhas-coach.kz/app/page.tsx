@@ -9,6 +9,7 @@ import Method from "@/components/sections/Method";
 import Services from "@/components/sections/Services";
 import Qualification from "@/components/sections/Qualification";
 import Cases from "@/components/sections/Cases";
+import Media from "@/components/sections/Media";
 import Books from "@/components/sections/Books";
 import PersonalStory from "@/components/sections/PersonalStory";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -27,6 +28,7 @@ export default function Home() {
         <Services />
         <Qualification />
         <Cases />
+        <Media />
         <Books />
         <PersonalStory />
         <FinalCTA />
