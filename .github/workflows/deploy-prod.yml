@@ -70,6 +70,32 @@ jobs:
               echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: |
+            sites/olzhas-coach.kz/package-lock.json
+
+      - name: Build Next.js sites
+        env:
+          CHANGED_SITES: ${{ steps.changed.outputs.sites }}
+        run: |
+          set -euo pipefail
+          NEXTJS_SITES="olzhas-coach.kz"
+          while IFS= read -r site; do
+            [[ -z "$site" ]] && continue
+            if echo "$NEXTJS_SITES" | grep -qw -- "$site"; then
+              echo "==> Building Next.js site: $site"
+              cd "sites/$site"
+              npm ci --prefer-offline
+              npm run build
+              cd ../..
+              echo "    ✓ Built $site → sites/$site/out/"
+            fi
+          done <<< "$CHANGED_SITES"
+
       - name: Set up SSH
         run: |
           set -euo pipefail
@@ -92,16 +118,23 @@ jobs:
           # warning, never reaching the SSH layer.
           ALLOWED_SITES="olzhas-coach.kz parusa.kz"
           TIMESTAMP=$(date -u +%Y-%m-%d_%H%M%S)
+          NEXTJS_SITES="olzhas-coach.kz"
           while IFS= read -r site; do
               [[ -z "$site" ]] && continue
               if ! echo "$ALLOWED_SITES" | grep -qw -- "$site"; then
                   echo "::warning::Unknown site '$site' — skipping (not in allowlist)"
                   continue
               fi
-              echo "==> Deploying $site to PRODUCTION ($TIMESTAMP)"
+              # Next.js sites deploy from the built `out/` directory
+              if echo "$NEXTJS_SITES" | grep -qw -- "$site"; then
+                  SRC="sites/$site/out/"
+              else
+                  SRC="sites/$site/"
+              fi
+              echo "==> Deploying $site to PRODUCTION ($TIMESTAMP) from $SRC"
               rsync -az --delete \
                   -e "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts" \
-                  "sites/$site/" \
+                  "$SRC" \
                   "$VPS_USER@$VPS_HOST:/var/www/sites/$site/prod/releases/$TIMESTAMP/"
               ssh -n -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts \
                   "$VPS_USER@$VPS_HOST" \

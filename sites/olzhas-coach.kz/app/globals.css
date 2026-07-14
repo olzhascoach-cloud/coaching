@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Design tokens — olzhas-coach.kz */
+  --color-ink:        #0C0D0E;
+  --color-ink-2:      #17191B;
+  --color-ink-3:      #222426;
+  --color-warm:       #E9E4DA;
+  --color-warm-2:     #F4F0E8;
+  --color-bronze:     #B7A27A;
+  --color-bronze-dim: rgba(183,162,122,0.18);
+  --color-text:       #FFFFFF;
+  --color-muted:      #A7A7A7;
+  --color-muted-2:    #6B6B6B;
+
+  --font-serif: var(--font-cormorant);
+  --font-sans:  var(--font-manrope);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-sans), 'Manrope', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
