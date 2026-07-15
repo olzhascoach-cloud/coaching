@@ -5,14 +5,14 @@ import Image from "next/image";
 
 export default function Books() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-ink)]">
+    <section className="py-16 md:py-20 bg-[var(--color-ink)]">
       <Container>
         <SectionHeading
           kicker="Книги"
           title="Продолжение опыта&nbsp;на бумаге"
           subtitle="Не учебники. Честные книги — об ошибках, о бизнесе и о жизни."
         />
-        <div className="mt-16 grid md:grid-cols-2 gap-8">
+        <div className="mt-10 grid md:grid-cols-2 gap-8">
           {books.map((book) => (
             <div
               key={book.id}

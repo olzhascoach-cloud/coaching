@@ -5,14 +5,14 @@ import Button from "@/components/ui/Button";
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 md:py-32 bg-[var(--color-ink)]">
+    <section id="services" className="py-16 md:py-20 bg-[var(--color-ink)]">
       <Container>
         <SectionHeading
           kicker="Форматы работы"
           title="Три направления"
           subtitle="Без тарифов и пакетов. Формат определяется после понимания задачи."
         />
-        <div className="mt-16 grid md:grid-cols-3 gap-6">
+        <div className="mt-10 grid md:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <div
               key={s.id}
