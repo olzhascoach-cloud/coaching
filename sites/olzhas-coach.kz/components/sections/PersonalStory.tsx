@@ -8,10 +8,10 @@ export default function PersonalStory() {
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           <div className="aspect-[3/4] bg-[var(--color-ink-3)] relative overflow-hidden">
             <Image
-              src="/images/hero-olzhas.jpg"
+              src="/images/olzhas-portrait.jpg"
               alt="Олжас Кундакбаев"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>

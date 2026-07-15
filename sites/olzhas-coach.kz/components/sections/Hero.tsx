@@ -12,7 +12,7 @@ export default function Hero() {
           alt="Олжас Кундакбаев"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-top"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[rgba(12,13,14,0.85)] via-[rgba(12,13,14,0.6)] to-[rgba(12,13,14,0.2)] md:to-transparent" />

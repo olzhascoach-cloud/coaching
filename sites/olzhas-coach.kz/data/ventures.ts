@@ -18,6 +18,7 @@ export const ventures: Venture[] = [
     insight:
       "Первым на рынке — не значит выигравшим. Важнее скорость адаптации, когда рынок начинает двигаться.",
     tags: ["Fintech", "Казахстан", "Первый на рынке"],
+    image: "/images/ventures/fastpay.png",
   },
   {
     id: "e-sign",
@@ -28,6 +29,7 @@ export const ventures: Venture[] = [
     insight:
       "Когда продукт решает настоящую боль — масштаб приходит сам. Сложнее всего объяснить рынку, что эта боль существует.",
     tags: ["SaaS", "B2B", "100 000+ пользователей"],
+    image: "/images/ventures/podpishi.png",
   },
   {
     id: "17-startups",
