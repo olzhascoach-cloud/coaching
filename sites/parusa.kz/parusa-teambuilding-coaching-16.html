@@ -90,11 +90,18 @@
   .cta-block p { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
   .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--navy); font-family: 'Jost', sans-serif; font-weight: 600; font-size: 14px; padding: 14px 32px; border-radius: 3px; text-decoration: none; }
   .btn-primary:hover { background: #d9b85c; }
+  .reviews-section { margin-bottom: 48px; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .review-card { background: var(--navy2); border: 1px solid rgba(201,168,76,0.12); border-radius: 8px; overflow: hidden; text-decoration: none; display: block; transition: border-color 0.2s; }
+  .review-card:hover { border-color: rgba(201,168,76,0.35); }
+  .review-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+  .review-card-footer { padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
   .doc-footer { text-align: center; margin-top: 48px; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
   @media (max-width: 640px) {
     .meta-grid { grid-template-columns: repeat(2, 1fr); }
     .includes-grid { grid-template-columns: 1fr; }
     .page { padding: 32px 20px 60px; }
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -141,7 +148,7 @@
     <div class="coaching-badge-icon">◈</div>
     <div>
       <strong>Командный коучинг ICF</strong>
-      Методология включает ролевой анализ, фасилитированный разбор командной динамики и сессию обратной связи. Проводит сертифицированный коуч Olzhas Kundakbayev (ICF PCC).
+      Методология включает ролевой анализ, фасилитированный разбор командной динамики и сессию обратной связи. Проводит сертифицированный коуч Olzhas Kundakbayev (ICF ACC).
     </div>
   </div>
 
@@ -179,7 +186,7 @@
     <div class="tl-item">
       <div class="tl-time">12:30</div>
       <div class="tl-body">
-        <div class="tl-label">Перерыв</div>
+        <div class="tl-label">Кофе-брейк</div>
         <div class="tl-desc">Свободное время перед обедом. Прогулка по территории клуба, осмотр яхт, неформальное общение.</div>
       </div>
     </div>
@@ -191,9 +198,21 @@
       </div>
     </div>
     <div class="tl-item">
+      <div class="tl-time">13:30</div>
+      <div class="tl-body">
+        <div class="tl-label">Водная командная программа · Подготовка</div>
+        <div class="tl-desc">Закрепление навыков на яхте перед выходом на воду. Деление участников на мини-группы и распределение ролей внутри экипажа.</div>
+        <div class="tl-bullets">
+          <div class="tl-bullet">Закрепление навыков командного взаимодействия на яхте</div>
+          <div class="tl-bullet">Деление на мини-группы по 3–4 человека</div>
+          <div class="tl-bullet">Распределение ролей: шкипер, матрос, наблюдатель</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
       <div class="tl-time">14:00</div>
       <div class="tl-body">
-        <div class="tl-label">Брифинг по безопасности</div>
+        <div class="tl-label">Инструктаж по безопасности</div>
         <div class="tl-desc">Правила поведения на воде, роли экипажа, базовые команды управления яхтой.</div>
       </div>
     </div>
@@ -228,14 +247,14 @@
 
   <div class="section-title">Что включает коучинговый блок</div>
   <div class="coaching-block">
-    <h4>Командный коучинг · ICF PCC</h4>
+    <h4>Командный коучинг · ICF</h4>
     <div class="coaching-item">Полная сессия до обеда — ролевая карта, динамика команды, договорённости (2 часа)</div>
-    <div class="coaching-item">Наблюдение коуча за командой на воде</div>
+    <div class="coaching-item">Наблюдение коуча за командой на воде и работы в минигруппах, активная обратная связь команде и лидеру.</div>
     <div class="coaching-item">Фокус на: лидерство, роли, доверие, принятие решений под давлением</div>
-    <div class="coaching-item">Конкретные договорённости и план действий для команды</div>
+    <div class="coaching-item">Конкретные договорённости и план действий для команды на 3–6 месяцев</div>
   </div>
 
-  <div class="section-title">Что входит в стоимость</div>
+  <div class="section-title">Что входит в программу</div>
   <div class="includes-grid">
     <div class="includes-col">
       <h4>Включено</h4>
@@ -243,20 +262,16 @@
       <div class="include-item">4 инструктора на воде</div>
       <div class="include-item">Сессия коуча с лидером команды (30–60 мин)</div>
       <div class="include-item">Командный коучинг ICF (2.5 ч)</div>
+      <div class="include-item">Кофе-брейк и обед</div>
       <div class="include-item">Инструктаж по безопасности</div>
       <div class="include-item">Тренировочный выход (90 мин)</div>
       <div class="include-item">Дружеская регата с хронометражем</div>
       <div class="include-item">Спасательное снаряжение</div>
-      <div class="include-item">Сертификаты участников</div>
+      <div class="include-item">Сертификат о прохождении тимбилдинга и командного коучинга</div>
     </div>
     <div class="includes-col">
-      <h4>По запросу</h4>
-      <div class="include-item">Фото и видео с мероприятия</div>
-      <div class="include-item">Кофе-брейки</div>
-      <div class="include-item">Обед / ужин</div>
-      <div class="include-item">Проживание</div>
-      <div class="include-item">Трансфер из Алматы</div>
-      <div class="include-item">Индивидуальные коучинговые сессии после события</div>
+      <h4>Дополнительно</h4>
+      <div class="include-item">Ужин</div>
     </div>
   </div>
 
@@ -267,6 +282,34 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Написать в WhatsApp
     </a>
+  </div>
+
+  <!-- Отзывы клиентов -->
+  <div class="reviews-section" style="margin-top: 48px;">
+    <div class="section-title">Отзывы клиентов</div>
+    <div class="reviews-grid">
+      <a href="https://www.instagram.com/p/DZh_iu6slXp/" target="_blank" rel="noopener" class="review-card">
+        <img src="images/tb-review-1.jpg" alt="Отзыв клиента @parus.kapchagay">
+        <div class="review-card-footer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span style="font-size:12px;color:var(--gold);">@parus.kapchagay</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/p/DaAjaFGM-4p/" target="_blank" rel="noopener" class="review-card">
+        <img src="images/tb-review-2.jpg" alt="Отзыв клиента @parus.kapchagay">
+        <div class="review-card-footer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span style="font-size:12px;color:var(--gold);">@parus.kapchagay</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/p/DZz0FJZMOjf/" target="_blank" rel="noopener" class="review-card">
+        <img src="images/tb-review-3.jpg" alt="Отзыв клиента @parus.kapchagay">
+        <div class="review-card-footer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span style="font-size:12px;color:var(--gold);">@parus.kapchagay</span>
+        </div>
+      </a>
+    </div>
   </div>
 
   <div class="doc-footer">Parusa Yacht Club · Капчагай · parusa.kz</div>
