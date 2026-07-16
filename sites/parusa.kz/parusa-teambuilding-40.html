@@ -69,6 +69,20 @@
   .inc-row .check { color:#C9A84C; }
 
   .footer { text-align:center; font-size:12px; color:#6E767E; margin-top:60px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); }
+  .marketing-hook { background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.03)); border:1px solid rgba(201,168,76,0.25); border-radius:10px; padding:20px 28px; margin-bottom:32px; font-size:15px; font-weight:400; color:#fff; line-height:1.65; text-align:center; }
+  .includes-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:4px; }
+  .includes-col h4 { font-size:10px; text-transform:uppercase; letter-spacing:0.15em; color:#C9A84C; margin-bottom:12px; font-weight:600; }
+  .inc-row2 { display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:13.5px; color:#C9CDD1; }
+  .inc-row2::before { content:''; flex-shrink:0; width:5px; height:5px; background:#C9A84C; border-radius:50%; margin-top:7px; }
+  .reviews-section { margin-top:48px; margin-bottom:8px; }
+  .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+  .review-card { background:#0F1E2E; border:1px solid rgba(201,168,76,0.12); border-radius:8px; overflow:hidden; text-decoration:none; display:block; transition:border-color 0.2s; }
+  .review-card:hover { border-color:rgba(201,168,76,0.35); }
+  .review-card img { width:100%; aspect-ratio:1; object-fit:cover; display:block; }
+  .review-card-footer { padding:10px 14px; display:flex; align-items:center; gap:8px; }
+  .section-label { font-size:10px; font-weight:600; color:#C9A84C; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .section-label::before { content:''; display:inline-block; width:3px; height:12px; background:#C9A84C; border-radius:2px; }
+  @media (max-width:640px) { .includes-grid { grid-template-columns:1fr; } .reviews-grid { grid-template-columns:repeat(2,1fr); } }
 
   /* --- Печать / PDF --- */
   @media print {
@@ -86,10 +100,14 @@
   <h1>Тимбилдинг <span>«Матрос-Юнга»</span></h1>
   <div class="subtitle">Капчагайское водохранилище · 2026</div>
 
+  <div class="marketing-hook">
+    На воде не спрячешься — яхта честно показывает каждого: кто ведёт команду, кто теряется под давлением и кто реально работает на результат.
+  </div>
+
   <div class="meta-row">
     <div class="meta-badge">40 участников</div>
     <div class="meta-badge">2 группы по 20 чел.</div>
-    <div class="meta-badge">4 яхты SB20</div>
+    <div class="meta-badge">4 парусных яхты</div>
     <div class="meta-badge">09:30 – 15:30</div>
   </div>
 
@@ -98,14 +116,14 @@
     <div class="group-card">
       <div class="g-title">Группа А</div>
       <div class="g-count">20 человек</div>
-      <div class="g-row"><b>До обеда</b> — на воде, яхты SB20</div>
+      <div class="g-row"><b>До обеда</b> — на воде, парусные яхты</div>
       <div class="g-row"><b>После обеда</b> — на берегу, курс «Матрос-Юнга»</div>
     </div>
     <div class="group-card">
       <div class="g-title">Группа Б</div>
       <div class="g-count">20 человек</div>
       <div class="g-row"><b>До обеда</b> — на берегу, курс «Матрос-Юнга»</div>
-      <div class="g-row"><b>После обеда</b> — на воде, яхты SB20</div>
+      <div class="g-row"><b>После обеда</b> — на воде, парусные яхты</div>
     </div>
   </div>
 
@@ -133,7 +151,7 @@
       <div class="s-body">
         <div class="s-title">Блок 1</div>
         <div class="s-split">
-          <div><b>Группа А (20 чел.)</b> — на воде: 4 яхты SB20 с инструкторами</div>
+          <div><b>Группа А (20 чел.)</b> — на воде: 4 парусных яхты с инструкторами</div>
           <div><b>Группа Б (20 чел.)</b> — на берегу: курс «Матрос-Юнга» (теория, морские узлы, командные испытания)</div>
         </div>
       </div>
@@ -153,7 +171,7 @@
         <div class="s-title">Блок 2 — группы меняются местами</div>
         <div class="s-split">
           <div><b>Группа А (20 чел.)</b> — на берегу: курс «Матрос-Юнга»</div>
-          <div><b>Группа Б (20 чел.)</b> — на воде: 4 яхты SB20 с инструкторами</div>
+          <div><b>Группа Б (20 чел.)</b> — на воде: 4 парусных яхты с инструкторами</div>
         </div>
       </div>
     </div>
@@ -177,20 +195,62 @@
 
   <h2>Флот на воде</h2>
   <div class="boats">
-    <div class="boat"><div class="num">SB20 · 1</div><div class="label">5 чел. + инструктор</div></div>
-    <div class="boat"><div class="num">SB20 · 2</div><div class="label">5 чел. + инструктор</div></div>
-    <div class="boat"><div class="num">SB20 · 3</div><div class="label">5 чел. + инструктор</div></div>
-    <div class="boat"><div class="num">SB20 · 4</div><div class="label">5 чел. + инструктор</div></div>
+    <div class="boat"><div class="num">Яхта №1</div><div class="label">5 чел. + инструктор</div></div>
+    <div class="boat"><div class="num">Яхта №2</div><div class="label">5 чел. + инструктор</div></div>
+    <div class="boat"><div class="num">Яхта №3</div><div class="label">5 чел. + инструктор</div></div>
+    <div class="boat"><div class="num">Яхта №4</div><div class="label">5 чел. + инструктор</div></div>
   </div>
 
-  <h2>Что входит</h2>
-  <div class="included">
-    <div class="inc-row"><span class="check">✓</span> Вход на базу</div>
-    <div class="inc-row"><span class="check">✓</span> Обед на 40 человек</div>
-    <div class="inc-row"><span class="check">✓</span> Спасательное оборудование на всех участников</div>
-    <div class="inc-row"><span class="check">✓</span> 4 яхты SB20 с инструкторами</div>
-    <div class="inc-row"><span class="check">✓</span> Курс «Матрос-Юнга» — теория, узлы, командные испытания</div>
-    <div class="inc-row"><span class="check">✓</span> Именные сертификаты Parusa Yacht Club «Матрос-Юнга»</div>
+  <h2>Что входит в программу</h2>
+  <div class="includes-grid">
+    <div class="includes-col">
+      <h4>Включено</h4>
+      <div class="inc-row2">Вход на базу</div>
+      <div class="inc-row2">Кофе-брейк при заезде</div>
+      <div class="inc-row2">Обед на 40 человек</div>
+      <div class="inc-row2">4 парусных яхты с инструкторами</div>
+      <div class="inc-row2">Инструктаж по безопасности</div>
+      <div class="inc-row2">Курс «Матрос-Юнга» — теория, узлы, командные испытания</div>
+      <div class="inc-row2">Спасательное снаряжение</div>
+      <div class="inc-row2">Именные сертификаты «Матрос-Юнга»</div>
+    </div>
+    <div class="includes-col">
+      <h4>По запросу</h4>
+      <div class="inc-row2">Ужин</div>
+      <div class="inc-row2">Пляж</div>
+      <div class="inc-row2">Стоянка для авто</div>
+      <div class="inc-row2">Фото-Видео</div>
+      <div class="inc-row2">Проживание</div>
+      <div class="inc-row2">Трансфер из Алматы</div>
+      <div class="inc-row2">Командный коучинг ICF</div>
+    </div>
+  </div>
+
+  <div class="reviews-section">
+    <div class="section-label">Отзывы клиентов</div>
+    <div class="reviews-grid">
+      <a href="https://www.instagram.com/p/DZh_iu6slXp/" target="_blank" rel="noopener" class="review-card">
+        <img src="images/tb-review-1.jpg" alt="Отзыв @parus.kapchagay">
+        <div class="review-card-footer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span style="font-size:12px;color:#C9A84C;">@parus.kapchagay</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/p/DaAjaFGM-4p/" target="_blank" rel="noopener" class="review-card">
+        <img src="images/tb-review-2.jpg" alt="Отзыв @parus.kapchagay">
+        <div class="review-card-footer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span style="font-size:12px;color:#C9A84C;">@parus.kapchagay</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/p/DZz0FJZMOjf/" target="_blank" rel="noopener" class="review-card">
+        <img src="images/tb-review-3.jpg" alt="Отзыв @parus.kapchagay">
+        <div class="review-card-footer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span style="font-size:12px;color:#C9A84C;">@parus.kapchagay</span>
+        </div>
+      </a>
+    </div>
   </div>
 
   <div class="footer">Parusa Yacht Club · Капчагай, Казахстан · parusa.kz</div>
