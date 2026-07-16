@@ -40,7 +40,7 @@ export default function Hero() {
           alt="Олжас Кундакбаев"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-top"
           sizes="50vw"
         />
         {/* subtle left-edge fade to blend with text panel */}
