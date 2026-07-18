@@ -223,7 +223,7 @@
 
 <section id="hero">
   <div class="hero-bg">
-    <img src="images/progulka-hero-new.jpg" alt="Парусная прогулка" class="hero-video" style="object-position: center 70%;">
+    <img src="images/progulka-hero-v2.jpg" alt="Парусная прогулка" class="hero-video" style="object-position: center center;">
     <div class="hero-overlay" style="background: linear-gradient(to right, rgba(10,22,40,0.90) 0%, rgba(10,22,40,0.50) 50%, rgba(10,22,40,0.18) 100%);"></div>
   </div>
   <div class="hero-content">
@@ -414,7 +414,10 @@
 
 
 <!-- ФОТОСЕССИЯ НА ЗАКАТЕ -->
-<section style="background: var(--navy-mid); padding: 80px 48px;">
+<section style="position: relative; padding: 80px 48px; overflow: hidden; background: var(--navy-mid);">
+  <div style="position: absolute; inset: 0; background: url('images/progulka-fotosessiya-bg.jpg') center / cover no-repeat;"></div>
+  <div style="position: absolute; inset: 0; background: rgba(10,22,40,0.78);"></div>
+  <div style="position: relative; z-index: 1;">
   <div style="max-width: 1000px; margin: 0 auto;">
     <div class="section-tag" style="margin-bottom: 12px;">Особый формат</div>
     <h2 style="font-size: clamp(28px,4vw,44px); margin-bottom: 24px;">Фотосессия<br><em>на закате</em></h2>
@@ -444,6 +447,7 @@
     <div style="text-align: center;">
       <a href="/fotosessiya.html" class="btn-outline" style="padding: 14px 36px;">Подробнее о фотосессии →</a>
     </div>
+  </div>
   </div>
 </section>
 
