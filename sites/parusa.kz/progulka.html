@@ -182,6 +182,27 @@
   .sticky-cta.visible { transform: translateY(0); }
   .sticky-cta-text { font-size: 15px; color: var(--text-light); }
   .sticky-cta-text strong { color: var(--gold); }
+  /* Новые блоки: сезонные цены, заметки, подарочный сертификат */
+  .pk-note { border-left: 3px solid var(--gold); padding: 14px 18px; background: rgba(201,169,110,0.08); border-radius: 0 6px 6px 0; font-size: 15px; line-height: 1.6; color: var(--text-light); margin: 0 0 32px; }
+  .pk-note b { color: var(--gold); font-weight: 500; }
+  .pk-note a { color: var(--gold); }
+  .pk-seasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; }
+  .pk-season { border: 1px solid rgba(201,169,110,0.35); border-radius: 4px; padding: 18px 20px; background: rgba(10,22,40,0.35); }
+  .pk-season-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .pk-season-sum { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .pk-season-sum span { display: block; margin-top: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text-muted); }
+  #gift { background: var(--navy); }
+  .pk-gift__wrap { max-width: 1080px; }
+  .pk-gift__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .pk-gift__card { border: 1px solid rgba(201,169,110,0.25); border-radius: 4px; padding: 22px; background: rgba(255,255,255,0.02); }
+  .pk-gift__card b { display: block; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--gold); margin-bottom: 6px; }
+  .pk-gift__card p { font-size: 14px; line-height: 1.6; color: var(--text-muted); }
+  .pk-gift__prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .pk-gift__price { background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(201,169,110,0.02)); border: 1px solid rgba(201,169,110,0.5); border-radius: 4px; padding: 26px; }
+  .pk-gift__season { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .pk-gift__sum { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 10px; }
+  .pk-gift__price p:last-child { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .pk-gift__cta { text-align: center; margin-top: 8px; }
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     nav ul { display: none; }
@@ -207,6 +228,7 @@
     <li><a href="/#about">О клубе</a></li>
     <li><a href="/#products">Программы</a></li>
     <li><a href="#price">Стоимость</a></li>
+    <li><a href="#gift">Сертификат</a></li>
     <li><a href="#register" class="nav-cta">Забронировать</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Меню">
@@ -218,6 +240,7 @@
   <a href="/" onclick="closeMobileMenu()">Главная</a>
   <a href="/#products" onclick="closeMobileMenu()">Программы</a>
   <a href="#price" onclick="closeMobileMenu()">Стоимость</a>
+  <a href="#gift" onclick="closeMobileMenu()">Сертификат</a>
   <a href="#register" class="nav-cta" onclick="closeMobileMenu()">Забронировать</a>
 </div>
 
@@ -444,10 +467,49 @@
         <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Управление яхтой — на нас. Вы сосредоточены только на съёмке</p>
       </div>
     </div>
+    <p class="pk-note"><b>Почему фотосессия дороже прогулки?</b> Для съёмки нужны две лодки: на одной вы, на второй фотограф, чтобы снять яхту под парусами со стороны. Каждый час сверх 2 часов — 50 000 ₸ за каждую лодку.</p>
     <div style="text-align: center;">
       <a href="/fotosessiya.html" class="btn-outline" style="padding: 14px 36px;">Подробнее о фотосессии →</a>
     </div>
   </div>
+  </div>
+</section>
+
+<section id="gift" class="pk-gift">
+  <div class="pk-gift__wrap">
+    <div class="section-tag">Лучший подарок — впечатление</div>
+    <h2>Подарочный <em>сертификат</em> на прогулку под парусами</h2>
+    <p class="section-lead">Подарите 2 часа на спортивной яхте: получатель сам встанет за штурвал и поработает с парусами под контролем профессионального инструктора. Сертификат именной, дату получатель выбирает сам.</p>
+
+    <div class="pk-gift__grid">
+      <div class="pk-gift__card"><b>Именной</b><p>Впишем имя получателя и ваше поздравление.</p></div>
+      <div class="pk-gift__card"><b>Дата — потом</b><p>Действует весь сезон 2027 (апрель–сентябрь). Дату согласуем заранее в WhatsApp.</p></div>
+      <div class="pk-gift__card"><b>До 4 гостей</b><p>Яхта целиком для вашей компании — можно взять с собой 1–3 близких.</p></div>
+      <div class="pk-gift__card"><b>Сам за штурвалом</b><p>Рулить яхтой и управлять парусами — под контролем инструктора.</p></div>
+      <div class="pk-gift__card"><b>Закатный выход</b><p>Прогулка на закате — самый красивый свет на Капчагае. Время подскажем при бронировании.</p></div>
+      <div class="pk-gift__card"><b>В конверте</b><p>Печатный сертификат в фирменном конверте Parusa — готовый подарок в руки.</p></div>
+    </div>
+
+    <div class="pk-gift__prices">
+      <div class="pk-gift__price">
+        <p class="pk-gift__season">Апрель — май · сентябрь</p>
+        <p class="pk-gift__sum">100 000 ₸</p>
+        <p>2 часа · яхта целиком до 4 человек · инструктор · жилеты · фото на пирсе и на борту</p>
+      </div>
+      <div class="pk-gift__price">
+        <p class="pk-gift__season">Лето · июнь — август</p>
+        <p class="pk-gift__sum">150 000 ₸</p>
+        <p>Тот же формат в высокий сезон — тёплая вода и стабильный ветер</p>
+      </div>
+    </div>
+
+    <p class="pk-note"><b>Дольше 2 часов?</b> Каждый дополнительный час — 50 000 ₸ за лодку. В октябре клуб не работает — сезон с апреля по сентябрь.</p>
+    <p class="pk-note"><b>Хотите профессиональную фотосессию?</b> Для съёмки нужны две лодки: на одной вы, на второй — фотограф, чтобы снять яхту со стороны под парусами. Поэтому бюджет фотосессии выше обычной прогулки. Если съёмка длится дольше 2 часов, каждый дополнительный час — 50 000 ₸ за каждую лодку (100 000 ₸ за обе). <a href="https://parusa.kz/fotosessiya.html">Подробнее →</a></p>
+    <p class="pk-note"><b>Трансфер из Алматы</b> организуем по запросу. Стоимость зависит от количества гостей.</p>
+
+    <div class="pk-gift__cta">
+      <a class="btn-primary" href="https://wa.me/77015334340?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D1%87%D0%BD%D1%8B%D0%B9%20%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%20%D0%BD%D0%B0%20%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%BD%D1%83%D1%8E%20%D0%BF%D1%80%D0%BE%D0%B3%D1%83%D0%BB%D0%BA%D1%83" target="_blank" rel="noopener">Заказать сертификат в WhatsApp</a>
+    </div>
   </div>
 </section>
 
@@ -458,8 +520,17 @@
     <div class="price-card">
       <div class="price-label">Парусная прогулка · цена за яхту</div>
       <h3>Под парусами по Капчагаю</h3>
-      <div class="price-amount">от 75 000 <span>₸/час</span></div>
-      <div class="price-note">Цена за яхту в час, в будние дни · с инструктором на борту (до 4 человек)</div>
+      <div class="pk-seasons">
+        <div class="pk-season">
+          <div class="pk-season-label">Апрель, май, сентябрь</div>
+          <div class="pk-season-sum">100 000 ₸ <span>за 2 часа</span></div>
+        </div>
+        <div class="pk-season">
+          <div class="pk-season-label">Июнь–август</div>
+          <div class="pk-season-sum">150 000 ₸ <span>за 2 часа</span></div>
+        </div>
+      </div>
+      <div class="price-note">Цена за яхту целиком, до 4 человек + инструктор. Каждый дополнительный час — 50 000 ₸.</div>
       <ul class="price-includes" style="margin-top: 20px;">
         <li>Яхта парусная яхта и всё снаряжение</li>
         <li>Инструктор на борту</li>
@@ -505,11 +576,43 @@
     </div>
     <div class="faq-item">
       <div class="faq-q">Сколько длится прогулка? <div class="toggle">+</div></div>
-      <div class="faq-a">Прогулка занимает 2–3 часа. Можно обсудить более длительный формат — уточняйте при записи.</div>
+      <div class="faq-a">Базовая прогулка — 2 часа. Можно продлить: каждый дополнительный час — 50 000 ₸ за лодку.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Сколько человек помещается на яхту? <div class="toggle">+</div></div>
       <div class="faq-a">На яхте парусная яхта комфортно размещается экипаж до 4 человек плюс инструктор.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли подарить прогулку? <div class="toggle">+</div></div>
+      <div class="faq-a">Да. Оформим именной подарочный сертификат в фирменном конверте. Дату получатель выберет сам в течение сезона (апрель–сентябрь).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Сколько стоит? <div class="toggle">+</div></div>
+      <div class="faq-a">2 часа на яхте: апрель, май и сентябрь — 100 000 ₸, июнь–август — 150 000 ₸. Цена за яхту, а не за человека. Каждый дополнительный час — 50 000 ₸.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли взять с собой друзей? <div class="toggle">+</div></div>
+      <div class="faq-a">Да, на яхте до 4 гостей плюс инструктор.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли выйти на закате? <div class="toggle">+</div></div>
+      <div class="faq-a">Да, по предварительной записи. Время выхода зависит от месяца, подскажем при бронировании.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Включена ли фотосъёмка? <div class="toggle">+</div></div>
+      <div class="faq-a">Фото на пирсе и на борту включены. Профессиональная фотосессия оплачивается отдельно: для неё нужны две лодки (вторая для фотографа). Каждый час сверх 2 часов — 50 000 ₸ за каждую лодку.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Есть ли трансфер из Алматы? <div class="toggle">+</div></div>
+      <div class="faq-a">Да, организуем по запросу. Стоимость зависит от количества гостей.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что если плохая погода? <div class="toggle">+</div></div>
+      <div class="faq-a">Безопасность прежде всего. При сильном ветре или шторме перенесём прогулку на другой день.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Когда работает клуб? <div class="toggle">+</div></div>
+      <div class="faq-a">Сезон с апреля по сентябрь. В октябре клуб не работает.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Можно с детьми? <div class="toggle">+</div></div>
@@ -534,9 +637,9 @@
     <div class="footer-links">
       <a href="/">Главная</a>
       <a href="/#products">Программы</a>
-      <a href="/#membership">Членство</a>
+      <a href="https://parusa.kz/membership/">Членство</a>
       <a href="/#faq">FAQ</a>
-      <a href="https://maps.app.goo.gl/EQCgM4BXSCgK5zxG6" target="_blank" rel="noopener">Адрес</a>
+      <a href="https://maps.app.goo.gl/jAiHFFEfLJv8BZ7x5?g_st=iwb" target="_blank" rel="noopener">Адрес</a>
     </div>
     <div class="footer-icons">
       <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="footer-icon-link" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -562,7 +665,7 @@
 </footer>
 
 <div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-text"><strong>Парусная прогулка</strong> — от 15 000 ₸</div>
+  <div class="sticky-cta-text"><strong>Парусная прогулка</strong> — от 100 000 ₸ за яхту</div>
   <a href="#register" class="btn-primary">Забронировать →</a>
 </div>
 

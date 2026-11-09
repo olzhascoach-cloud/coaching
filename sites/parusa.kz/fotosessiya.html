@@ -116,6 +116,50 @@
   .cta-section p { color: #9AA3AD; font-size: 15px; max-width: 480px; margin: 0 auto 34px; line-height: 1.65; }
   .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
   .price-line { font-size: 14px; color: #9AA3AD; }
+
+  /* СТОИМОСТЬ */
+  .pk-price { padding: 100px 24px; background: #0D1926; }
+  .pk-price .inner { max-width: 900px; margin: 0 auto; }
+  .pk-price h2 { font-family: 'Cormorant Garamond', serif; text-align: center; font-size: clamp(30px, 4vw, 40px); color: #fff; font-weight: 600; margin-bottom: 18px; }
+  .pk-price h2 em { color: var(--gold); font-style: italic; }
+  .pk-price-lead { text-align: center; font-size: 18px; color: #D7DBDE; line-height: 1.65; max-width: 680px; margin: 0 auto 44px; }
+  .pk-price-lead b { color: var(--gold); font-weight: 500; }
+  .pk-price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  @media (max-width: 700px) { .pk-price-cards { grid-template-columns: 1fr; } }
+  .pk-price-card { background: #101B27; border: 1px solid rgba(201,168,76,0.35); border-radius: 12px; padding: 30px 28px; }
+  .pk-price-season { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .pk-price-what { font-size: 14px; color: #9AA3AD; margin-bottom: 4px; }
+  .pk-price-sum { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: #fff; font-weight: 600; line-height: 1.1; margin-bottom: 14px; }
+  .pk-price-extra { font-size: 14px; color: #C9CDD1; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .pk-price-extra b { color: var(--gold); font-weight: 500; }
+  .pk-price-note { font-size: 14.5px; color: #C9CDD1; line-height: 1.65; margin-bottom: 32px; }
+  .pk-price-note b { color: #fff; font-weight: 500; }
+  .pk-price-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 36px; }
+  @media (max-width: 700px) { .pk-price-cols { grid-template-columns: 1fr; } }
+  .pk-price-cols h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; font-weight: 600; margin-bottom: 12px; }
+  .pk-price-cols ul { list-style: none; }
+  .pk-price-cols li { font-size: 14.5px; color: #C9CDD1; padding: 7px 0 7px 18px; position: relative; }
+  .pk-price-cols li::before { content: ''; position: absolute; left: 0; top: 15px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .pk-price-cols p { font-size: 14.5px; color: #C9CDD1; line-height: 1.65; }
+  .pk-price-cta { text-align: center; }
+
+  /* ПОДАРОК */
+  .pk-giftbar { padding: 0 24px 100px; background: #0D1926; }
+  .pk-giftbar .inner { max-width: 900px; margin: 0 auto; border-left: 3px solid var(--gold); background: rgba(201,168,76,0.08); border-radius: 0 12px 12px 0; padding: 20px 24px; font-size: 15.5px; color: #D7DBDE; line-height: 1.6; }
+  .pk-giftbar b { color: var(--gold); font-weight: 500; }
+  .pk-giftbar a { color: var(--gold); white-space: nowrap; }
+
+  /* FAQ */
+  .pk-faq { padding: 100px 24px; }
+  .pk-faq .inner { max-width: 760px; margin: 0 auto; }
+  .pk-faq h2 { font-family: 'Cormorant Garamond', serif; text-align: center; font-size: clamp(30px, 4vw, 40px); color: #fff; font-weight: 600; margin-bottom: 36px; }
+  .pk-faq h2 em { color: var(--gold); font-style: italic; }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; cursor: pointer; }
+  .faq-q { font-size: 17px; color: var(--white); font-weight: 400; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .toggle { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-a { font-size: 14px; color: var(--text-muted); line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding-top 0.3s; }
+  .faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+  .faq-item.open .toggle { transform: rotate(45deg); }
 </style>
 </head>
 <body>
@@ -126,7 +170,7 @@
     <li><a href="#audience">Для кого</a></li>
     <li><a href="#schedule">Программа</a></li>
     <li><a href="#advertising">Брендам</a></li>
-    <li><a href="#cta">Стоимость</a></li>
+    <li><a href="#price">Стоимость</a></li>
     <li><a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta" target="_blank" rel="noopener">Записаться</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Меню">
@@ -139,7 +183,7 @@
   <a href="#audience" onclick="closeMobileMenu()">Для кого</a>
   <a href="#schedule" onclick="closeMobileMenu()">Программа</a>
   <a href="#advertising" onclick="closeMobileMenu()">Брендам</a>
-  <a href="#cta" onclick="closeMobileMenu()">Стоимость</a>
+  <a href="#price" onclick="closeMobileMenu()">Стоимость</a>
   <a href="https://wa.me/message/OC5WYE4UZWX2N1" class="nav-cta" target="_blank" rel="noopener">Записаться</a>
 </div>
 
@@ -215,6 +259,51 @@
   </div>
 </section>
 
+<section class="pk-price" id="price">
+  <div class="inner">
+    <div class="section-kicker">Стоимость</div>
+    <h2>Сколько стоит <em>фотосессия</em></h2>
+    <p class="pk-price-lead">Для красивых кадров со стороны нужны <b>две яхты</b>: на одной вы под парусами, на второй фотограф. Поэтому бюджет фотосессии выше обычной прогулки.</p>
+    <div class="pk-price-cards">
+      <div class="pk-price-card">
+        <div class="pk-price-season">Апрель, май, сентябрь</div>
+        <div class="pk-price-what">2 яхты × 2 часа</div>
+        <div class="pk-price-sum">200 000 ₸</div>
+        <div class="pk-price-extra">Каждый доп. час: <b>+100 000 ₸</b> (50 000 ₸ за каждую лодку)</div>
+      </div>
+      <div class="pk-price-card">
+        <div class="pk-price-season">Июнь–август</div>
+        <div class="pk-price-what">2 яхты × 2 часа</div>
+        <div class="pk-price-sum">300 000 ₸</div>
+        <div class="pk-price-extra">Каждый доп. час: <b>+100 000 ₸</b> (50 000 ₸ за каждую лодку)</div>
+      </div>
+    </div>
+    <p class="pk-price-note">Программа с золотым часом и закатом (см. расписание) длится около 3 часов на воде, то есть 2 часа + 1 доп. час. Пример: в июле — 300 000 + 100 000 = <b>400 000 ₸</b>. Услуги фотографа обсуждаются отдельно.</p>
+    <div class="pk-price-cols">
+      <div>
+        <h3>Что входит</h3>
+        <ul>
+          <li>2 парусные яхты SB20</li>
+          <li>Инструкторы на обеих яхтах</li>
+          <li>Спасательные жилеты</li>
+          <li>Выход на закате</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Дополнительно</h3>
+        <p>Трансфер из Алматы по запросу, цена зависит от количества гостей.</p>
+      </div>
+    </div>
+    <div class="pk-price-cta">
+      <a class="btn-gold" href="https://wa.me/message/OC5WYE4UZWX2N1?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21+%D0%A5%D0%BE%D1%87%D1%83+%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C+%D1%84%D0%BE%D1%82%D0%BE%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E+%D0%BF%D0%BE%D0%B4+%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%B0%D0%BC%D0%B8." target="_blank" rel="noopener">Рассчитать мою съёмку в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="pk-giftbar">
+  <div class="inner"><b>Хотите подарить?</b> Оформим именной подарочный сертификат в фирменном конверте. <a href="https://parusa.kz/progulka.html#gift">Подробнее →</a></div>
+</section>
+
 <section class="cta-section" id="cta">
   <h2>Ваша съёмка <em>под парусами</em></h2>
   <p>Свяжитесь с нами в WhatsApp — обсудим формат (свадьба или бренд-съёмка), дату и детали. Ответим в течение нескольких часов.</p>
@@ -222,7 +311,42 @@
     <a class="btn-gold" href="https://wa.me/message/OC5WYE4UZWX2N1?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21+%D0%A5%D0%BE%D1%87%D1%83+%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C+%D1%84%D0%BE%D1%82%D0%BE%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E+%D0%BF%D0%BE%D0%B4+%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%B0%D0%BC%D0%B8." target="_blank" rel="noopener">Написать в WhatsApp</a>
     <a class="btn-ghost" href="/#products">Все программы клуба</a>
   </div>
-  <div class="price-line">от 100 000 ₸/час · Капчагай · 1 час от Алматы</div>
+  <div class="price-line">от 200 000 ₸ · 2 яхты, 2 часа · Капчагай · 1 час от Алматы</div>
+</section>
+
+<section class="pk-faq" id="faq">
+  <div class="inner">
+    <div class="section-kicker">Частые вопросы</div>
+    <h2><em>FAQ</em></h2>
+    <div class="faq-item">
+      <div class="faq-q">Почему нужны две лодки? <div class="toggle">+</div></div>
+      <div class="faq-a">Чтобы снять вашу яхту под парусами со стороны. Фотограф работает со второй яхты, которая идёт рядом.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Сколько стоит? <div class="toggle">+</div></div>
+      <div class="faq-a">2 яхты на 2 часа: апрель, май, сентябрь — 200 000 ₸, июнь–август — 300 000 ₸. Каждый час сверх 2 часов — 50 000 ₸ за каждую лодку.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли снимать на закате? <div class="toggle">+</div></div>
+      <div class="faq-a">Да, основная съёмка проходит в золотой час и на закате.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Сколько человек можно взять? <div class="toggle">+</div></div>
+      <div class="faq-a">До 4 человек на яхте плюс инструктор.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Есть ли трансфер из Алматы? <div class="toggle">+</div></div>
+      <div class="faq-a">Да, по запросу. Цена зависит от количества гостей.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Когда можно провести съёмку? <div class="toggle">+</div></div>
+      <div class="faq-a">С апреля по сентябрь. В октябре клуб не работает.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что если плохая погода? <div class="toggle">+</div></div>
+      <div class="faq-a">Перенесём съёмку на другой день.</div>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -250,6 +374,13 @@
 </footer>
 
 <script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
   const hamburger = document.getElementById('hamburger');
   const navMobile = document.getElementById('navMobile');
   hamburger.addEventListener('click', () => {
